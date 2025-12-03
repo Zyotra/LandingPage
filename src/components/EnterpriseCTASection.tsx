@@ -8,228 +8,100 @@ const EnterpriseCTASection = () => {
   }, []);
 
   const features = [
-    { text: 'Unlimited users' },
-    { text: 'Unlimited projects' },
-    { text: 'Usage reports' },
-    { text: 'Dedicated support' },
-    { text: 'Customized environments and more...' },
+    { text: 'Unlimited users', description: 'Scale your team without limits' },
+    { text: 'Unlimited projects', description: 'Create as many projects as you need' },
+    { text: 'Usage reports', description: 'Detailed insights into your deployment' },
+    { text: 'Dedicated support', description: '24/7 priority access to our experts' },
+    { text: 'Custom environments', description: 'Tailored infrastructure for your needs' },
+    { text: 'SLA Guarantee', description: '99.99% uptime commitment' },
   ];
 
   return (
-    <section className="w-full bg-[#1a1a22] pt-6 sm:pt-8 md:pt-10 lg:pt-12 pb-12 sm:pb-14 md:pb-16 lg:pb-20 relative overflow-hidden">
-      {/* Grid Pattern Background - continuous with hero */}
+    <section className="w-full bg-[#1a1a22] py-20 lg:py-32 relative overflow-hidden">
+      {/* Background Elements - Keeping consistency */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Vertical lines */}
-        <div className="absolute left-[5%] top-0 bottom-0 w-px bg-[#2a2a35]"></div>
-        <div className="absolute left-[25%] top-0 bottom-0 w-px bg-[#2a2a35] hidden sm:block"></div>
-        <div className="absolute left-[50%] top-0 bottom-0 w-px bg-[#2a2a35]"></div>
-        <div className="absolute left-[75%] top-0 bottom-0 w-px bg-[#2a2a35] hidden sm:block"></div>
-        <div className="absolute left-[95%] top-0 bottom-0 w-px bg-[#2a2a35]"></div>
+        <div className="absolute left-[5%] top-0 bottom-0 w-px bg-[#2a2a35]/50"></div>
+        <div className="absolute left-[50%] top-0 bottom-0 w-px bg-[#2a2a35]/50"></div>
+        <div className="absolute left-[95%] top-0 bottom-0 w-px bg-[#2a2a35]/50"></div>
         
-        {/* Decorative diamond shape on the right */}
-        <div className="absolute top-[15%] right-[8%] w-12 h-12 border border-[#3a3a45]/50 rotate-45 hidden lg:block"></div>
-        
-        {/* Decorative stars */}
-        <div className="absolute top-[40%] left-[12%] text-[#4a4a55] text-xl hidden lg:block">✦</div>
-        <div className="absolute bottom-[30%] right-[6%] text-[#3a3a45] text-sm hidden lg:block">✦</div>
+        {/* Ambient Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#e4b2b3]/5 rounded-full blur-[120px] pointer-events-none"></div>
       </div>
 
-      {/* CSS Animations */}
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-        }
-        @keyframes float-delayed {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-8px); }
-        }
-        @keyframes pulse-ring {
-          0% { transform: scale(0.95); opacity: 0.5; }
-          50% { transform: scale(1.05); opacity: 0.8; }
-          100% { transform: scale(0.95); opacity: 0.5; }
-        }
-        @keyframes dash {
-          to { stroke-dashoffset: -20; }
-        }
-        @keyframes fade-in-up {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes orbit {
-          from { transform: rotate(0deg) translateX(60px) rotate(0deg); }
-          to { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
-        }
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        @keyframes glow {
-          0%, 100% { box-shadow: 0 0 20px rgb(228,178,179); }
-          50% { box-shadow: 0 0 40px rgba(228,178,179, 0.5); }
-        }
-        .animate-float { animation: float 4s ease-in-out infinite; }
-        .animate-float-delayed { animation: float-delayed 5s ease-in-out infinite 0.5s; }
-        .animate-pulse-ring { animation: pulse-ring 3s ease-in-out infinite; }
-        .animate-dash { animation: dash 1s linear infinite; }
-        .animate-fade-in-up { animation: fade-in-up 0.8s ease-out forwards; }
-        .animate-orbit { animation: orbit 12s linear infinite; }
-        .animate-spin-slow { animation: spin-slow 20s linear infinite; }
-        .animate-glow { animation: glow 3s ease-in-out infinite; }
-      `}</style>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-start lg:items-center gap-12 lg:gap-20">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24">
+          
           {/* Left Content */}
-          <div className="flex-1">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-8 md:mb-12">
-              <span className="text-[#e8e0dc] italic font-serif">A complete</span><br />
-              <span className="text-[#e8e0dc] italic font-serif">solution</span>{' '}
-              <span className="text-white font-sans not-italic">for</span><br />
-              <span className="text-white font-sans not-italic">enterprise</span><br />
-              <span className="text-white font-sans not-italic">analytics</span>
+          <div className={`flex-1 max-w-2xl transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-white mb-8 leading-tight">
+              <span className="text-[#e4b2b3]">Enterprise-grade</span> <br />
+              deployment solutions
             </h2>
             
-            {/* Features Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-5">
-              {features.slice(0, 3).map((feature, index) => (
-                <div key={index} className="flex items-center gap-3">
-                  <svg 
-                    className="w-5 h-5 text-[#4fd1c5] flex-shrink-0" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth={2} 
-                      d="M5 13l4 4L19 7" 
-                    />
-                  </svg>
-                  <span className="text-white text-base sm:text-lg">{feature.text}</span>
-                </div>
-              ))}
-              {features.slice(3).map((feature, index) => (
-                <div key={index + 3} className="flex items-center gap-3">
-                  <svg 
-                    className="w-5 h-5 text-[#4fd1c5] flex-shrink-0" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth={2} 
-                      d="M5 13l4 4L19 7" 
-                    />
-                  </svg>
-                  <span className="text-white text-base sm:text-lg">{feature.text}</span>
+            <p className="text-gray-400 text-lg mb-12 max-w-lg leading-relaxed">
+              Empower your organization with a secure, scalable, and fully managed deployment infrastructure designed for high-growth startups and large enterprises.
+            </p>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+              {features.map((feature, index) => (
+                <div key={index} className="group flex items-start gap-4">
+                  <div className="mt-1 w-5 h-5 rounded-full border border-[#e4b2b3]/30 flex items-center justify-center flex-shrink-0 group-hover:border-[#e4b2b3] group-hover:bg-[#e4b2b3]/10 transition-colors duration-300">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#e4b2b3]"></div>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-medium text-lg">{feature.text}</h4>
+                    <p className="text-gray-500 text-sm mt-1">{feature.description}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
           
-          {/* Right Content - Animated CTA Card */}
-          <div className="flex-1 w-full lg:w-auto flex justify-center lg:justify-end">
-            <div className={`relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {/* Right Content - Professional Card */}
+          <div className={`flex-1 w-full max-w-md lg:max-w-lg transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className="relative group">
+              {/* Card Glow Effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#e4b2b3]/20 to-[#4fd1c5]/20 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000"></div>
               
-              {/* Background Decorative Elements */}
-              <div className="absolute -inset-8 pointer-events-none">
-                {/* Orbiting dots */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 animate-spin-slow">
-                  <div className="absolute top-0 left-1/2 w-2 h-2 bg-[#e4b2b3]/40 rounded-full"></div>
-                  <div className="absolute bottom-0 left-1/2 w-1.5 h-1.5 bg-[#e4b2b3]/40 rounded-full"></div>
-                  <div className="absolute top-1/2 left-0 w-1 h-1 bg-[#e4b2b3]/30 rounded-full"></div>
-                </div>
+              <div className="relative bg-[#1e1e26] border border-[#2a2a35] rounded-2xl p-8 sm:p-10 overflow-hidden">
+                {/* Decorative background inside card */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#e4b2b3]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
                 
-                {/* Floating geometric shapes */}
-                <div className="absolute -top-4 -right-4 w-8 h-8 border border-[#4fd1c5]/20 rotate-45 animate-float"></div>
-                <div className="absolute -bottom-6 -left-6 w-6 h-6 border border-[#e4b2b3]/20 rounded-full animate-float-delayed"></div>
-                <div className="absolute top-1/4 -left-8 w-3 h-3 bg-[#4fd1c5]/10 rounded-full animate-pulse-ring"></div>
-                <div className="absolute bottom-1/4 -right-6 w-4 h-4 border border-[#e4b2b3]/15 animate-float"></div>
-              </div>
-
-              {/* CTA Card with enhanced styling */}
-              <div className="relative bg-gradient-to-br from-[#22222a]/80 to-[#1a1a22]/90 backdrop-blur-sm border border-gray-600/50 rounded-lg px-10 sm:px-16 py-12 sm:py-16 text-center max-w-md overflow-hidden">
-                
-                {/* Animated background glow */}
-                <div className="absolute inset-0 opacity-30">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-40 bg-[#4fd1c5]/10 rounded-full blur-3xl animate-pulse-ring"></div>
-                  <div className="absolute bottom-0 right-0 w-32 h-32 bg-[#e4b2b3]/10 rounded-full blur-3xl animate-float"></div>
-                </div>
-                
-                {/* Corner decorations with animation */}
-                <span className="absolute -top-px -left-px w-4 h-4 border-t-2 border-l-2 border-[#e4b2b3]/60 rounded-tl-lg"></span>
-                <span className="absolute -top-px -right-px w-4 h-4 border-t-2 border-r-2 border-[#e4b2b3]/60 rounded-tr-lg"></span>
-                <span className="absolute -bottom-px -left-px w-4 h-4 border-b-2 border-l-2 border-[#e4b2b3]/60 rounded-bl-lg"></span>
-                <span className="absolute -bottom-px -right-px w-4 h-4 border-b-2 border-r-2 border-[#e4b2b3]/60 rounded-br-lg"></span>
-                
-                {/* Animated icon */}
-                <div className="relative mx-auto w-20 h-20 mb-6">
-                  {/* Outer ring */}
-                  <div className="absolute inset-0 border-2 border-[#e4b2b3]/30 rounded-full animate-pulse-ring"></div>
-                  {/* Middle ring */}
-                  <div className="absolute inset-2 border border-[#e4b2b3]/20 rounded-full animate-spin-slow" style={{ animationDuration: '15s' }}></div>
-                  {/* Inner circle with icon */}
-                  <div className="absolute inset-4 bg-gradient-to-brfrom-[#e4b2b3]/20 to-[#e4b2b3]/5 rounded-full flex items-center justify-center animate-glow">
-                    <svg className="w-6 h-6 text-[#e4b2b3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                <div className="relative z-10">
+                  <div className="w-16 h-16 bg-[#2a2a32] rounded-2xl border border-[#3a3a45] flex items-center justify-center mb-8 shadow-lg shadow-[#e4b2b3]/5">
+                    <svg className="w-8 h-8 text-[#e4b2b3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                     </svg>
                   </div>
-                  {/* Orbiting dot */}
-                  <div className="absolute inset-0 animate-orbit">
-                    <div className="w-2 h-2 bg-[#e4b2b3] rounded-full"></div>
+
+                  <h3 className="text-3xl font-bold text-white mb-4">
+                    Ready to scale?
+                  </h3>
+                  
+                  <p className="text-gray-400 mb-8 leading-relaxed">
+                    Get a customized plan tailored to your organization's specific needs and security requirements.
+                  </p>
+
+                  <button className="w-full group relative flex items-center justify-center gap-3 bg-[#e4b2b3] hover:bg-[#dca0a1] text-[#1a1a22] px-8 py-4 rounded-xl transition-all duration-300 font-semibold text-lg shadow-lg shadow-[#e4b2b3]/20 hover:shadow-[#e4b2b3]/30 hover:-translate-y-0.5">
+                    <span className='text-[#e4b2b3]'>Contact Sales</span>
+                    <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </button>
+                  
+                  <div className="mt-6 flex items-center justify-center gap-6 border-t border-[#2a2a35] pt-6">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-[#4fd1c5] animate-pulse"></div>
+                      <span className="text-sm text-gray-400">Response in 24h</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span className="text-sm text-gray-400">No commitment</span>
+                    </div>
                   </div>
                 </div>
-                
-                <h3 className="relative text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-                  Ready to get<br />started?
-                </h3>
-                
-                <p className="relative text-gray-400 text-base sm:text-lg mb-8 max-w-xs mx-auto">
-                  Get in touch and find out which plan is right for you.
-                </p>
-                
-                {/* Enhanced CTA Button - Professional Style */}
-                <div className="relative p-2 inline-block">
-                  {/* Outer corner accents */}
-                  <span className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#e4b2b3] transition-all duration-300 group-hover:w-4 group-hover:h-4"></span>
-                  <span className="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#e4b2b3] transition-all duration-300 group-hover:w-4 group-hover:h-4"></span>
-                  <span className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#e4b2b3] transition-all duration-300 group-hover:w-4 group-hover:h-4"></span>
-                  <span className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#e4b2b3] transition-all duration-300 group-hover:w-4 group-hover:h-4"></span>
-                  
-                  <button className="group relative flex items-center gap-3 bg-[#2a2a32] hover:bg-[#32323a] text-[#e4b2b3] px-6 py-3.5 transition-all duration-300 border border-[#3a3a45] hover:border-[#e4b2b3]/50 hover:shadow-lg hover:shadow-[#e4b2b3]/10">
-                    {/* Icon circle - Chat/Message icon */}
-                    <span className="w-8 h-8 flex items-center justify-center border border-[#e4b2b3]/50 rounded-full transition-all duration-300 group-hover:border-[#e4b2b3] group-hover:bg-[#e4b2b3]/10 group-hover:scale-110">
-                      <svg className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                      </svg>
-                    </span>
-                    <span className="font-medium text-base">Contact Sales</span>
-                  </button>
-                </div>
-                
-                {/* Animated connection lines */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#4fd1c5" stopOpacity="0.1" />
-                      <stop offset="50%" stopColor="#4fd1c5" stopOpacity="0.3" />
-                      <stop offset="100%" stopColor="#4fd1c5" stopOpacity="0.1" />
-                    </linearGradient>
-                  </defs>
-                  <path 
-                    d="M 0 40 Q 50 20 100 40 T 200 40" 
-                    fill="none" 
-                    stroke="url(#lineGradient)" 
-                    strokeWidth="1"
-                    strokeDasharray="5,5"
-                    className="animate-dash"
-                    opacity="0.5"
-                  />
-                </svg>
               </div>
             </div>
           </div>

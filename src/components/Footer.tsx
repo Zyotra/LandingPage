@@ -8,10 +8,12 @@ const Footer = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 mb-8 sm:mb-12 md:mb-16">
           {/* Logo Column */}
           <div className="col-span-2 sm:col-span-3 lg:col-span-1 mb-4 sm:mb-0">
-            <a href="#" className="font-bold text-lg sm:text-xl md:text-2xl tracking-wider flex items-center text-white">
-              ZYOTRA<span className="text-[10px] sm:text-xs ml-0.5 text-gray-500">®</span>
+            <a href="#" className="font-bold text-lg sm:text-xl md:text-2xl tracking-wider flex items-center gap-3 text-white">
+              {/* Spinning Logo */}
+              <img src="/zyotra-logo.svg" alt="Zyotra Logo" className="w-8 h-8 animate-spin-slow" />
+              <span>ZYOTRA<span className="text-[10px] sm:text-xs ml-0.5 text-gray-500">®</span></span>
             </a>
-            <p className="text-xs sm:text-sm mt-2 sm:mt-3" style={{ color: LINK_COLOR }}>
+            <p className="text-xs sm:text-sm mt-4" style={{ color: LINK_COLOR }}>
               Made with <span className="text-red-500">❤</span> on <span>🌍</span>.
             </p>
           </div>
@@ -20,10 +22,8 @@ const Footer = () => {
           <div>
             <h4 className="text-white text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2.5 sm:mb-3 md:mb-4">Company</h4>
             <ul className="space-y-1.5 sm:space-y-2 md:space-y-3">
-              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">Careers</a></li>
-              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">Customers</a></li>
               <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">About Us</a></li>
-              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">Media kit</a></li>
+              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">Careers</a></li>
               <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">Newsroom</a></li>
             </ul>
           </div>
@@ -36,10 +36,6 @@ const Footer = () => {
               <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">Auto Scaling</a></li>
               <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">Load Balancing</a></li>
               <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">Monitoring</a></li>
-              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition hidden sm:block">CI/CD Integration</a></li>
-              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition hidden sm:block">SSL Certificates</a></li>
-              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition hidden md:block">DDoS Protection</a></li>
-              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition hidden md:block">API Access</a></li>
             </ul>
           </div>
 
@@ -49,12 +45,8 @@ const Footer = () => {
             <ul className="space-y-1.5 sm:space-y-2 md:space-y-3">
               <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">Pricing</a></li>
               <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">Enterprise</a></li>
-              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">Blog</a></li>
               <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">Docs</a></li>
-              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition hidden sm:block">Tutorials</a></li>
-              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition hidden sm:block">Templates</a></li>
-              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition hidden md:block">Changelog</a></li>
-              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition hidden md:block">Status Page</a></li>
+              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">Blog</a></li>
             </ul>
           </div>
 
@@ -62,13 +54,10 @@ const Footer = () => {
           <div>
             <h4 className="text-white text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2.5 sm:mb-3 md:mb-4">Connect</h4>
             <ul className="space-y-1.5 sm:space-y-2 md:space-y-3">
-              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">Contact sales</a></li>
-              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">Request a demo</a></li>
-              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition hidden sm:block">Technical support</a></li>
-              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">Discord</a></li>
+              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">Contact Sales</a></li>
               <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">GitHub</a></li>
+              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">Discord</a></li>
               <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">X (Twitter)</a></li>
-              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition hidden sm:block">LinkedIn</a></li>
             </ul>
           </div>
 
@@ -93,7 +82,6 @@ const Footer = () => {
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 order-1 sm:order-2">
               <a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-[10px] sm:text-xs md:text-sm transition">Privacy policy</a>
               <a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-[10px] sm:text-xs md:text-sm transition">Terms & conditions</a>
-              <a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-[10px] sm:text-xs md:text-sm transition">Cookie policy</a>
             </div>
           </div>
         </div>
