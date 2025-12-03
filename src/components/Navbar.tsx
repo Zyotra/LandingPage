@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [platformOpen, setPlatformOpen] = useState(false);
@@ -47,7 +48,7 @@ const Navbar = () => {
           {/* Left side - Logo on mobile, Navigation on desktop */}
           <div className="flex items-center gap-6">
             {/* Logo - visible on mobile */}
-            <a href="#" className="flex md:hidden items-center gap-2 font-bold text-xl tracking-wider">
+            <Link to="/" className="flex md:hidden items-center gap-2 font-bold text-xl tracking-wider">
               <svg 
                 className="w-7 h-7 animate-spin-slow" 
                 viewBox="0 0 100 100" 
@@ -79,7 +80,7 @@ const Navbar = () => {
                 })}
               </svg>
               <span className="text-xl text-[#e4b2b3]">ZYOTRA</span>
-            </a>
+            </Link>
 
             {/* Desktop Navigation - Left side */}
             <div className="hidden md:flex items-center gap-5 lg:gap-6">
@@ -98,10 +99,10 @@ const Navbar = () => {
                 {platformOpen && (
                   <div className="absolute top-full left-0 mt-3 w-56 bg-[#22222a] border border-[#3a3a3a] rounded-lg shadow-xl z-50 p-3">
                     <div className="space-y-1">
-                      <a href="#" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">VPS Instances</a>
-                      <a href="#" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">Auto Scaling</a>
-                      <a href="#" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">Load Balancing</a>
-                      <a href="#" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">Monitoring</a>
+                      <Link to="/platform/vps" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">VPS Instances</Link>
+                      <Link to="/platform/autoscaling" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">Auto Scaling</Link>
+                      <Link to="/platform/loadbalancing" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">Load Balancing</Link>
+                      <Link to="/platform/monitoring" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">Monitoring</Link>
                     </div>
                   </div>
                 )}
@@ -122,24 +123,24 @@ const Navbar = () => {
                 {solutionsOpen && (
                   <div className="absolute top-full left-0 mt-3 w-56 bg-[#22222a] border border-[#3a3a3a] rounded-lg shadow-xl z-50 p-3">
                     <div className="space-y-1">
-                      <a href="#" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">For Startups</a>
-                      <a href="#" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">For Enterprise</a>
-                      <a href="#" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">For Developers</a>
+                      <Link to="/solutions/startups" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">For Startups</Link>
+                      <Link to="/solutions/enterprise" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">For Enterprise</Link>
+                      <Link to="/solutions/developers" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">For Developers</Link>
                     </div>
                   </div>
                 )}
               </div>
 
               {/* Enterprise */}
-              <a href="#" className="text-gray-300 hover:text-white transition text-sm">
+              <Link to="/enterprise" className="text-gray-300 hover:text-white transition text-sm">
                 Enterprise
-              </a>
+              </Link>
             </div>
           </div>
 
           {/* Center - Logo (Desktop only) */}
           <div className="hidden md:flex items-center justify-center">
-            <a href="#" className="flex items-center gap-2 font-bold text-xl tracking-wider">
+            <Link to="/" className="flex items-center gap-2 font-bold text-xl tracking-wider">
               <svg 
                 className="w-7 h-7 animate-spin-slow" 
                 viewBox="0 0 100 100" 
@@ -171,7 +172,7 @@ const Navbar = () => {
                 })}
               </svg>
               <span className="text-xl text-[#e4b2b3] hover:text-[#e5a3a5] transition">ZYOTRA</span>
-            </a>
+            </Link>
           </div>
 
           {/* Right side - Desktop Navigation */}
@@ -191,9 +192,9 @@ const Navbar = () => {
               {resourcesOpen && (
                 <div className="absolute top-full right-0 mt-3 w-56 bg-[#22222a] border border-[#3a3a3a] rounded-lg shadow-xl z-50 p-3">
                   <div className="space-y-1">
-                    <a href="#" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">Documentation</a>
-                    <a href="#" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">Blog</a>
-                    <a href="#" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">API Reference</a>
+                    <Link to="/docs" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">Documentation</Link>
+                    <Link to="/blog" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">Blog</Link>
+                    <Link to="/api" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">API Reference</Link>
                   </div>
                 </div>
               )}
@@ -252,10 +253,10 @@ const Navbar = () => {
               </button>
               <div className={`overflow-hidden transition-all duration-300 ${mobilePlatformOpen ? 'max-h-40' : 'max-h-0'}`}>
                 <div className="pl-4 pb-2 space-y-2">
-                  <a href="#" className="block text-gray-400 hover:text-white py-2 text-sm">VPS Instances</a>
-                  <a href="#" className="block text-gray-400 hover:text-white py-2 text-sm">Auto Scaling</a>
-                  <a href="#" className="block text-gray-400 hover:text-white py-2 text-sm">Load Balancing</a>
-                  <a href="#" className="block text-gray-400 hover:text-white py-2 text-sm">Monitoring</a>
+                  <Link to="/platform/vps" className="block text-gray-400 hover:text-white py-2 text-sm">VPS Instances</Link>
+                  <Link to="/platform/autoscaling" className="block text-gray-400 hover:text-white py-2 text-sm">Auto Scaling</Link>
+                  <Link to="/platform/loadbalancing" className="block text-gray-400 hover:text-white py-2 text-sm">Load Balancing</Link>
+                  <Link to="/platform/monitoring" className="block text-gray-400 hover:text-white py-2 text-sm">Monitoring</Link>
                 </div>
               </div>
             </div>
@@ -273,17 +274,17 @@ const Navbar = () => {
               </button>
               <div className={`overflow-hidden transition-all duration-300 ${mobileSolutionsOpen ? 'max-h-32' : 'max-h-0'}`}>
                 <div className="pl-4 pb-2 space-y-2">
-                  <a href="#" className="block text-gray-400 hover:text-white py-2 text-sm">For Startups</a>
-                  <a href="#" className="block text-gray-400 hover:text-white py-2 text-sm">For Enterprise</a>
-                  <a href="#" className="block text-gray-400 hover:text-white py-2 text-sm">For Developers</a>
+                  <Link to="/solutions/startups" className="block text-gray-400 hover:text-white py-2 text-sm">For Startups</Link>
+                  <Link to="/solutions/enterprise" className="block text-gray-400 hover:text-white py-2 text-sm">For Enterprise</Link>
+                  <Link to="/solutions/developers" className="block text-gray-400 hover:text-white py-2 text-sm">For Developers</Link>
                 </div>
               </div>
             </div>
 
             {/* Enterprise */}
-            <a href="#" className="block py-3 text-white text-base border-t border-[#2a2a35]">
+            <Link to="/enterprise" className="block py-3 text-white text-base border-t border-[#2a2a35]">
               Enterprise
-            </a>
+            </Link>
 
             {/* Resources Accordion */}
             <div className="border-t border-[#2a2a35]">
@@ -298,9 +299,9 @@ const Navbar = () => {
               </button>
               <div className={`overflow-hidden transition-all duration-300 ${mobileResourcesOpen ? 'max-h-32' : 'max-h-0'}`}>
                 <div className="pl-4 pb-2 space-y-2">
-                  <a href="#" className="block text-gray-400 hover:text-white py-2 text-sm">Documentation</a>
-                  <a href="#" className="block text-gray-400 hover:text-white py-2 text-sm">Blog</a>
-                  <a href="#" className="block text-gray-400 hover:text-white py-2 text-sm">API Reference</a>
+                  <Link to="/docs" className="block text-gray-400 hover:text-white py-2 text-sm">Documentation</Link>
+                  <Link to="/blog" className="block text-gray-400 hover:text-white py-2 text-sm">Blog</Link>
+                  <Link to="/api" className="block text-gray-400 hover:text-white py-2 text-sm">API Reference</Link>
                 </div>
               </div>
             </div>
