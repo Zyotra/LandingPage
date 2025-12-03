@@ -55,33 +55,7 @@ const EnterpriseCTASection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24">
           
-          {/* Left Content */}
-          <div className={`flex-1 max-w-2xl transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-white mb-8 leading-tight">
-              <span className="text-[#e4b2b3]">Enterprise-grade</span> <br />
-              deployment solutions
-            </h2>
-            
-            <p className="text-gray-400 text-lg mb-12 max-w-lg leading-relaxed">
-              Empower your organization with a secure, scalable, and fully managed deployment infrastructure designed for high-growth startups and large enterprises.
-            </p>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
-              {features.map((feature, index) => (
-                <div key={index} className="group flex items-start gap-4">
-                  <div className="mt-1 w-5 h-5 rounded-full border border-[#e4b2b3]/30 flex items-center justify-center flex-shrink-0 group-hover:border-[#e4b2b3] group-hover:bg-[#e4b2b3]/10 transition-colors duration-300">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#e4b2b3]"></div>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-medium text-lg">{feature.text}</h4>
-                    <p className="text-gray-500 text-sm mt-1">{feature.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          
-          {/* Right Content - Unique Animation Component */}
+          {/* Left Content - Unique Animation Component */}
           <div className={`flex-1 w-full max-w-md lg:max-w-lg relative ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} transition-all duration-1000 delay-300`}>
             
             {/* Animated Background System - No Card Box */}
@@ -142,6 +116,32 @@ const EnterpriseCTASection = () => {
                   <span>No commitment</span>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Right Content - Enterprise Solutions */}
+          <div className={`flex-1 max-w-2xl transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-white mb-8 leading-tight">
+              <span className="text-[#e4b2b3]">Enterprise-grade</span> <br />
+              deployment solutions
+            </h2>
+            
+            <p className="text-gray-400 text-lg mb-12 max-w-lg leading-relaxed">
+              Empower your organization with a secure, scalable, and fully managed deployment infrastructure designed for high-growth startups and large enterprises.
+            </p>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+              {features.map((feature, index) => (
+                <div key={index} className="group flex items-start gap-4">
+                  <div className="mt-1 w-5 h-5 rounded-full border border-[#e4b2b3]/30 flex items-center justify-center flex-shrink-0 group-hover:border-[#e4b2b3] group-hover:bg-[#e4b2b3]/10 transition-colors duration-300">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#e4b2b3]"></div>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-medium text-lg">{feature.text}</h4>
+                    <p className="text-gray-500 text-sm mt-1">{feature.description}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
