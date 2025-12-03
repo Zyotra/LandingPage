@@ -77,21 +77,21 @@ const PricingSection = () => {
   ];
 
   return (
-    <section className="w-full bg-[#1a1a22] py-12 md:py-20 border-t border-gray-800/30">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+    <section className="w-full bg-[#1a1a22] py-10 sm:py-12 md:py-20 border-t border-gray-800/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
-        <div className="text-center mb-10 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif italic text-[#e4b2b3] mb-4">
+        <div className="text-center mb-8 sm:mb-10 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif italic text-[#e4b2b3] mb-3 sm:mb-4">
             Simple, transparent pricing
           </h2>
-          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto px-4">
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-2 sm:px-4">
             Choose the plan that works best for your deployment needs. 
             All plans include free SSL certificates and DDoS protection.
           </p>
         </div>
 
         {/* Pricing Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
           {/* Plan Cards */}
           {plans.map((plan) => (
             <div 

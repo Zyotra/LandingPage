@@ -1,18 +1,18 @@
 const TrustedBySection = () => {
   return (
-    <section className="w-full bg-[#1a1a22] py-8 md:py-12 border-t border-gray-800/30">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+    <section className="w-full bg-[#1a1a22] py-6 sm:py-8 md:py-12 border-t border-gray-800/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
-        <div className="flex items-center justify-center gap-3 mb-6 md:mb-10">
+        <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6 md:mb-10">
           <span className="text-gray-600 hidden sm:inline">┌</span>
-          <span className="text-gray-500 text-xs uppercase tracking-widest text-center">
+          <span className="text-gray-500 text-[10px] sm:text-xs uppercase tracking-widest text-center">
             Trusted by leading data companies
           </span>
           <span className="text-gray-600 hidden sm:inline">┐</span>
         </div>
 
         {/* Company Logos - Responsive Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:flex lg:items-center lg:justify-between gap-6 md:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:flex lg:items-center lg:justify-between gap-4 sm:gap-6 md:gap-8">
           {/* Reddit */}
           <div className="flex items-center justify-center lg:justify-start gap-2 text-white hover:text-gray-300 transition">
             <svg className="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="currentColor">

@@ -20,14 +20,14 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="w-full bg-[#1a1a22] py-12 md:py-16 lg:py-24 relative overflow-hidden min-h-[auto] md:min-h-[90vh]">
+    <section className="w-full bg-[#1a1a22] py-10 sm:py-12 md:py-16 lg:py-24 relative overflow-hidden min-h-[auto] lg:min-h-[90vh]">
       {/* Grid Pattern Background */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Vertical lines */}
         <div className="absolute left-[5%] top-0 bottom-0 w-px bg-[#2a2a35]"></div>
-        <div className="absolute left-[25%] top-0 bottom-0 w-px bg-[#2a2a35] hidden md:block"></div>
+        <div className="absolute left-[25%] top-0 bottom-0 w-px bg-[#2a2a35] hidden sm:block"></div>
         <div className="absolute left-[50%] top-0 bottom-0 w-px bg-[#2a2a35]"></div>
-        <div className="absolute left-[75%] top-0 bottom-0 w-px bg-[#2a2a35] hidden md:block"></div>
+        <div className="absolute left-[75%] top-0 bottom-0 w-px bg-[#2a2a35] hidden sm:block"></div>
         <div className="absolute left-[95%] top-0 bottom-0 w-px bg-[#2a2a35]"></div>
         
         {/* Horizontal lines */}
@@ -37,59 +37,59 @@ const HeroSection = () => {
         <div className="absolute top-[95%] left-0 right-0 h-px bg-[#2a2a35]"></div>
         
         {/* Decorative stars */}
-        <div className="absolute top-[20%] right-[42%] text-[#4a4a55] text-xl hidden md:block">✦</div>
-        <div className="absolute top-[50%] right-[38%] text-[#3a3a45] text-sm hidden md:block">✦</div>
+        <div className="absolute top-[20%] right-[42%] text-[#4a4a55] text-xl hidden lg:block">✦</div>
+        <div className="absolute top-[50%] right-[38%] text-[#3a3a45] text-sm hidden lg:block">✦</div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-6 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
           {/* Left Content */}
-          <div className="relative text-center lg:text-left">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[4.5rem] leading-[1.1] mb-4 md:mb-6" style={{ fontFamily: "Playfair Display", fontWeight: 400 }}>
+          <div className="relative text-center lg:text-left order-2 lg:order-1">
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[4.5rem] leading-[1.1] mb-4 md:mb-6" style={{ fontFamily: "Playfair Display", fontWeight: 400 }}>
               <span className="text-[#e4b2b3]">Deploy servers</span><br />
               <span className="text-[#e4b2b3]">in seconds</span>
             </h1>
             
-            <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-8 md:mb-10 max-w-lg mx-auto lg:mx-0" style={{ fontFamily: "PlayFair Display" }}>
+            <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed mb-6 sm:mb-8 md:mb-10 max-w-lg mx-auto lg:mx-0" style={{ fontFamily: "PlayFair Display" }}>
               Zyotra is an automated platform for deploying VPS.
               Launch instances instantly, partner with automation to
               do better deployments, and scale with confidence.
             </p>
             
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 md:gap-8">
               {/* Get started button - dark with border and corner accents */}
-              <div className="relative p-2">
+              <div className="relative p-1.5 sm:p-2 w-full sm:w-auto">
                 {/* Corner accents - outside the button */}
-                <span className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#e4b2b3]"></span>
-                <span className="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#e4b2b3]"></span>
-                <span className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#e4b2b3]"></span>
-                <span className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#e4b2b3]"></span>
+                <span className="absolute top-0 left-0 w-2.5 sm:w-3 h-2.5 sm:h-3 border-t border-l border-[#e4b2b3]"></span>
+                <span className="absolute top-0 right-0 w-2.5 sm:w-3 h-2.5 sm:h-3 border-t border-r border-[#e4b2b3]"></span>
+                <span className="absolute bottom-0 left-0 w-2.5 sm:w-3 h-2.5 sm:h-3 border-b border-l border-[#e4b2b3]"></span>
+                <span className="absolute bottom-0 right-0 w-2.5 sm:w-3 h-2.5 sm:h-3 border-b border-r border-[#e4b2b3]"></span>
                 
                 <a 
                   href="#" 
-                  className="inline-flex items-center gap-3 md:gap-4 bg-[#2a2a32] hover:bg-[#32323a] text-[#e4b2b3] px-4 md:px-6 py-3 md:py-4 transition-all duration-300 group border border-[#3a3a45] hover:border-[#e4b2b3]/50 hover:shadow-lg hover:shadow-[#e4b2b3]/10"
+                  className="inline-flex items-center justify-center w-full sm:w-auto gap-2 sm:gap-3 md:gap-4 bg-[#2a2a32] hover:bg-[#32323a] text-[#e4b2b3] px-4 sm:px-4 md:px-6 py-2.5 sm:py-3 md:py-4 transition-all duration-300 group border border-[#3a3a45] hover:border-[#e4b2b3]/50 hover:shadow-lg hover:shadow-[#e4b2b3]/10"
                 >
-                  <span className="w-8 h-8 md:w-10 md:h-8 flex items-center justify-center border border-[#e4b2b3]/50 rounded-full transition-all duration-300 group-hover:border-[#e4b2b3] group-hover:bg-[#e4b2b3]/10">
-                    <svg className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <span className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-8 flex items-center justify-center border border-[#e4b2b3]/50 rounded-full transition-all duration-300 group-hover:border-[#e4b2b3] group-hover:bg-[#e4b2b3]/10">
+                    <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 17L17 7M17 7H7M17 7V17" />
                     </svg>
                   </span>
-                  <span className="font-medium text-lg md:text-xl">Get started</span>
+                  <span className="font-medium text-base sm:text-lg md:text-xl">Get started</span>
                 </a>
               </div>
               
               {/* Request a demo button - dashed border */}
-              <div className="relative p-2">
+              <div className="relative p-1.5 sm:p-2 w-full sm:w-auto">
                 {/* Corner accents - outside the button */}
-                <span className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#e4b2b3]"></span>
-                <span className="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#e4b2b3]"></span>
-                <span className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#e4b2b3]"></span>
-                <span className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#e4b2b3]"></span>
+                <span className="absolute top-0 left-0 w-2.5 sm:w-3 h-2.5 sm:h-3 border-t border-l border-[#e4b2b3]"></span>
+                <span className="absolute top-0 right-0 w-2.5 sm:w-3 h-2.5 sm:h-3 border-t border-r border-[#e4b2b3]"></span>
+                <span className="absolute bottom-0 left-0 w-2.5 sm:w-3 h-2.5 sm:h-3 border-b border-l border-[#e4b2b3]"></span>
+                <span className="absolute bottom-0 right-0 w-2.5 sm:w-3 h-2.5 sm:h-3 border-b border-r border-[#e4b2b3]"></span>
                 
                 <a
                   href="#" 
-                  className="inline-flex items-center justify-center text-[#e4b2b3] font-medium text-lg md:text-xl px-6 md:px-8 py-3 md:py-4 transition-all duration-300 border border-dashed border-[#e4b2b3]/60 hover:border-[#e4b2b3] hover:text-white hover:bg-[#e4b2b3]/10 hover:shadow-lg hover:shadow-[#e4b2b3]/10"
+                  className="inline-flex items-center justify-center w-full sm:w-auto text-[#e4b2b3] font-medium text-base sm:text-lg md:text-xl px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 transition-all duration-300 border border-dashed border-[#e4b2b3]/60 hover:border-[#e4b2b3] hover:text-white hover:bg-[#e4b2b3]/10 hover:shadow-lg hover:shadow-[#e4b2b3]/10"
                 >
                   Request a demo
                 </a>
@@ -98,7 +98,7 @@ const HeroSection = () => {
           </div>
           
           {/* Right Content - Animated Workflow Diagram */}
-          <div className="relative h-[350px] sm:h-[400px] md:h-[500px] mt-8 lg:mt-0">
+          <div className="relative h-[280px] xs:h-[320px] sm:h-[380px] md:h-[450px] lg:h-[500px] order-1 lg:order-2">
             {/* SVG Animation Container */}
             <svg viewBox="0 0 400 400" className="w-full h-full">
               <defs>
@@ -135,36 +135,36 @@ const HeroSection = () => {
 
               {/* Curved Paths - Dotted connections between nodes */}
               {/* Path from Deploy (top) to Monitor (bottom-right) */}
-              <path 
+              {/* <path 
                 d="M 260 100 Q 340 150, 320 280" 
                 fill="none" 
                 stroke="#e4b2b3" 
                 strokeWidth="1" 
                 strokeDasharray="4,4"
                 strokeOpacity="0.4"
-              />
+              /> */}
               <text x="340" y="180" fill="#4a4a55" fontSize="9" fontFamily="Inter, sans-serif" transform="rotate(70, 340, 180)" letterSpacing="1">PROVISION SERVERS</text>
               
               {/* Path from Monitor (bottom-right) to Scale (bottom-left) */}
-              <path 
+              {/* <path 
                 d="M 280 320 Q 200 380, 120 320" 
                 fill="none" 
                 stroke="#e4b2b3" 
                 strokeWidth="1" 
                 strokeDasharray="4,4"
                 strokeOpacity="0.4"
-              />
+              /> */}
               <text x="200" y="370" textAnchor="middle" fill="#4a4a55" fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="1">OPTIMIZE RESOURCES</text>
               
               {/* Path from Scale (bottom-left) to Deploy (top) */}
-              <path 
+              {/* <path 
                 d="M 80 280 Q 60 150, 140 100" 
                 fill="none" 
                 stroke="#e4b2b3" 
                 strokeWidth="1" 
                 strokeDasharray="4,4"
                 strokeOpacity="0.4"
-              />
+              /> */}
               <text x="55" y="180" fill="#4a4a55" fontSize="9" fontFamily="Inter, sans-serif" transform="rotate(-70, 55, 180)" letterSpacing="1">SCALE INSTANCES</text>
 
               {/* Animated Flowing Dots - Path 1: Deploy to Monitor (top to bottom-right) */}
@@ -247,12 +247,6 @@ const HeroSection = () => {
                 <circle cx="200" cy="125" r="4" fill="#e4b2b3" className={activeNode === 0 ? "animate-pulse" : ""} />
                 {/* Label */}
                 <text x="200" y="145" textAnchor="middle" fill="#5a5a65" fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="1"></text>
-                {/* Menu icon */}
-                <g transform="translate(200, 15)">
-                  <rect x="-8" y="-4" width="16" height="2" rx="1" fill="#4a4a55" />
-                  <rect x="-8" y="0" width="16" height="2" rx="1" fill="#4a4a55" />
-                  <rect x="-8" y="4" width="16" height="2" rx="1" fill="#4a4a55" />
-                </g>
               </g>
 
               {/* Node 2 - Monitor (Bottom Right) */}

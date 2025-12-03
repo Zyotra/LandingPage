@@ -3,6 +3,8 @@ import HeroSection from './components/HeroSection'
 import TrustedBySection from './components/TrustedBySection'
 import FeaturesSection from './components/FeaturesSection'
 import PricingSection from './components/PricingSection'
+import EnterpriseSection from './components/EnterpriseSection'
+import EnterpriseCTASection from './components/EnterpriseCTASection'
 import Footer from './components/Footer'
 
 function App() {
@@ -13,6 +15,8 @@ function App() {
       {/* <TrustedBySection />
       <FeaturesSection />
       <PricingSection /> */}
+      <EnterpriseSection />
+      <EnterpriseCTASection />
       <Footer />
     </div>
   )
