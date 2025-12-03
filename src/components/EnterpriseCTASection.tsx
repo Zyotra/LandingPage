@@ -114,7 +114,7 @@ const EnterpriseCTASection = () => {
               </div>
 
               <h3 className="text-4xl sm:text-5xl font-serif text-white mb-6 tracking-tight">
-                Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e4b2b3] to-[#4fd1c5]">scale?</span>
+                Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e4b2b3] to-[#4fd1c5]">deploy?</span>
               </h3>
               
               <p className="text-gray-400 text-lg mb-10 max-w-sm mx-auto leading-relaxed">
