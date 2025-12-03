@@ -20,7 +20,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="w-full bg-[#1a1a22] py-10 sm:py-12 md:py-16 lg:py-24 relative overflow-hidden min-h-[auto] lg:min-h-[90vh]">
+    <section className="w-full bg-[#1a1a22] pt-10 sm:pt-12 md:pt-16 lg:pt-20 pb-6 sm:pb-8 md:pb-10 lg:pb-12 relative overflow-hidden">
       {/* Grid Pattern Background */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Vertical lines */}
