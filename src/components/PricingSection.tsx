@@ -77,26 +77,26 @@ const PricingSection = () => {
   ];
 
   return (
-    <section className="w-full bg-[#1a1a22] py-20 border-t border-gray-800/30">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="w-full bg-[#1a1a22] py-12 md:py-20 border-t border-gray-800/30">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-serif italic text-[#e4b2b3] mb-4">
+        <div className="text-center mb-10 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif italic text-[#e4b2b3] mb-4">
             Simple, transparent pricing
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto px-4">
             Choose the plan that works best for your deployment needs. 
             All plans include free SSL certificates and DDoS protection.
           </p>
         </div>
 
         {/* Pricing Grid */}
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {/* Plan Cards */}
           {plans.map((plan) => (
             <div 
               key={plan.name}
-              className={`flex flex-col p-6 rounded-lg ${
+              className={`flex flex-col p-5 md:p-6 rounded-lg ${
                 plan.featured 
                   ? 'border-2 border-[#f5a623]/50 bg-[#22222a] relative' 
                   : 'border border-gray-800/50 bg-[#22222a]'
@@ -110,24 +110,24 @@ const PricingSection = () => {
                 </div>
               )}
               
-              <h3 className="text-white text-xl font-medium mb-2">{plan.name}</h3>
-              <p className="text-gray-500 text-sm mb-4">{plan.description}</p>
+              <h3 className="text-white text-lg md:text-xl font-medium mb-2">{plan.name}</h3>
+              <p className="text-gray-500 text-xs md:text-sm mb-4">{plan.description}</p>
               
               <div className="mb-6">
-                <span className="text-4xl font-bold text-white">{plan.price}</span>
+                <span className="text-3xl md:text-4xl font-bold text-white">{plan.price}</span>
                 <span className="text-gray-500">{plan.period}</span>
               </div>
               
               <a 
                 href="#"
-                className={`w-full py-3 px-6 rounded-md text-sm font-medium transition text-center mb-6 ${plan.buttonStyle}`}
+                className={`w-full py-2.5 md:py-3 px-4 md:px-6 rounded-md text-xs md:text-sm font-medium transition text-center mb-6 ${plan.buttonStyle}`}
               >
                 {plan.buttonText}
               </a>
               
-              <ul className="space-y-3 flex-grow">
+              <ul className="space-y-2 md:space-y-3 flex-grow">
                 {plan.features.map((feature, index) => (
-                  <li key={index} className="flex items-center gap-2 text-sm text-gray-400">
+                  <li key={index} className="flex items-center gap-2 text-xs md:text-sm text-gray-400">
                     <svg className="w-4 h-4 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
@@ -140,15 +140,15 @@ const PricingSection = () => {
         </div>
 
         {/* Compare Plans Link */}
-        <div className="text-center mt-12">
-          <a href="#" className="text-[#e4b2b3] font-serif text-lg hover:underline">
+        <div className="text-center mt-8 md:mt-12">
+          <a href="#" className="text-[#e4b2b3] font-serif text-base md:text-lg hover:underline">
             Compare plan features →
           </a>
         </div>
 
         {/* Help Text */}
-        <div className="text-center mt-8">
-          <p className="text-gray-500 text-sm">
+        <div className="text-center mt-6 md:mt-8">
+          <p className="text-gray-500 text-xs md:text-sm">
             Can't find your answer here? <a href="#" className="text-white underline hover:no-underline">Get in touch</a>.
           </p>
         </div>

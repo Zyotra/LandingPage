@@ -57,33 +57,33 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section className="w-full bg-[#1a1a22] py-20 border-t border-gray-800/30">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="w-full bg-[#1a1a22] py-12 md:py-20 border-t border-gray-800/30">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-serif italic text-[#e4b2b3] mb-4">
+        <div className="text-center mb-10 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif italic text-[#e4b2b3] mb-4">
             Everything you need to deploy
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto px-4">
             From development to production, Zyotra provides all the tools 
             you need to deploy and manage your infrastructure.
           </p>
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {features.map((feature, index) => (
             <div 
               key={index}
-              className="bg-[#22222a] border border-gray-800/50 rounded-lg p-6 hover:border-gray-700 transition group"
+              className="bg-[#22222a] border border-gray-800/50 rounded-lg p-5 md:p-6 hover:border-gray-700 transition group"
             >
-              <div className="w-14 h-14 bg-[#2a2a32] rounded-lg flex items-center justify-center text-[#f5a623] mb-4 group-hover:bg-[#f5a623]/10 transition">
+              <div className="w-12 h-12 md:w-14 md:h-14 bg-[#2a2a32] rounded-lg flex items-center justify-center text-[#f5a623] mb-4 group-hover:bg-[#f5a623]/10 transition">
                 {feature.icon}
               </div>
-              <h3 className="text-white text-xl font-medium mb-3">
+              <h3 className="text-white text-lg md:text-xl font-medium mb-2 md:mb-3">
                 {feature.title}
               </h3>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-gray-400 text-sm md:text-base leading-relaxed">
                 {feature.description}
               </p>
             </div>
@@ -91,13 +91,13 @@ const FeaturesSection = () => {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-10 md:mt-16">
           <a 
             href="#" 
-            className="inline-flex items-center gap-2 bg-[#f5a623] hover:bg-[#e09620] text-black px-8 py-4 rounded-md font-medium transition"
+            className="inline-flex items-center gap-2 bg-[#f5a623] hover:bg-[#e09620] text-black px-6 md:px-8 py-3 md:py-4 rounded-md font-medium transition text-sm md:text-base"
           >
             Start deploying now
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>

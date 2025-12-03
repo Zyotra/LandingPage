@@ -86,11 +86,44 @@ const Navbar = () => {
 
         {/* Center - Logo */}
         <div className="absolute left-1/2 transform -translate-x-1/2">
-          <a href="#" className="text-white font-bold text-2xl tracking-wider">
-            ZYOTRA
+          <a href="#" className="flex items-center gap-2 font-bold text-2xl tracking-wider">
+            {/* Rotating Sunburst Logo */}
+            <svg 
+              className="w-8 h-8 animate-spin-slow" 
+              viewBox="0 0 100 100" 
+              fill="none"
+            >
+              {/* Center circle */}
+              <circle cx="50" cy="50" r="8" fill="#e4b2b3" />
+              <circle cx="50" cy="50" r="5" fill="#1a1a22" />
+              <circle cx="50" cy="50" r="2" fill="#e4b2b3" />
+              
+              {/* Radiating lines - 16 lines at 22.5 degree intervals */}
+              {[...Array(16)].map((_, i) => {
+                const angle = (i * 22.5) * (Math.PI / 180);
+                const innerRadius = 12;
+                const outerRadius = i % 2 === 0 ? 42 : 32;
+                const x1 = 50 + innerRadius * Math.cos(angle);
+                const y1 = 50 + innerRadius * Math.sin(angle);
+                const x2 = 50 + outerRadius * Math.cos(angle);
+                const y2 = 50 + outerRadius * Math.sin(angle);
+                return (
+                  <line
+                    key={i}
+                    x1={x1}
+                    y1={y1}
+                    x2={x2}
+                    y2={y2}
+                    stroke="#e4b2b3"
+                    strokeWidth={i % 2 === 0 ? "4" : "3"}
+                    strokeLinecap="round"
+                  />
+                );
+              })}
+            </svg>
+            <span className="ml-0.5 text-2xl text-[#e4b2b3] hover:text-[#e5a3a5]">ZYOTRA</span>
           </a>
         </div>
-
         {/* Right side - Navigation */}
         <div className="flex items-center gap-6">
           {/* Resources Dropdown */}

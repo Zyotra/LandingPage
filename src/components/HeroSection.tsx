@@ -20,14 +20,14 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="w-full bg-[#1a1a22] py-16 lg:py-24 relative overflow-hidden min-h-[90vh]">
+    <section className="w-full bg-[#1a1a22] py-12 md:py-16 lg:py-24 relative overflow-hidden min-h-[auto] md:min-h-[90vh]">
       {/* Grid Pattern Background */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Vertical lines */}
         <div className="absolute left-[5%] top-0 bottom-0 w-px bg-[#2a2a35]"></div>
-        <div className="absolute left-[25%] top-0 bottom-0 w-px bg-[#2a2a35]"></div>
+        <div className="absolute left-[25%] top-0 bottom-0 w-px bg-[#2a2a35] hidden md:block"></div>
         <div className="absolute left-[50%] top-0 bottom-0 w-px bg-[#2a2a35]"></div>
-        <div className="absolute left-[75%] top-0 bottom-0 w-px bg-[#2a2a35]"></div>
+        <div className="absolute left-[75%] top-0 bottom-0 w-px bg-[#2a2a35] hidden md:block"></div>
         <div className="absolute left-[95%] top-0 bottom-0 w-px bg-[#2a2a35]"></div>
         
         {/* Horizontal lines */}
@@ -37,27 +37,27 @@ const HeroSection = () => {
         <div className="absolute top-[95%] left-0 right-0 h-px bg-[#2a2a35]"></div>
         
         {/* Decorative stars */}
-        <div className="absolute top-[20%] right-[42%] text-[#4a4a55] text-xl">✦</div>
-        <div className="absolute top-[50%] right-[38%] text-[#3a3a45] text-sm">✦</div>
+        <div className="absolute top-[20%] right-[42%] text-[#4a4a55] text-xl hidden md:block">✦</div>
+        <div className="absolute top-[50%] right-[38%] text-[#3a3a45] text-sm hidden md:block">✦</div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left Content */}
-          <div className="relative">
-            <h1 className="text-5xl lg:text-[4.5rem] leading-[1.1] mb-6" style={{ fontFamily: "Playfair Display", fontWeight: 400 }}>
+          <div className="relative text-center lg:text-left">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[4.5rem] leading-[1.1] mb-4 md:mb-6" style={{ fontFamily: "Playfair Display", fontWeight: 400 }}>
               <span className="text-[#e4b2b3]">Deploy servers</span><br />
               <span className="text-[#e4b2b3]">in seconds</span>
             </h1>
             
-            <p className="text-gray-400 text-lg leading-relaxed mb-10 max-w-lg" style={{ fontFamily: "PlayFair Display" }}>
+            <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-8 md:mb-10 max-w-lg mx-auto lg:mx-0" style={{ fontFamily: "PlayFair Display" }}>
               Zyotra is an automated platform for deploying VPS.
               Launch instances instantly, partner with automation to
               do better deployments, and scale with confidence.
             </p>
             
             {/* CTA Buttons */}
-            <div className="flex items-center gap-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-8">
               {/* Get started button - dark with border and corner accents */}
               <div className="relative p-2">
                 {/* Corner accents - outside the button */}
@@ -68,14 +68,14 @@ const HeroSection = () => {
                 
                 <a 
                   href="#" 
-                  className="inline-flex items-center gap-4 bg-[#2a2a32] hover:bg-[#32323a] text-[#e4b2b3] px-6 py-4 transition-all duration-300 group border border-[#3a3a45] hover:border-[#e4b2b3]/50 hover:shadow-lg hover:shadow-[#e4b2b3]/10"
+                  className="inline-flex items-center gap-3 md:gap-4 bg-[#2a2a32] hover:bg-[#32323a] text-[#e4b2b3] px-4 md:px-6 py-3 md:py-4 transition-all duration-300 group border border-[#3a3a45] hover:border-[#e4b2b3]/50 hover:shadow-lg hover:shadow-[#e4b2b3]/10"
                 >
-                  <span className="w-10 h-8 flex items-center justify-center border border-[#e4b2b3]/50 rounded-full transition-all duration-300 group-hover:border-[#e4b2b3] group-hover:bg-[#e4b2b3]/10">
-                    <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <span className="w-8 h-8 md:w-10 md:h-8 flex items-center justify-center border border-[#e4b2b3]/50 rounded-full transition-all duration-300 group-hover:border-[#e4b2b3] group-hover:bg-[#e4b2b3]/10">
+                    <svg className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 17L17 7M17 7H7M17 7V17" />
                     </svg>
                   </span>
-                  <span className="font-medium text-xl">Get started</span>
+                  <span className="font-medium text-lg md:text-xl">Get started</span>
                 </a>
               </div>
               
@@ -89,7 +89,7 @@ const HeroSection = () => {
                 
                 <a
                   href="#" 
-                  className="inline-flex items-center justify-center text-[#e4b2b3] font-medium text-xl px-8 py-4 transition-all duration-300 border border-dashed border-[#e4b2b3]/60 hover:border-[#e4b2b3] hover:text-white hover:bg-[#e4b2b3]/10 hover:shadow-lg hover:shadow-[#e4b2b3]/10"
+                  className="inline-flex items-center justify-center text-[#e4b2b3] font-medium text-lg md:text-xl px-6 md:px-8 py-3 md:py-4 transition-all duration-300 border border-dashed border-[#e4b2b3]/60 hover:border-[#e4b2b3] hover:text-white hover:bg-[#e4b2b3]/10 hover:shadow-lg hover:shadow-[#e4b2b3]/10"
                 >
                   Request a demo
                 </a>
@@ -98,22 +98,32 @@ const HeroSection = () => {
           </div>
           
           {/* Right Content - Animated Workflow Diagram */}
-          <div className="relative h-[500px]">
+          <div className="relative h-[350px] sm:h-[400px] md:h-[500px] mt-8 lg:mt-0">
             {/* SVG Animation Container */}
             <svg viewBox="0 0 400 400" className="w-full h-full">
               <defs>
-                {/* Gradient for arrows */}
-                <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                {/* Gradient for flowing effect */}
+                <linearGradient id="flowGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stopColor="#e4b2b3" stopOpacity="0" />
-                  <stop offset="50%" stopColor="#e4b2b3" stopOpacity="1" />
+                  <stop offset="40%" stopColor="#e4b2b3" stopOpacity="1" />
+                  <stop offset="60%" stopColor="#e4b2b3" stopOpacity="1" />
                   <stop offset="100%" stopColor="#e4b2b3" stopOpacity="0" />
                 </linearGradient>
                 
-                {/* Glow filter */}
-                <filter id="glow">
-                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                {/* Soft glow filter */}
+                <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
                   <feMerge>
                     <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+
+                {/* Subtle glow for dots */}
+                <filter id="dotGlow" x="-100%" y="-100%" width="300%" height="300%">
+                  <feGaussianBlur stdDeviation="2" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
                     <feMergeNode in="SourceGraphic"/>
                   </feMerge>
                 </filter>
@@ -157,29 +167,68 @@ const HeroSection = () => {
               />
               <text x="55" y="180" fill="#4a4a55" fontSize="9" fontFamily="Inter, sans-serif" transform="rotate(-70, 55, 180)" letterSpacing="1">SCALE INSTANCES</text>
 
-              {/* Animated Arrow 1 - Deploy to Monitor */}
-              <g style={{ 
-                transform: `translateX(${80 + arrowProgress * 0.6}px) translateY(${-20 + arrowProgress * 1.8}px)`,
-                opacity: activeNode === 0 ? 1 : 0.3
-              }}>
-                <polygon points="0,-4 8,0 0,4" fill="#e4b2b3" filter="url(#glow)" transform="rotate(70)" />
-              </g>
+              {/* Animated Flowing Dots - Path 1: Deploy to Monitor (top to bottom-right) */}
+              {[0, 20, 40, 60, 80].map((offset, i) => {
+                const progress = (arrowProgress + offset) % 100;
+                const t = progress / 100;
+                // Quadratic bezier curve: Start(240,110) Control(330,160) End(310,260)
+                const x = (1-t)*(1-t)*240 + 2*(1-t)*t*330 + t*t*310;
+                const y = (1-t)*(1-t)*110 + 2*(1-t)*t*160 + t*t*260;
+                const opacity = Math.sin(t * Math.PI) * (activeNode === 0 ? 1 : 0.5);
+                return (
+                  <circle
+                    key={`dot1-${i}`}
+                    cx={x}
+                    cy={y}
+                    r={3 - i * 0.3}
+                    fill="#e4b2b3"
+                    filter="url(#dotGlow)"
+                    style={{ opacity }}
+                  />
+                );
+              })}
 
-              {/* Animated Arrow 2 - Monitor to Scale */}
-              <g style={{ 
-                transform: `translateX(${280 - arrowProgress * 1.6}px) translateY(${280 + arrowProgress * 0.4}px)`,
-                opacity: activeNode === 1 ? 1 : 0.3
-              }}>
-                <polygon points="0,-4 8,0 0,4" fill="#e4b2b3" filter="url(#glow)" transform="rotate(160)" />
-              </g>
+              {/* Animated Flowing Dots - Path 2: Monitor to Scale (bottom-right to bottom-left) */}
+              {[0, 20, 40, 60, 80].map((offset, i) => {
+                const progress = (arrowProgress + offset) % 100;
+                const t = progress / 100;
+                // Quadratic bezier curve: Start(290,330) Control(200,380) End(110,330)
+                const x = (1-t)*(1-t)*290 + 2*(1-t)*t*200 + t*t*110;
+                const y = (1-t)*(1-t)*330 + 2*(1-t)*t*380 + t*t*330;
+                const opacity = Math.sin(t * Math.PI) * (activeNode === 1 ? 1 : 0.5);
+                return (
+                  <circle
+                    key={`dot2-${i}`}
+                    cx={x}
+                    cy={y}
+                    r={3 - i * 0.3}
+                    fill="#e4b2b3"
+                    filter="url(#dotGlow)"
+                    style={{ opacity }}
+                  />
+                );
+              })}
 
-              {/* Animated Arrow 3 - Scale to Deploy */}
-              <g style={{ 
-                transform: `translateX(${80 + arrowProgress * 0.6}px) translateY(${280 - arrowProgress * 1.8}px)`,
-                opacity: activeNode === 2 ? 1 : 0.3
-              }}>
-                <polygon points="0,-4 8,0 0,4" fill="#e4b2b3" filter="url(#glow)" transform="rotate(-50)" />
-              </g>
+              {/* Animated Flowing Dots - Path 3: Scale to Deploy (bottom-left to top) */}
+              {[0, 20, 40, 60, 80].map((offset, i) => {
+                const progress = (arrowProgress + offset) % 100;
+                const t = progress / 100;
+                // Quadratic bezier curve: Start(90,260) Control(70,160) End(160,110)
+                const x = (1-t)*(1-t)*90 + 2*(1-t)*t*70 + t*t*160;
+                const y = (1-t)*(1-t)*260 + 2*(1-t)*t*160 + t*t*110;
+                const opacity = Math.sin(t * Math.PI) * (activeNode === 2 ? 1 : 0.5);
+                return (
+                  <circle
+                    key={`dot3-${i}`}
+                    cx={x}
+                    cy={y}
+                    r={3 - i * 0.3}
+                    fill="#e4b2b3"
+                    filter="url(#dotGlow)"
+                    style={{ opacity }}
+                  />
+                );
+              })}
 
               {/* Node 1 - Deploy (Top) */}
               <g className="cursor-pointer">
