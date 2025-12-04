@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import { useContact } from '../context/ContactContext';
 
 const EnterpriseCTASection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { openContact } = useContact();
   
   useEffect(() => {
     setIsVisible(true);
@@ -96,7 +98,10 @@ const EnterpriseCTASection = () => {
               </p>
 
               <div className="flex flex-col items-center gap-6">
-                <button className="group relative px-8 py-4 bg-transparent overflow-hidden rounded-full transition-all duration-300">
+                <button 
+                  onClick={openContact}
+                  className="group relative px-8 py-4 bg-transparent overflow-hidden rounded-full transition-all duration-300"
+                >
                   <div className="absolute inset-0 border border-[#e4b2b3]/50 rounded-full group-hover:border-[#e4b2b3] transition-colors"></div>
                   <div className="absolute inset-0 bg-[#e4b2b3]/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 origin-center"></div>
                   <span className="relative flex items-center gap-3 text-[#e4b2b3] font-medium text-lg">

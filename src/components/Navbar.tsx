@@ -99,7 +99,6 @@ const Navbar = () => {
                 {platformOpen && (
                   <div className="absolute top-full left-0 mt-3 w-56 bg-[#22222a] border border-[#3a3a3a] rounded-lg shadow-xl z-50 p-3">
                     <div className="space-y-1">
-                      <Link to="/platform/vps" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">VPS Instances</Link>
                       <Link to="/platform/autoscaling" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">Auto Scaling</Link>
                       <Link to="/platform/loadbalancing" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">Load Balancing</Link>
                       <Link to="/platform/monitoring" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">Monitoring</Link>
@@ -130,7 +129,6 @@ const Navbar = () => {
                   </div>
                 )}
               </div>
-
               {/* Enterprise */}
               <Link to="/enterprise" className="text-gray-300 hover:text-white transition text-sm">
                 Enterprise
@@ -253,7 +251,6 @@ const Navbar = () => {
               </button>
               <div className={`overflow-hidden transition-all duration-300 ${mobilePlatformOpen ? 'max-h-40' : 'max-h-0'}`}>
                 <div className="pl-4 pb-2 space-y-2">
-                  <Link to="/platform/vps" className="block text-gray-400 hover:text-white py-2 text-sm">VPS Instances</Link>
                   <Link to="/platform/autoscaling" className="block text-gray-400 hover:text-white py-2 text-sm">Auto Scaling</Link>
                   <Link to="/platform/loadbalancing" className="block text-gray-400 hover:text-white py-2 text-sm">Load Balancing</Link>
                   <Link to="/platform/monitoring" className="block text-gray-400 hover:text-white py-2 text-sm">Monitoring</Link>

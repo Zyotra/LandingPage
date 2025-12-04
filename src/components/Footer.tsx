@@ -1,5 +1,8 @@
+import { useContact } from '../context/ContactContext';
+
 const Footer = () => {
   const LINK_COLOR = "#e1b1b3"; // rgb(225,177,179)
+  const { openContact } = useContact();
 
   return (
     <footer className="w-full bg-[#1a1a22] border-t border-gray-800/30 pt-8 sm:pt-10 md:pt-16 pb-4 sm:pb-6 md:pb-8">
@@ -54,7 +57,15 @@ const Footer = () => {
           <div>
             <h4 className="text-white text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2.5 sm:mb-3 md:mb-4">Connect</h4>
             <ul className="space-y-1.5 sm:space-y-2 md:space-y-3">
-              <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">Contact Sales</a></li>
+              <li>
+                <button 
+                  onClick={openContact}
+                  style={{ color: LINK_COLOR }} 
+                  className="hover:underline text-xs sm:text-sm transition text-left"
+                >
+                  Contact Sales
+                </button>
+              </li>
               <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">GitHub</a></li>
               <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">Discord</a></li>
               <li><a href="#" style={{ color: LINK_COLOR }} className="hover:underline text-xs sm:text-sm transition">X (Twitter)</a></li>

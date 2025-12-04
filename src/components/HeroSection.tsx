@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useContact } from '../context/ContactContext';
 
 const HeroSection = () => {
   const [arrowProgress, setArrowProgress] = useState(0);
   const [activeNode, setActiveNode] = useState(0);
+  const { openContact } = useContact();
 
   // Animate arrows moving around the cycle
   useEffect(() => {
@@ -87,12 +89,12 @@ const HeroSection = () => {
                 <span className="absolute bottom-0 left-0 w-2.5 sm:w-3 h-2.5 sm:h-3 border-b border-l border-[#e4b2b3]"></span>
                 <span className="absolute bottom-0 right-0 w-2.5 sm:w-3 h-2.5 sm:h-3 border-b border-r border-[#e4b2b3]"></span>
                 
-                <a
-                  href="#" 
+                <button
+                  onClick={openContact}
                   className="inline-flex items-center justify-center w-full sm:w-auto text-[#e4b2b3] font-medium text-base sm:text-lg md:text-xl px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 transition-all duration-300 border border-dashed border-[#e4b2b3]/60 hover:border-[#e4b2b3] hover:text-white hover:bg-[#e4b2b3]/10 hover:shadow-lg hover:shadow-[#e4b2b3]/10"
                 >
                   Request a demo
-                </a>
+                </button>
               </div>
             </div>
           </div>

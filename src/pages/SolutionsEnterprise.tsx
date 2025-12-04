@@ -1,6 +1,9 @@
 import React from 'react';
+import { useContact } from '../context/ContactContext';
 
 const SolutionsEnterprise = () => {
+  const { openContact } = useContact();
+
   return (
     <div className="min-h-screen bg-[#1a1a22] text-white pt-10 pb-20 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
@@ -15,7 +18,10 @@ const SolutionsEnterprise = () => {
               Dedicated support and custom SLAs.
             </p>
             <div className="flex gap-4">
-              <button className="bg-[#4fd1c5] text-[#1a1a22] px-8 py-3 rounded-md font-bold hover:bg-[#3ebcb0] transition">
+              <button 
+                onClick={openContact}
+                className="bg-[#4fd1c5] text-[#1a1a22] px-8 py-3 rounded-md font-bold hover:bg-[#3ebcb0] transition"
+              >
                 Contact Sales
               </button>
             </div>

@@ -1,6 +1,9 @@
 import React from 'react';
+import { useContact } from '../context/ContactContext';
 
 const Monitoring = () => {
+  const { openContact } = useContact();
+
   return (
     <div className="min-h-screen bg-[#1a1a22] text-white pt-10 pb-20 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
@@ -16,7 +19,10 @@ const Monitoring = () => {
               <button className="bg-[#e4b2b3] text-[#1a1a22] px-6 py-3 rounded-md font-bold hover:bg-[#dba0a1] transition">
                 Start Monitoring
               </button>
-              <button className="text-white px-6 py-3 rounded-md font-medium hover:bg-[#2a2a35] transition">
+              <button 
+                onClick={openContact}
+                className="text-white px-6 py-3 rounded-md font-medium hover:bg-[#2a2a35] transition"
+              >
                 View Demo
               </button>
             </div>
@@ -66,19 +72,35 @@ const Monitoring = () => {
           {[
             {
               title: "Custom Alerts",
-              desc: "Set up alerts via Email, Slack, or PagerDuty when thresholds are breached."
+              desc: "Set up alerts via Email, Slack, or PagerDuty when thresholds are breached.",
+              icon: (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#e4b2b3]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+              )
             },
             {
               title: "Log Management",
-              desc: "Centralized log aggregation with powerful search and filtering capabilities."
+              desc: "Centralized log aggregation with powerful search and filtering capabilities.",
+              icon: (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#e4b2b3]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              )
             },
             {
               title: "Infrastructure Map",
-              desc: "Visual topology of your entire stack and dependencies."
+              desc: "Visual topology of your entire stack and dependencies.",
+              icon: (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#e4b2b3]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                </svg>
+              )
             }
           ].map((item, i) => (
-            <div key={i} className="p-6 border border-[#2a2a35] rounded-xl hover:bg-[#22222a] transition">
-              <h3 className="text-lg font-bold mb-2 text-white">{item.title}</h3>
+            <div key={i} className="p-6 border border-[#2a2a35] rounded-xl hover:bg-[#22222a] transition group">
+              <div className="mb-4">{item.icon}</div>
+              <h3 className="text-lg font-bold mb-2 text-[#e4b2b3]">{item.title}</h3>
               <p className="text-gray-400 text-sm">{item.desc}</p>
             </div>
           ))}
