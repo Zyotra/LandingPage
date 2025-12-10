@@ -1,4 +1,3 @@
-import React from 'react';
 import { useContact } from '../context/ContactContext';
 
 const ContactModal = () => {
