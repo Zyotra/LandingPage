@@ -69,7 +69,7 @@ const HeroSection = () => {
                 <span className="absolute bottom-0 right-0 w-2.5 sm:w-3 h-2.5 sm:h-3 border-b border-r border-[#e4b2b3]"></span>
                 
                 <a 
-                  href="#" 
+                  href="https://zyotraportal.ramkrishna.cloud/register" 
                   className="inline-flex items-center justify-center w-full sm:w-auto gap-2 sm:gap-3 md:gap-4 bg-[#2a2a32] hover:bg-[#32323a] text-[#e4b2b3] px-4 sm:px-4 md:px-6 py-2.5 sm:py-3 md:py-4 transition-all duration-300 group border border-[#3a3a45] hover:border-[#e4b2b3]/50 hover:shadow-lg hover:shadow-[#e4b2b3]/10"
                 >
                   <span className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-8 flex items-center justify-center border border-[#e4b2b3]/50 rounded-full transition-all duration-300 group-hover:border-[#e4b2b3] group-hover:bg-[#e4b2b3]/10">

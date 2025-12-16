@@ -204,7 +204,7 @@ const Navbar = () => {
             </a>
 
             {/* Log In */}
-            <a href="#" className="text-gray-300 hover:text-white transition text-sm">
+            <a href="https://zyotraportal.ramkrishna.cloud" className="text-gray-300 hover:text-white transition text-sm">
               Log In
             </a>
 
@@ -215,7 +215,7 @@ const Navbar = () => {
               <span className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#e4b2b3]/60 rounded-bl-sm"></span>
               <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#e4b2b3]/60 rounded-br-sm"></span>
               <a 
-                href="#" 
+                href="https://zyotraportal.ramkrishna.cloud/register" 
                 className="inline-flex items-center bg-transparent hover:bg-[#e4b2b3]/10 text-[#e4b2b3] px-4 py-1.5 transition-all duration-300 border border-[#e4b2b3]/40 hover:border-[#e4b2b3]/60 rounded-sm"
               >
                 <span className="font-medium text-sm">Get started</span>
@@ -307,9 +307,8 @@ const Navbar = () => {
             <a href="#" className="block py-3 text-white text-base border-t border-[#2a2a35]">
               Pricing
             </a>
-
             {/* Log In */}
-            <a href="#" className="block py-3 text-white text-base border-t border-[#2a2a35]">
+            <a href="https://zyotraportal.ramkrishna.cloud/login" className="block py-3 text-white text-base border-t border-[#2a2a35]">
               Log In
             </a>
 
