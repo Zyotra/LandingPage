@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -11,6 +11,11 @@ const Navbar = () => {
   const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  // Refs for dropdown timeout management
+  const platformTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const solutionsTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const resourcesTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +25,49 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Cleanup timeouts on unmount
+  useEffect(() => {
+    return () => {
+      if (platformTimeoutRef.current) clearTimeout(platformTimeoutRef.current);
+      if (solutionsTimeoutRef.current) clearTimeout(solutionsTimeoutRef.current);
+      if (resourcesTimeoutRef.current) clearTimeout(resourcesTimeoutRef.current);
+    };
+  }, []);
+
+  // Dropdown handlers with delay for better UX
+  const handlePlatformEnter = () => {
+    if (platformTimeoutRef.current) clearTimeout(platformTimeoutRef.current);
+    setPlatformOpen(true);
+  };
+
+  const handlePlatformLeave = () => {
+    platformTimeoutRef.current = setTimeout(() => {
+      setPlatformOpen(false);
+    }, 150);
+  };
+
+  const handleSolutionsEnter = () => {
+    if (solutionsTimeoutRef.current) clearTimeout(solutionsTimeoutRef.current);
+    setSolutionsOpen(true);
+  };
+
+  const handleSolutionsLeave = () => {
+    solutionsTimeoutRef.current = setTimeout(() => {
+      setSolutionsOpen(false);
+    }, 150);
+  };
+
+  const handleResourcesEnter = () => {
+    if (resourcesTimeoutRef.current) clearTimeout(resourcesTimeoutRef.current);
+    setResourcesOpen(true);
+  };
+
+  const handleResourcesLeave = () => {
+    resourcesTimeoutRef.current = setTimeout(() => {
+      setResourcesOpen(false);
+    }, 150);
+  };
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -87,48 +135,95 @@ const Navbar = () => {
               {/* Platform Dropdown */}
               <div 
                 className="relative"
-                onMouseEnter={() => setPlatformOpen(true)}
-                onMouseLeave={() => setPlatformOpen(false)}
+                onMouseEnter={handlePlatformEnter}
+                onMouseLeave={handlePlatformLeave}
               >
-                <button className="flex items-center gap-1 text-gray-300 hover:text-white transition text-sm">
+                <button className="flex items-center gap-1 text-gray-300 hover:text-white transition text-sm py-2">
                   Platform
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className={`w-3 h-3 transition-transform duration-200 ${platformOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                {platformOpen && (
-                  <div className="absolute top-full left-0 mt-3 w-56 bg-[#22222a] border border-[#3a3a3a] rounded-lg shadow-xl z-50 p-3">
+                {/* Dropdown with invisible bridge */}
+                <div 
+                  className={`absolute top-full left-0 pt-2 transition-all duration-200 ${
+                    platformOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+                  }`}
+                >
+                  <div className="w-56 bg-[#22222a] border border-[#3a3a3a] rounded-lg shadow-xl z-50 p-3">
                     <div className="space-y-1">
-                      <Link to="/platform/autoscaling" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">Auto Scaling</Link>
-                      <Link to="/platform/loadbalancing" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">Load Balancing</Link>
-                      <Link to="/platform/monitoring" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">Monitoring</Link>
+                      <Link 
+                        to="/platform/autoscaling" 
+                        className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm"
+                        onClick={() => setPlatformOpen(false)}
+                      >
+                        Auto Scaling
+                      </Link>
+                      <Link 
+                        to="/platform/loadbalancing" 
+                        className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm"
+                        onClick={() => setPlatformOpen(false)}
+                      >
+                        Load Balancing
+                      </Link>
+                      <Link 
+                        to="/platform/monitoring" 
+                        className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm"
+                        onClick={() => setPlatformOpen(false)}
+                      >
+                        Monitoring
+                      </Link>
                     </div>
                   </div>
-                )}
+                </div>
               </div>
 
               {/* Solutions Dropdown */}
               <div 
                 className="relative"
-                onMouseEnter={() => setSolutionsOpen(true)}
-                onMouseLeave={() => setSolutionsOpen(false)}
+                onMouseEnter={handleSolutionsEnter}
+                onMouseLeave={handleSolutionsLeave}
               >
-                <button className="flex items-center gap-1 text-gray-300 hover:text-white transition text-sm">
+                <button className="flex items-center gap-1 text-gray-300 hover:text-white transition text-sm py-2">
                   Solutions
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className={`w-3 h-3 transition-transform duration-200 ${solutionsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                {solutionsOpen && (
-                  <div className="absolute top-full left-0 mt-3 w-56 bg-[#22222a] border border-[#3a3a3a] rounded-lg shadow-xl z-50 p-3">
+                {/* Dropdown with invisible bridge */}
+                <div 
+                  className={`absolute top-full left-0 pt-2 transition-all duration-200 ${
+                    solutionsOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+                  }`}
+                >
+                  <div className="w-56 bg-[#22222a] border border-[#3a3a3a] rounded-lg shadow-xl z-50 p-3">
                     <div className="space-y-1">
-                      <Link to="/solutions/startups" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">For Startups</Link>
-                      <Link to="/solutions/enterprise" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">For Enterprise</Link>
-                      <Link to="/solutions/developers" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">For Developers</Link>
+                      <Link 
+                        to="/solutions/startups" 
+                        className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm"
+                        onClick={() => setSolutionsOpen(false)}
+                      >
+                        For Startups
+                      </Link>
+                      <Link 
+                        to="/solutions/enterprise" 
+                        className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm"
+                        onClick={() => setSolutionsOpen(false)}
+                      >
+                        For Enterprise
+                      </Link>
+                      <Link 
+                        to="/solutions/developers" 
+                        className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm"
+                        onClick={() => setSolutionsOpen(false)}
+                      >
+                        For Developers
+                      </Link>
                     </div>
                   </div>
-                )}
+                </div>
               </div>
+
               {/* Enterprise */}
               <Link to="/enterprise" className="text-gray-300 hover:text-white transition text-sm">
                 Enterprise
@@ -178,24 +273,47 @@ const Navbar = () => {
             {/* Resources Dropdown */}
             <div 
               className="relative"
-              onMouseEnter={() => setResourcesOpen(true)}
-              onMouseLeave={() => setResourcesOpen(false)}
+              onMouseEnter={handleResourcesEnter}
+              onMouseLeave={handleResourcesLeave}
             >
-              <button className="flex items-center gap-1 text-gray-300 hover:text-white transition text-sm">
+              <button className="flex items-center gap-1 text-gray-300 hover:text-white transition text-sm py-2">
                 Resources
-                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className={`w-3 h-3 transition-transform duration-200 ${resourcesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              {resourcesOpen && (
-                <div className="absolute top-full right-0 mt-3 w-56 bg-[#22222a] border border-[#3a3a3a] rounded-lg shadow-xl z-50 p-3">
+              {/* Dropdown with invisible bridge */}
+              <div 
+                className={`absolute top-full right-0 pt-2 transition-all duration-200 ${
+                  resourcesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+                }`}
+              >
+                <div className="w-56 bg-[#22222a] border border-[#3a3a3a] rounded-lg shadow-xl z-50 p-3">
                   <div className="space-y-1">
-                    <Link to="/docs" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">Documentation</Link>
-                    <Link to="/blog" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">Blog</Link>
-                    <Link to="/api" className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm">API Reference</Link>
+                    <Link 
+                      to="/docs" 
+                      className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm"
+                      onClick={() => setResourcesOpen(false)}
+                    >
+                      Documentation
+                    </Link>
+                    <Link 
+                      to="/blog" 
+                      className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm"
+                      onClick={() => setResourcesOpen(false)}
+                    >
+                      Blog
+                    </Link>
+                    <Link 
+                      to="/api" 
+                      className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm"
+                      onClick={() => setResourcesOpen(false)}
+                    >
+                      API Reference
+                    </Link>
                   </div>
                 </div>
-              )}
+              </div>
             </div>
 
             {/* Pricing */}
@@ -251,9 +369,9 @@ const Navbar = () => {
               </button>
               <div className={`overflow-hidden transition-all duration-300 ${mobilePlatformOpen ? 'max-h-40' : 'max-h-0'}`}>
                 <div className="pl-4 pb-2 space-y-2">
-                  <Link to="/platform/autoscaling" className="block text-gray-400 hover:text-white py-2 text-sm">Auto Scaling</Link>
-                  <Link to="/platform/loadbalancing" className="block text-gray-400 hover:text-white py-2 text-sm">Load Balancing</Link>
-                  <Link to="/platform/monitoring" className="block text-gray-400 hover:text-white py-2 text-sm">Monitoring</Link>
+                  <Link to="/platform/autoscaling" className="block text-gray-400 hover:text-white py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>Auto Scaling</Link>
+                  <Link to="/platform/loadbalancing" className="block text-gray-400 hover:text-white py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>Load Balancing</Link>
+                  <Link to="/platform/monitoring" className="block text-gray-400 hover:text-white py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>Monitoring</Link>
                 </div>
               </div>
             </div>
@@ -271,15 +389,15 @@ const Navbar = () => {
               </button>
               <div className={`overflow-hidden transition-all duration-300 ${mobileSolutionsOpen ? 'max-h-32' : 'max-h-0'}`}>
                 <div className="pl-4 pb-2 space-y-2">
-                  <Link to="/solutions/startups" className="block text-gray-400 hover:text-white py-2 text-sm">For Startups</Link>
-                  <Link to="/solutions/enterprise" className="block text-gray-400 hover:text-white py-2 text-sm">For Enterprise</Link>
-                  <Link to="/solutions/developers" className="block text-gray-400 hover:text-white py-2 text-sm">For Developers</Link>
+                  <Link to="/solutions/startups" className="block text-gray-400 hover:text-white py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>For Startups</Link>
+                  <Link to="/solutions/enterprise" className="block text-gray-400 hover:text-white py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>For Enterprise</Link>
+                  <Link to="/solutions/developers" className="block text-gray-400 hover:text-white py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>For Developers</Link>
                 </div>
               </div>
             </div>
 
             {/* Enterprise */}
-            <Link to="/enterprise" className="block py-3 text-white text-base border-t border-[#2a2a35]">
+            <Link to="/enterprise" className="block py-3 text-white text-base border-t border-[#2a2a35]" onClick={() => setMobileMenuOpen(false)}>
               Enterprise
             </Link>
 
@@ -296,9 +414,9 @@ const Navbar = () => {
               </button>
               <div className={`overflow-hidden transition-all duration-300 ${mobileResourcesOpen ? 'max-h-32' : 'max-h-0'}`}>
                 <div className="pl-4 pb-2 space-y-2">
-                  <Link to="/docs" className="block text-gray-400 hover:text-white py-2 text-sm">Documentation</Link>
-                  <Link to="/blog" className="block text-gray-400 hover:text-white py-2 text-sm">Blog</Link>
-                  <Link to="/api" className="block text-gray-400 hover:text-white py-2 text-sm">API Reference</Link>
+                  <Link to="/docs" className="block text-gray-400 hover:text-white py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>Documentation</Link>
+                  <Link to="/blog" className="block text-gray-400 hover:text-white py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
+                  <Link to="/api" className="block text-gray-400 hover:text-white py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>API Reference</Link>
                 </div>
               </div>
             </div>
@@ -315,7 +433,7 @@ const Navbar = () => {
             {/* Get Started Button */}
             <div className="pt-4 border-t border-[#2a2a35]">
               <a 
-                href="#" 
+                href="https://zyotraportal.ramkrishna.cloud/register" 
                 className="block w-full text-center bg-transparent text-[#e4b2b3] px-4 py-3 border border-[#e4b2b3]/40 rounded font-medium"
               >
                 Get started
