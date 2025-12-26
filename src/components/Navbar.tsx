@@ -244,7 +244,7 @@ const Navbar = () => {
             
             <a 
               href="https://zyotraportal.ramkrishna.cloud/register" 
-              className="inline-flex items-center gap-2 bg-[#e4b2b3] hover:bg-[#d4a2a3] text-[#1a1a22] px-4 py-2 rounded-md transition-all duration-300 text-sm font-medium"
+              className="inline-flex items-center gap-2 bg-[#f59fa0] hover:bg-[#fc8f91] text-[#1a1a22] px-4 py-2 rounded-md transition-all duration-300 text-sm font-medium"
             >
               Get Started
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

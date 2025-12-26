@@ -3,7 +3,6 @@ import { useContact } from '../context/ContactContext';
 
 const EnterpriseCTASection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [flowProgress, setFlowProgress] = useState(0);
   const [activeFeature, setActiveFeature] = useState(-1);
   const sectionRef = useRef<HTMLDivElement>(null);
   const { openContact } = useContact();
@@ -24,14 +23,6 @@ const EnterpriseCTASection = () => {
     }
     
     return () => observer.disconnect();
-  }, []);
-
-  // Flowing particle animation
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setFlowProgress(prev => (prev + 0.8) % 100);
-    }, 30);
-    return () => clearInterval(interval);
   }, []);
 
   // Staggered feature reveal
@@ -57,86 +48,39 @@ const EnterpriseCTASection = () => {
     { text: 'SLA Guarantee', description: '99.99% uptime commitment', icon: 'shield' },
   ];
 
-  // Calculate flowing particle positions
-  const getParticlePosition = (offset: number, pathIndex: number) => {
-    const progress = (flowProgress + offset) % 100;
-    const t = progress / 100;
-    
-    // Different paths for particles
-    const paths = [
-      // Outer ellipse path
-      { cx: 150, cy: 150, rx: 120, ry: 80 },
-      // Inner ellipse path (reversed)
-      { cx: 150, cy: 150, rx: 80, ry: 50 },
-      // Figure-8 path
-      { cx: 150, cy: 150, rx: 100, ry: 60 },
-    ];
-    
-    const path = paths[pathIndex % paths.length];
-    const angle = t * Math.PI * 2 * (pathIndex === 1 ? -1 : 1);
-    
-    if (pathIndex === 2) {
-      // Figure-8 pattern
-      return {
-        x: path.cx + path.rx * Math.sin(angle * 2) / (1 + Math.cos(angle) ** 2),
-        y: path.cy + path.ry * Math.sin(angle) * Math.cos(angle) / (1 + Math.cos(angle) ** 2),
-      };
-    }
-    
-    return {
-      x: path.cx + path.rx * Math.cos(angle),
-      y: path.cy + path.ry * Math.sin(angle),
-    };
-  };
-
   return (
     <section ref={sectionRef} className="w-full bg-[#1a1a22] py-20 lg:py-32 relative overflow-hidden">
-      {/* Background Grid Lines */}
+      {/* Background Grid Lines - Static */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute left-[5%] top-0 bottom-0 w-px bg-[#2a2a35]/50"></div>
         <div className="absolute left-[50%] top-0 bottom-0 w-px bg-[#2a2a35]/50"></div>
         <div className="absolute left-[95%] top-0 bottom-0 w-px bg-[#2a2a35]/50"></div>
         
-        {/* Horizontal scan line animation */}
+        {/* Horizontal scan line animation - CSS only */}
         <div 
           className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#e4b2b3]/30 to-transparent"
-          style={{
-            top: `${(flowProgress * 1.5) % 100}%`,
-            opacity: 0.5,
-            transition: 'top 0.03s linear'
-          }}
+          style={{ animation: 'scan-vertical 8s linear infinite' }}
         />
         
-        {/* Ambient Glow - Animated */}
+        {/* Ambient Glow - Static with CSS animation */}
         <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-[120px] pointer-events-none transition-all duration-3000"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[60px] pointer-events-none"
           style={{
-            background: `radial-gradient(ellipse at center, 
-              rgba(228,178,179,${0.05 + Math.sin(flowProgress * 0.03) * 0.02}) 0%, 
-              rgba(228,178,179,${0.03 + Math.cos(flowProgress * 0.03) * 0.02}) 50%, 
-              transparent 70%)`
+            background: 'radial-gradient(ellipse at center, rgba(228,178,179,0.06) 0%, transparent 70%)',
+            animation: 'glow-breathe 8s ease-in-out infinite'
           }}
         />
       </div>
 
-      {/* CSS Animations */}
+      {/* CSS Animations - Optimized for GPU */}
       <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          25% { transform: translateY(-8px) rotate(1deg); }
-          75% { transform: translateY(4px) rotate(-1deg); }
-        }
-        @keyframes pulse-glow {
-          0%, 100% { opacity: 0.4; box-shadow: 0 0 30px rgba(228,178,179,0.2); }
-          50% { opacity: 0.8; box-shadow: 0 0 50px rgba(228,178,179,0.4); }
-        }
         @keyframes orbit {
-          from { transform: rotate(0deg) translateX(60px) rotate(0deg); }
-          to { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+          from { transform: rotate(0deg) translateX(60px) rotate(0deg) translateZ(0); }
+          to { transform: rotate(360deg) translateX(60px) rotate(-360deg) translateZ(0); }
         }
         @keyframes orbit-reverse {
-          from { transform: rotate(360deg) translateX(45px) rotate(-360deg); }
-          to { transform: rotate(0deg) translateX(45px) rotate(0deg); }
+          from { transform: rotate(360deg) translateX(45px) rotate(-360deg) translateZ(0); }
+          to { transform: rotate(0deg) translateX(45px) rotate(0deg) translateZ(0); }
         }
         @keyframes dash-flow {
           from { stroke-dashoffset: 0; }
@@ -146,30 +90,44 @@ const EnterpriseCTASection = () => {
           0%, 100% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
         }
-        @keyframes reveal-line {
-          from { width: 0; opacity: 0; }
-          to { width: 100%; opacity: 1; }
+        @keyframes scan-vertical {
+          0% { top: 0%; opacity: 0; }
+          10% { opacity: 0.3; }
+          90% { opacity: 0.3; }
+          100% { top: 100%; opacity: 0; }
         }
-        @keyframes ripple {
-          0% { transform: scale(1); opacity: 0.5; }
-          100% { transform: scale(2.5); opacity: 0; }
+        @keyframes glow-breathe {
+          0%, 100% { opacity: 0.8; }
+          50% { opacity: 1; }
         }
-        .animate-float { animation: float 8s ease-in-out infinite; }
-        .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
-        .animate-orbit { animation: orbit 12s linear infinite; }
-        .animate-orbit-reverse { animation: orbit-reverse 9s linear infinite; }
-        .animate-dash-flow { animation: dash-flow 2s linear infinite; }
+        @keyframes particle-orbit {
+          0% { offset-distance: 0%; opacity: 0; }
+          10% { opacity: 0.8; }
+          90% { opacity: 0.8; }
+          100% { offset-distance: 100%; opacity: 0; }
+        }
+        @keyframes pulse-ring {
+          0%, 100% { transform: scale(1); opacity: 0.3; }
+          50% { transform: scale(1.1); opacity: 0.5; }
+        }
+        .animate-orbit { animation: orbit 15s linear infinite; will-change: transform; }
+        .animate-orbit-reverse { animation: orbit-reverse 12s linear infinite; will-change: transform; }
+        .animate-dash-flow { animation: dash-flow 3s linear infinite; }
         .animate-gradient-shift { 
           background-size: 200% 200%;
-          animation: gradient-shift 4s ease infinite; 
+          animation: gradient-shift 5s ease infinite; 
+        }
+        .gpu-accelerated { 
+          transform: translateZ(0); 
+          backface-visibility: hidden;
         }
       `}</style>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24">
           
-          {/* Left Content - Animated Network Visualization */}
-          <div className={`flex-1 w-full max-w-md lg:max-w-lg relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
+          {/* Left Content - Optimized Network Visualization */}
+          <div className={`flex-1 w-full max-w-md lg:max-w-lg relative transition-all duration-1000 gpu-accelerated ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
             
             {/* SVG Animation Container */}
             <div className="relative w-full aspect-square max-w-[380px] mx-auto">
@@ -180,34 +138,13 @@ const EnterpriseCTASection = () => {
                     <stop offset="0%" stopColor="#e4b2b3" stopOpacity="0.8" />
                     <stop offset="100%" stopColor="#f0c4c5" stopOpacity="0.8" />
                   </linearGradient>
-                  
-                  {/* Glow filter */}
-                  <filter id="enterpriseGlow" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur stdDeviation="4" result="blur" />
-                    <feMerge>
-                      <feMergeNode in="blur" />
-                      <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
 
-                  {/* Animated gradient */}
-                  <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#e4b2b3" stopOpacity="0">
-                      <animate attributeName="offset" values="0;1" dur="2s" repeatCount="indefinite" />
-                    </stop>
-                    <stop offset="30%" stopColor="#e4b2b3" stopOpacity="1">
-                      <animate attributeName="offset" values="0.3;1.3" dur="2s" repeatCount="indefinite" />
-                    </stop>
-                    <stop offset="60%" stopColor="#f0c4c5" stopOpacity="1">
-                      <animate attributeName="offset" values="0.6;1.6" dur="2s" repeatCount="indefinite" />
-                    </stop>
-                    <stop offset="100%" stopColor="#e4b2b3" stopOpacity="0">
-                      <animate attributeName="offset" values="1;2" dur="2s" repeatCount="indefinite" />
-                    </stop>
-                  </linearGradient>
+                  {/* Ellipse paths for particles */}
+                  <ellipse id="orbit1" cx="150" cy="150" rx="120" ry="80" fill="none" transform="rotate(-15 150 150)" />
+                  <ellipse id="orbit2" cx="150" cy="150" rx="90" ry="55" fill="none" transform="rotate(20 150 150)" />
                 </defs>
 
-                {/* Outer orbital rings */}
+                {/* Outer orbital rings - Static dashed */}
                 <ellipse 
                   cx="150" cy="150" rx="120" ry="80" 
                   fill="none" 
@@ -236,11 +173,10 @@ const EnterpriseCTASection = () => {
                   strokeWidth="1" 
                   strokeDasharray="2,4"
                   strokeOpacity="0.2"
-                  className="animate-dash-flow"
                   transform="rotate(-5 150 150)"
                 />
 
-                {/* Connection lines to center */}
+                {/* Connection lines to center - Static */}
                 {[0, 60, 120, 180, 240, 300].map((angle, i) => {
                   const rad = (angle - 15) * Math.PI / 180;
                   const x = 150 + 100 * Math.cos(rad);
@@ -251,58 +187,47 @@ const EnterpriseCTASection = () => {
                       x1="150" y1="150" x2={x} y2={y}
                       stroke="#e4b2b3"
                       strokeWidth="1"
-                      strokeOpacity={0.1 + (activeFeature >= i ? 0.2 : 0)}
+                      strokeOpacity={activeFeature >= i ? 0.3 : 0.1}
                       strokeDasharray="2,3"
-                      style={{ 
-                        transition: 'stroke-opacity 0.5s ease',
-                        transitionDelay: `${i * 100}ms`
-                      }}
+                      style={{ transition: 'stroke-opacity 0.5s ease' }}
                     />
                   );
                 })}
 
-                {/* Flowing particles - Multiple layers */}
-                {[0, 25, 50, 75].map((offset, i) => {
-                  const pos = getParticlePosition(offset, 0);
-                  const opacity = Math.sin(((flowProgress + offset) % 100) / 100 * Math.PI) * 0.8;
-                  return (
-                    <circle
-                      key={`particle-0-${i}`}
-                      cx={pos.x}
-                      cy={pos.y}
-                      r={4 - i * 0.5}
-                      fill="#e4b2b3"
-                      filter="url(#enterpriseGlow)"
-                      style={{ opacity, transform: 'rotate(-15deg)', transformOrigin: '150px 150px' }}
-                    />
-                  );
-                })}
+                {/* CSS-animated particles on orbit 1 */}
+                <circle r="4" fill="#e4b2b3" opacity="0.7">
+                  <animateMotion dur="8s" repeatCount="indefinite">
+                    <mpath href="#orbit1" />
+                  </animateMotion>
+                </circle>
+                <circle r="3" fill="#f0c4c5" opacity="0.5">
+                  <animateMotion dur="8s" repeatCount="indefinite" begin="2s">
+                    <mpath href="#orbit1" />
+                  </animateMotion>
+                </circle>
                 
-                {[10, 35, 60, 85].map((offset, i) => {
-                  const pos = getParticlePosition(offset, 1);
-                  const opacity = Math.sin(((flowProgress + offset) % 100) / 100 * Math.PI) * 0.6;
-                  return (
-                    <circle
-                      key={`particle-1-${i}`}
-                      cx={pos.x}
-                      cy={pos.y}
-                      r={3 - i * 0.4}
-                      fill="#f0c4c5"
-                      filter="url(#enterpriseGlow)"
-                      style={{ opacity, transform: 'rotate(20deg)', transformOrigin: '150px 150px' }}
-                    />
-                  );
-                })}
+                {/* CSS-animated particles on orbit 2 */}
+                <circle r="3" fill="#e4b2b3" opacity="0.6">
+                  <animateMotion dur="6s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear">
+                    <mpath href="#orbit2" />
+                  </animateMotion>
+                </circle>
+                <circle r="2.5" fill="#f0c4c5" opacity="0.4">
+                  <animateMotion dur="6s" repeatCount="indefinite" begin="1.5s" keyPoints="1;0" keyTimes="0;1" calcMode="linear">
+                    <mpath href="#orbit2" />
+                  </animateMotion>
+                </circle>
 
                 {/* Central Node - Enterprise Hub */}
                 <g>
-                  {/* Pulsing ring */}
+                  {/* Pulsing ring - CSS animated */}
                   <circle 
                     cx="150" cy="150" r="35"
                     fill="none"
                     stroke="#e4b2b3"
                     strokeWidth="2"
-                    strokeOpacity={0.3 + Math.sin(flowProgress * 0.05) * 0.2}
+                    strokeOpacity="0.4"
+                    style={{ animation: 'pulse-ring 3s ease-in-out infinite' }}
                   />
                   <circle 
                     cx="150" cy="150" r="28"
@@ -319,14 +244,14 @@ const EnterpriseCTASection = () => {
                   <circle cx="142" cy="157" r="1" fill="#f0c4c5" />
                 </g>
 
-                {/* Satellite Nodes */}
+                {/* Satellite Nodes - Simplified */}
                 {[
-                  { angle: -15, label: 'Deploy', icon: '▶' },
-                  { angle: 45, label: 'Scale', icon: '◆' },
-                  { angle: 105, label: 'Monitor', icon: '◉' },
-                  { angle: 165, label: 'Secure', icon: '◈' },
-                  { angle: 225, label: 'Backup', icon: '◫' },
-                  { angle: 285, label: 'Connect', icon: '◎' },
+                  { angle: -15, icon: '▶' },
+                  { angle: 45, icon: '◆' },
+                  { angle: 105, icon: '◉' },
+                  { angle: 165, icon: '◈' },
+                  { angle: 225, icon: '◫' },
+                  { angle: 285, icon: '◎' },
                 ].map((node, i) => {
                   const rad = node.angle * Math.PI / 180;
                   const x = 150 + 100 * Math.cos(rad);
@@ -336,24 +261,14 @@ const EnterpriseCTASection = () => {
                   return (
                     <g key={`node-${i}`} style={{ 
                       opacity: isActive ? 1 : 0.3,
-                      transition: 'opacity 0.5s ease',
-                      transitionDelay: `${i * 150}ms`
+                      transition: 'opacity 0.5s ease'
                     }}>
                       <circle 
                         cx={x} cy={y} r="18"
                         fill="#1a1a22"
                         stroke={isActive ? '#e4b2b3' : '#3a3a45'}
                         strokeWidth="1.5"
-                        style={{ transition: 'stroke 0.3s ease' }}
-                      />
-                      <circle 
-                        cx={x} cy={y} r="22"
-                        fill="none"
-                        stroke="#e4b2b3"
-                        strokeWidth="1"
-                        strokeDasharray="3,3"
-                        strokeOpacity={isActive ? 0.5 : 0.1}
-                        style={{ transition: 'stroke-opacity 0.3s ease' }}
+                        style={{ transition: 'stroke 0.5s ease' }}
                       />
                       <text 
                         x={x} y={y + 1}
@@ -362,7 +277,7 @@ const EnterpriseCTASection = () => {
                         fill={isActive ? '#e4b2b3' : '#5a5a65'}
                         fontSize="10"
                         fontFamily="Inter, sans-serif"
-                        style={{ transition: 'fill 0.3s ease' }}
+                        style={{ transition: 'fill 0.5s ease' }}
                       >
                         {node.icon}
                       </text>
@@ -377,16 +292,16 @@ const EnterpriseCTASection = () => {
                 <path d="M 40 280 L 20 280 L 20 260" fill="none" stroke="#e4b2b3" strokeWidth="1" strokeOpacity="0.3" />
                   </svg>
 
-              {/* Orbiting elements around the SVG */}
-              <div className="absolute inset-0 pointer-events-none">
+              {/* Orbiting elements around the SVG - CSS only */}
+              <div className="absolute inset-0 pointer-events-none gpu-accelerated">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                   <div className="animate-orbit">
-                    <div className="w-2 h-2 bg-[#e4b2b3] rounded-full shadow-[0_0_10px_#e4b2b3]"></div>
+                    <div className="w-2 h-2 bg-[#e4b2b3] rounded-full"></div>
                   </div>
                 </div>
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                   <div className="animate-orbit-reverse">
-                    <div className="w-1.5 h-1.5 bg-[#f0c4c5] rounded-full shadow-[0_0_8px_#e4b2b3]"></div>
+                    <div className="w-1.5 h-1.5 bg-[#f0c4c5] rounded-full"></div>
                   </div>
                 </div>
                 </div>

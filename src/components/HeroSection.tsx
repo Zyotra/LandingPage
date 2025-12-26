@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import { useContact } from '../context/ContactContext';
 
 const HeroSection = () => {
-  const [arrowProgress, setArrowProgress] = useState(0);
   const [activeNode, setActiveNode] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [textIndex, setTextIndex] = useState(0);
@@ -31,37 +30,22 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Animate arrows moving around the cycle
+  // Cycle through active nodes - much slower interval for better performance
   useEffect(() => {
     const interval = setInterval(() => {
-      setArrowProgress(prev => {
-        const next = prev + 0.5;
-        if (next >= 100) {
-          setActiveNode(n => (n + 1) % 3);
-          return 0;
-        }
-        return next;
-      });
-    }, 30);
+      setActiveNode(prev => (prev + 1) % 3);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <section ref={sectionRef} className="w-full bg-[#1a1a22] pt-10 sm:pt-12 md:pt-16 lg:pt-20 pb-6 sm:pb-8 md:pb-10 lg:pb-12 relative overflow-hidden">
       
-      {/* CSS Animations */}
+      {/* CSS Animations - Optimized for GPU */}
       <style>{`
         @keyframes twinkle {
-          0%, 100% { opacity: 0.3; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.2); }
-        }
-        @keyframes float-slow {
-          0%, 100% { transform: translateY(0) rotate(0deg); }
-          50% { transform: translateY(-10px) rotate(5deg); }
-        }
-        @keyframes pulse-line {
-          0%, 100% { opacity: 0.3; }
-          50% { opacity: 0.6; }
+          0%, 100% { opacity: 0.3; transform: scale(1) translateZ(0); }
+          50% { opacity: 1; transform: scale(1.2) translateZ(0); }
         }
         @keyframes dash-flow {
           from { stroke-dashoffset: 0; }
@@ -71,75 +55,72 @@ const HeroSection = () => {
           0%, 100% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
         }
-        @keyframes text-reveal {
-          from { clip-path: inset(0 100% 0 0); }
-          to { clip-path: inset(0 0 0 0); }
-        }
-        @keyframes glow-pulse {
-          0%, 100% { filter: drop-shadow(0 0 8px rgba(228,178,179,0.4)); }
-          50% { filter: drop-shadow(0 0 20px rgba(228,178,179,0.8)); }
-        }
-        @keyframes node-breathe {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.05); }
-        }
-        @keyframes ripple-out {
-          0% { transform: scale(1); opacity: 0.5; }
-          100% { transform: scale(2); opacity: 0; }
-        }
         @keyframes scan-line {
-          0% { top: 0%; opacity: 0; }
-          10% { opacity: 0.5; }
-          90% { opacity: 0.5; }
-          100% { top: 100%; opacity: 0; }
+          0% { transform: translateY(0) translateZ(0); opacity: 0; }
+          10% { opacity: 0.3; }
+          90% { opacity: 0.3; }
+          100% { transform: translateY(100vh) translateZ(0); opacity: 0; }
         }
-        .animate-twinkle { animation: twinkle 2s ease-in-out infinite; }
-        .animate-twinkle-delay { animation: twinkle 2.5s ease-in-out infinite 0.5s; }
-        .animate-twinkle-delay-2 { animation: twinkle 3s ease-in-out infinite 1s; }
-        .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
-        .animate-pulse-line { animation: pulse-line 3s ease-in-out infinite; }
-        .animate-dash-flow { animation: dash-flow 2s linear infinite; }
+        @keyframes flow-particle {
+          0% { offset-distance: 0%; opacity: 0; }
+          10% { opacity: 0.8; }
+          90% { opacity: 0.8; }
+          100% { offset-distance: 100%; opacity: 0; }
+        }
+        @keyframes pulse-ring {
+          0%, 100% { transform: scale(1) translateZ(0); opacity: 0.3; }
+          50% { transform: scale(1.3) translateZ(0); opacity: 0; }
+        }
+        @keyframes glow-breathe {
+          0%, 100% { opacity: 0.08; }
+          50% { opacity: 0.12; }
+        }
+        .animate-twinkle { animation: twinkle 3s ease-in-out infinite; will-change: transform, opacity; }
+        .animate-twinkle-delay { animation: twinkle 3.5s ease-in-out infinite 0.5s; will-change: transform, opacity; }
+        .animate-twinkle-delay-2 { animation: twinkle 4s ease-in-out infinite 1s; will-change: transform, opacity; }
+        .animate-dash-flow { animation: dash-flow 3s linear infinite; }
         .animate-gradient-x { 
           background-size: 200% 200%;
-          animation: gradient-x 3s ease infinite; 
+          animation: gradient-x 4s ease infinite; 
         }
-        .animate-glow-pulse { animation: glow-pulse 2s ease-in-out infinite; }
-        .animate-node-breathe { animation: node-breathe 3s ease-in-out infinite; }
+        .gpu-accelerated { 
+          transform: translateZ(0); 
+          backface-visibility: hidden; 
+          will-change: transform;
+        }
       `}</style>
 
-      {/* Grid Pattern Background - Enhanced */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Vertical lines with pulse effect */}
-        <div className="absolute left-[5%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#2a2a35] to-transparent animate-pulse-line"></div>
-        <div className="absolute left-[25%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#2a2a35] to-transparent hidden sm:block animate-pulse-line" style={{ animationDelay: '0.5s' }}></div>
-        <div className="absolute left-[50%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#2a2a35] to-transparent animate-pulse-line" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute left-[75%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#2a2a35] to-transparent hidden sm:block animate-pulse-line" style={{ animationDelay: '1.5s' }}></div>
-        <div className="absolute left-[95%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#2a2a35] to-transparent animate-pulse-line" style={{ animationDelay: '2s' }}></div>
+      {/* Grid Pattern Background - Simplified */}
+      <div className="absolute inset-0 pointer-events-none gpu-accelerated">
+        {/* Static vertical lines */}
+        <div className="absolute left-[5%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#2a2a35] to-transparent opacity-50"></div>
+        <div className="absolute left-[25%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#2a2a35] to-transparent hidden sm:block opacity-50"></div>
+        <div className="absolute left-[50%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#2a2a35] to-transparent opacity-50"></div>
+        <div className="absolute left-[75%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#2a2a35] to-transparent hidden sm:block opacity-50"></div>
+        <div className="absolute left-[95%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#2a2a35] to-transparent opacity-50"></div>
         
-        {/* Horizontal lines */}
+        {/* Static horizontal lines */}
         <div className="absolute top-[15%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2a2a35] to-transparent"></div>
         <div className="absolute top-[45%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2a2a35] to-transparent"></div>
         <div className="absolute top-[75%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2a2a35] to-transparent"></div>
         <div className="absolute top-[95%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2a2a35] to-transparent"></div>
         
-        {/* Animated scan line */}
+        {/* Animated scan line - CSS only */}
         <div 
-          className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#e4b2b3]/40 to-transparent"
-          style={{ animation: 'scan-line 8s linear infinite' }}
+          className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#e4b2b3]/30 to-transparent"
+          style={{ animation: 'scan-line 10s linear infinite' }}
         ></div>
 
-        {/* Ambient glow */}
+        {/* Ambient glow - Static with CSS animation */}
         <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[150px] pointer-events-none"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[80px] pointer-events-none"
           style={{
-            background: `radial-gradient(ellipse at center, 
-              rgba(228,178,179,${0.08 + Math.sin(arrowProgress * 0.03) * 0.03}) 0%, 
-              rgba(228,178,179,${0.04 + Math.cos(arrowProgress * 0.03) * 0.02}) 40%, 
-              transparent 70%)`
+            background: 'radial-gradient(ellipse at center, rgba(228,178,179,0.1) 0%, transparent 70%)',
+            animation: 'glow-breathe 6s ease-in-out infinite'
           }}
         ></div>
         
-        {/* Decorative stars - Animated */}
+        {/* Decorative stars - Animated with CSS only */}
         <div className="absolute top-[20%] right-[42%] text-[#e4b2b3] text-xl hidden lg:block animate-twinkle">✦</div>
         <div className="absolute top-[50%] right-[38%] text-[#e4b2b3]/60 text-sm hidden lg:block animate-twinkle-delay">✦</div>
         <div className="absolute top-[30%] left-[15%] text-[#e4b2b3] text-xs hidden lg:block animate-twinkle-delay-2">✦</div>
@@ -188,7 +169,7 @@ const HeroSection = () => {
                 className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed max-w-lg mx-auto lg:mx-0" 
                 style={{ fontFamily: "Playfair Display" }}
               >
-                Zyotra is an automated platform for deploying VPS.
+              Zyotra is an automated platform for deploying VPS.
               </p>
               <div className="relative h-8 mt-2 overflow-hidden">
                 {rotatingTexts.map((text, index) => (
@@ -270,26 +251,11 @@ const HeroSection = () => {
             </div>
           </div>
           
-          {/* Right Content - Enhanced Animated Workflow Diagram */}
-          <div className={`relative h-[280px] xs:h-[320px] sm:h-[380px] md:h-[450px] lg:h-[500px] order-1 lg:order-2 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+          {/* Right Content - Optimized Animated Workflow Diagram */}
+          <div className={`relative h-[280px] xs:h-[320px] sm:h-[380px] md:h-[450px] lg:h-[500px] order-1 lg:order-2 transition-all duration-1000 delay-300 gpu-accelerated ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
             {/* SVG Animation Container */}
             <svg viewBox="0 0 400 400" className="w-full h-full">
               <defs>
-                {/* Gradient for flowing effect */}
-                <linearGradient id="flowGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#e4b2b3" stopOpacity="0" />
-                  <stop offset="40%" stopColor="#e4b2b3" stopOpacity="1" />
-                  <stop offset="60%" stopColor="#e4b2b3" stopOpacity="1" />
-                  <stop offset="100%" stopColor="#e4b2b3" stopOpacity="0" />
-                </linearGradient>
-
-                {/* Light rose gradient */}
-                <linearGradient id="lightRoseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#e4b2b3" stopOpacity="0" />
-                  <stop offset="50%" stopColor="#f0c4c5" stopOpacity="1" />
-                  <stop offset="100%" stopColor="#e4b2b3" stopOpacity="0" />
-                </linearGradient>
-
                 {/* Combined gradient */}
                 <linearGradient id="combinedGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="#e4b2b3" />
@@ -297,49 +263,33 @@ const HeroSection = () => {
                   <stop offset="100%" stopColor="#e4b2b3" />
                 </linearGradient>
                 
-                {/* Soft glow filter */}
-                <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                {/* Minimal glow filter - reduced blur for performance */}
+                <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
                   <feMerge>
                     <feMergeNode in="coloredBlur"/>
                     <feMergeNode in="SourceGraphic"/>
                   </feMerge>
                 </filter>
 
-                {/* Stronger glow for active elements */}
-                <filter id="strongGlow" x="-100%" y="-100%" width="300%" height="300%">
-                  <feGaussianBlur stdDeviation="6" result="blur"/>
-                  <feMerge>
-                    <feMergeNode in="blur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-
-                {/* Subtle glow for dots */}
-                <filter id="dotGlow" x="-100%" y="-100%" width="300%" height="300%">
-                  <feGaussianBlur stdDeviation="2" result="blur"/>
-                  <feMerge>
-                    <feMergeNode in="blur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-
-                {/* Node glow */}
-                <filter id="nodeGlow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="4" result="blur"/>
-                  <feMerge>
-                    <feMergeNode in="blur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
+                {/* Animated particle on path 1 */}
+                <circle id="particle1" r="4" fill="#e4b2b3">
+                  <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" />
+                </circle>
+                
+                {/* Animated particle on path 2 */}
+                <circle id="particle2" r="3" fill="#f0c4c5">
+                  <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" />
+                </circle>
               </defs>
 
-              {/* Background circles - decorative */}
+              {/* Background circles - decorative (static) */}
               <circle cx="200" cy="200" r="180" fill="none" stroke="#2a2a35" strokeWidth="1" strokeDasharray="2,8" strokeOpacity="0.3" />
               <circle cx="200" cy="200" r="140" fill="none" stroke="#2a2a35" strokeWidth="1" strokeDasharray="4,6" strokeOpacity="0.2" />
 
-              {/* Visible curved paths with animation */}
+              {/* Curved paths with CSS animation */}
               <path 
+                id="path1"
                 d="M 240 110 Q 330 160, 310 260" 
                 fill="none" 
                 stroke="#e4b2b3" 
@@ -350,6 +300,7 @@ const HeroSection = () => {
                 style={{ transition: 'stroke-opacity 0.5s ease' }}
               />
               <path 
+                id="path2"
                 d="M 290 330 Q 200 380, 110 330" 
                 fill="none" 
                 stroke="#e4b2b3" 
@@ -360,6 +311,7 @@ const HeroSection = () => {
                 style={{ transition: 'stroke-opacity 0.5s ease' }}
               />
               <path 
+                id="path3"
                 d="M 90 260 Q 70 160, 160 110" 
                 fill="none" 
                 stroke="#e4b2b3" 
@@ -370,21 +322,21 @@ const HeroSection = () => {
                 style={{ transition: 'stroke-opacity 0.5s ease' }}
               />
 
-              {/* Center Text with glow */}
-              <g filter="url(#softGlow)">
+              {/* Center Text */}
+              <g>
                 <text x="200" y="190" textAnchor="middle" fill="#5a5a65" fontSize="10" fontFamily="Inter, sans-serif" letterSpacing="3">AUTOMATED</text>
                 <text x="200" y="207" textAnchor="middle" fill="#5a5a65" fontSize="10" fontFamily="Inter, sans-serif" letterSpacing="3">DEPLOYMENT</text>
               </g>
 
-              {/* Animated center ring */}
+              {/* Center ring - CSS animated */}
               <circle 
                 cx="200" cy="200" r="50" 
                 fill="none" 
                 stroke="url(#combinedGradient)" 
                 strokeWidth="1"
                 strokeDasharray="8,4"
-                strokeOpacity={0.3 + Math.sin(arrowProgress * 0.05) * 0.2}
-                style={{ transformOrigin: '200px 200px', animation: 'dash-flow 4s linear infinite reverse' }}
+                strokeOpacity="0.4"
+                style={{ transformOrigin: '200px 200px', animation: 'dash-flow 6s linear infinite reverse' }}
               />
 
               {/* Path labels */}
@@ -392,189 +344,97 @@ const HeroSection = () => {
               <text x="200" y="370" textAnchor="middle" fill="#4a4a55" fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="1">OPTIMIZE RESOURCES</text>
               <text x="55" y="180" fill="#4a4a55" fontSize="9" fontFamily="Inter, sans-serif" transform="rotate(-70, 55, 180)" letterSpacing="1">SCALE INSTANCES</text>
 
-              {/* Animated Flowing Dots - Path 1: Deploy to Monitor */}
-              {[0, 15, 30, 45, 60, 75].map((offset, i) => {
-                const progress = (arrowProgress + offset) % 100;
-                const t = progress / 100;
-                const x = (1-t)*(1-t)*240 + 2*(1-t)*t*330 + t*t*310;
-                const y = (1-t)*(1-t)*110 + 2*(1-t)*t*160 + t*t*260;
-                const opacity = Math.sin(t * Math.PI) * (activeNode === 0 ? 1 : 0.4);
-                const shade = i % 2 === 0 ? '#e4b2b3' : '#f0c4c5';
-                return (
-                  <circle
-                    key={`dot1-${i}`}
-                    cx={x}
-                    cy={y}
-                    r={4 - i * 0.4}
-                    fill={shade}
-                    filter="url(#dotGlow)"
-                    style={{ opacity, transition: 'opacity 0.3s ease' }}
-                  />
-                );
-              })}
+              {/* CSS-animated particles along path 1 */}
+              <circle r="4" fill="#e4b2b3" opacity={activeNode === 0 ? "0.8" : "0.3"} style={{ transition: 'opacity 0.5s' }}>
+                <animateMotion dur="3s" repeatCount="indefinite" path="M 240 110 Q 330 160, 310 260" />
+              </circle>
+              <circle r="3" fill="#f0c4c5" opacity={activeNode === 0 ? "0.6" : "0.2"} style={{ transition: 'opacity 0.5s' }}>
+                <animateMotion dur="3s" repeatCount="indefinite" path="M 240 110 Q 330 160, 310 260" begin="1s" />
+              </circle>
 
-              {/* Animated Flowing Dots - Path 2: Monitor to Scale */}
-              {[0, 15, 30, 45, 60, 75].map((offset, i) => {
-                const progress = (arrowProgress + offset) % 100;
-                const t = progress / 100;
-                const x = (1-t)*(1-t)*290 + 2*(1-t)*t*200 + t*t*110;
-                const y = (1-t)*(1-t)*330 + 2*(1-t)*t*380 + t*t*330;
-                const opacity = Math.sin(t * Math.PI) * (activeNode === 1 ? 1 : 0.4);
-                const shade = i % 2 === 0 ? '#e4b2b3' : '#f0c4c5';
-                return (
-                  <circle
-                    key={`dot2-${i}`}
-                    cx={x}
-                    cy={y}
-                    r={4 - i * 0.4}
-                    fill={shade}
-                    filter="url(#dotGlow)"
-                    style={{ opacity, transition: 'opacity 0.3s ease' }}
-                  />
-                );
-              })}
+              {/* CSS-animated particles along path 2 */}
+              <circle r="4" fill="#e4b2b3" opacity={activeNode === 1 ? "0.8" : "0.3"} style={{ transition: 'opacity 0.5s' }}>
+                <animateMotion dur="3s" repeatCount="indefinite" path="M 290 330 Q 200 380, 110 330" />
+              </circle>
+              <circle r="3" fill="#f0c4c5" opacity={activeNode === 1 ? "0.6" : "0.2"} style={{ transition: 'opacity 0.5s' }}>
+                <animateMotion dur="3s" repeatCount="indefinite" path="M 290 330 Q 200 380, 110 330" begin="1s" />
+              </circle>
 
-              {/* Animated Flowing Dots - Path 3: Scale to Deploy */}
-              {[0, 15, 30, 45, 60, 75].map((offset, i) => {
-                const progress = (arrowProgress + offset) % 100;
-                const t = progress / 100;
-                const x = (1-t)*(1-t)*90 + 2*(1-t)*t*70 + t*t*160;
-                const y = (1-t)*(1-t)*260 + 2*(1-t)*t*160 + t*t*110;
-                const opacity = Math.sin(t * Math.PI) * (activeNode === 2 ? 1 : 0.4);
-                const shade = i % 2 === 0 ? '#e4b2b3' : '#f0c4c5';
-                return (
-                  <circle
-                    key={`dot3-${i}`}
-                    cx={x}
-                    cy={y}
-                    r={4 - i * 0.4}
-                    fill={shade}
-                    filter="url(#dotGlow)"
-                    style={{ opacity, transition: 'opacity 0.3s ease' }}
-                  />
-                );
-              })}
+              {/* CSS-animated particles along path 3 */}
+              <circle r="4" fill="#e4b2b3" opacity={activeNode === 2 ? "0.8" : "0.3"} style={{ transition: 'opacity 0.5s' }}>
+                <animateMotion dur="3s" repeatCount="indefinite" path="M 90 260 Q 70 160, 160 110" />
+              </circle>
+              <circle r="3" fill="#f0c4c5" opacity={activeNode === 2 ? "0.6" : "0.2"} style={{ transition: 'opacity 0.5s' }}>
+                <animateMotion dur="3s" repeatCount="indefinite" path="M 90 260 Q 70 160, 160 110" begin="1s" />
+              </circle>
 
-              {/* Node 1 - Deploy (Top) - Enhanced */}
-              <g className="cursor-pointer" style={{ transform: activeNode === 0 ? 'scale(1.05)' : 'scale(1)', transformOrigin: '200px 70px', transition: 'transform 0.5s ease' }}>
-                {/* Pulse ring when active */}
-                {activeNode === 0 && (
-                  <>
-                    <circle cx="200" cy="70" r="55" fill="none" stroke="#e4b2b3" strokeWidth="2" strokeOpacity="0.3">
-                      <animate attributeName="r" values="45;65;45" dur="2s" repeatCount="indefinite" />
-                      <animate attributeName="stroke-opacity" values="0.3;0;0.3" dur="2s" repeatCount="indefinite" />
-                    </circle>
-                  </>
-                )}
-                {/* Outer dashed circle */}
-                <circle cx="200" cy="70" r="50" fill="none" stroke="#e4b2b3" strokeWidth="1" strokeDasharray="4,4" strokeOpacity="0.5" className="animate-dash-flow" />
-                {/* Glow behind when active */}
-                {activeNode === 0 && (
-                  <circle cx="200" cy="70" r="38" fill="#e4b2b3" fillOpacity="0.1" filter="url(#nodeGlow)" />
-                )}
+              {/* Node 1 - Deploy (Top) - Simplified */}
+              <g className="cursor-pointer" style={{ transition: 'transform 0.5s ease' }}>
+                {/* Pulse ring when active - CSS only */}
+                <circle cx="200" cy="70" r="50" fill="none" stroke="#e4b2b3" strokeWidth="1" strokeOpacity={activeNode === 0 ? "0.4" : "0.2"} style={{ transition: 'stroke-opacity 0.5s' }}>
+                  {activeNode === 0 && <animate attributeName="r" values="45;55;45" dur="2s" repeatCount="indefinite" />}
+                </circle>
                 {/* Inner circle */}
-                <circle cx="200" cy="70" r="35" fill="#1a1a22" stroke={activeNode === 0 ? "#e4b2b3" : "#3a3a45"} strokeWidth={activeNode === 0 ? "2" : "1.5"} style={{ transition: 'stroke 0.3s ease, stroke-width 0.3s ease' }} />
+                <circle cx="200" cy="70" r="35" fill="#1a1a22" stroke={activeNode === 0 ? "#e4b2b3" : "#3a3a45"} strokeWidth="1.5" style={{ transition: 'stroke 0.5s ease' }} />
                 {/* Server Icon */}
                 <rect x="180" y="55" width="40" height="8" rx="1" fill="none" stroke="#e4b2b3" strokeWidth="1" />
                 <rect x="180" y="67" width="40" height="8" rx="1" fill="none" stroke="#e4b2b3" strokeWidth="1" />
                 <rect x="180" y="79" width="40" height="8" rx="1" fill="none" stroke="#e4b2b3" strokeWidth="1" />
-                <circle cx="186" cy="59" r="1.5" fill={activeNode === 0 ? "#f0c4c5" : "#e4b2b3"} style={{ transition: 'fill 0.3s ease' }}>
-                  {activeNode === 0 && <animate attributeName="opacity" values="1;0.5;1" dur="1s" repeatCount="indefinite" />}
-                </circle>
+                <circle cx="186" cy="59" r="1.5" fill="#e4b2b3" />
                 <circle cx="186" cy="71" r="1.5" fill="#e4b2b3" />
-                <circle cx="186" cy="83" r="1.5" fill={activeNode === 0 ? "#f0c4c5" : "#e4b2b3"} style={{ transition: 'fill 0.3s ease' }} />
-                {/* Dot indicator */}
-                <circle cx="200" cy="125" r="4" fill="#e4b2b3" filter={activeNode === 0 ? "url(#dotGlow)" : "none"} />
+                <circle cx="186" cy="83" r="1.5" fill="#e4b2b3" />
                 {/* Label */}
-                <text x="200" y="145" textAnchor="middle" fill={activeNode === 0 ? "#e4b2b3" : "#5a5a65"} fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="1" style={{ transition: 'fill 0.3s ease' }}>DEPLOY</text>
+                <text x="200" y="145" textAnchor="middle" fill={activeNode === 0 ? "#e4b2b3" : "#5a5a65"} fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="1" style={{ transition: 'fill 0.5s ease' }}>DEPLOY</text>
               </g>
 
-              {/* Node 2 - Monitor (Bottom Right) - Enhanced */}
-              <g className="cursor-pointer" style={{ transform: activeNode === 1 ? 'scale(1.05)' : 'scale(1)', transformOrigin: '320px 300px', transition: 'transform 0.5s ease' }}>
+              {/* Node 2 - Monitor (Bottom Right) - Simplified */}
+              <g className="cursor-pointer" style={{ transition: 'transform 0.5s ease' }}>
                 {/* Pulse ring when active */}
-                {activeNode === 1 && (
-                  <circle cx="320" cy="300" r="60" fill="none" stroke="#e4b2b3" strokeWidth="2" strokeOpacity="0.3">
-                    <animate attributeName="r" values="50;70;50" dur="2s" repeatCount="indefinite" />
-                    <animate attributeName="stroke-opacity" values="0.3;0;0.3" dur="2s" repeatCount="indefinite" />
-                  </circle>
-                )}
-                {/* Outer dashed circle */}
-                <circle cx="320" cy="300" r="55" fill="none" stroke="#e4b2b3" strokeWidth="1" strokeDasharray="4,4" strokeOpacity="0.5" className="animate-dash-flow" style={{ animationDirection: 'reverse' }} />
-                {/* Inner dashed circle */}
-                <circle cx="320" cy="300" r="40" fill="none" stroke="#e4b2b3" strokeWidth="1" strokeDasharray="2,2" strokeOpacity="0.3" />
-                {/* Glow behind when active */}
-                {activeNode === 1 && (
-                  <circle cx="320" cy="300" r="28" fill="#e4b2b3" fillOpacity="0.1" filter="url(#nodeGlow)" />
-                )}
+                <circle cx="320" cy="300" r="55" fill="none" stroke="#e4b2b3" strokeWidth="1" strokeOpacity={activeNode === 1 ? "0.4" : "0.2"} style={{ transition: 'stroke-opacity 0.5s' }}>
+                  {activeNode === 1 && <animate attributeName="r" values="50;60;50" dur="2s" repeatCount="indefinite" />}
+                </circle>
                 {/* Core circle */}
-                <circle cx="320" cy="300" r="25" fill="#1a1a22" stroke={activeNode === 1 ? "#e4b2b3" : "#3a3a45"} strokeWidth={activeNode === 1 ? "2" : "1.5"} style={{ transition: 'stroke 0.3s ease' }} />
-                {/* Checkmark Icon - Animated */}
+                <circle cx="320" cy="300" r="25" fill="#1a1a22" stroke={activeNode === 1 ? "#e4b2b3" : "#3a3a45"} strokeWidth="1.5" style={{ transition: 'stroke 0.5s ease' }} />
+                {/* Checkmark Icon */}
                 <path 
                   d="M 308 300 L 316 308 L 332 292" 
                   fill="none" 
-                  stroke={activeNode === 1 ? "#f0c4c5" : "#e4b2b3"} 
+                  stroke="#e4b2b3" 
                   strokeWidth="2" 
                   strokeLinecap="round" 
                   strokeLinejoin="round"
-                  style={{ transition: 'stroke 0.3s ease' }}
                 />
-                {/* Dot indicator */}
-                <circle cx="320" cy="245" r="4" fill="#e4b2b3" filter={activeNode === 1 ? "url(#dotGlow)" : "none"} />
                 {/* Label */}
-                <text x="320" y="365" textAnchor="middle" fill={activeNode === 1 ? "#e4b2b3" : "#5a5a65"} fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="1" style={{ transition: 'fill 0.3s ease' }}>MONITOR HEALTH</text>
-                {/* Icon top right */}
-                <g transform="translate(360, 260)" opacity={activeNode === 1 ? "1" : "0.5"} style={{ transition: 'opacity 0.3s ease' }}>
-                  <rect x="-6" y="-6" width="12" height="12" rx="2" fill="none" stroke="#4a4a55" strokeWidth="1" />
-                  <line x1="-3" y1="0" x2="3" y2="0" stroke="#4a4a55" strokeWidth="1" />
-                </g>
+                <text x="320" y="365" textAnchor="middle" fill={activeNode === 1 ? "#e4b2b3" : "#5a5a65"} fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="1" style={{ transition: 'fill 0.5s ease' }}>MONITOR HEALTH</text>
               </g>
 
-              {/* Node 3 - Scale (Bottom Left) - Enhanced */}
-              <g className="cursor-pointer" style={{ transform: activeNode === 2 ? 'scale(1.05)' : 'scale(1)', transformOrigin: '80px 300px', transition: 'transform 0.5s ease' }}>
+              {/* Node 3 - Scale (Bottom Left) - Simplified */}
+              <g className="cursor-pointer" style={{ transition: 'transform 0.5s ease' }}>
                 {/* Pulse ring when active */}
-                {activeNode === 2 && (
-                  <circle cx="80" cy="300" r="55" fill="none" stroke="#e4b2b3" strokeWidth="2" strokeOpacity="0.3">
-                    <animate attributeName="r" values="45;65;45" dur="2s" repeatCount="indefinite" />
-                    <animate attributeName="stroke-opacity" values="0.3;0;0.3" dur="2s" repeatCount="indefinite" />
-                  </circle>
-                )}
-                {/* Outer dashed circle */}
-                <circle cx="80" cy="300" r="50" fill="none" stroke="#e4b2b3" strokeWidth="1" strokeDasharray="4,4" strokeOpacity="0.5" className="animate-dash-flow" />
-                {/* Glow behind when active */}
-                {activeNode === 2 && (
-                  <circle cx="80" cy="300" r="38" fill="#e4b2b3" fillOpacity="0.1" filter="url(#nodeGlow)" />
-                )}
+                <circle cx="80" cy="300" r="50" fill="none" stroke="#e4b2b3" strokeWidth="1" strokeOpacity={activeNode === 2 ? "0.4" : "0.2"} style={{ transition: 'stroke-opacity 0.5s' }}>
+                  {activeNode === 2 && <animate attributeName="r" values="45;55;45" dur="2s" repeatCount="indefinite" />}
+                </circle>
                 {/* Inner circle */}
-                <circle cx="80" cy="300" r="35" fill="#1a1a22" stroke={activeNode === 2 ? "#e4b2b3" : "#3a3a45"} strokeWidth={activeNode === 2 ? "2" : "1.5"} style={{ transition: 'stroke 0.3s ease' }} />
-                {/* Console Icon - Animated lines */}
+                <circle cx="80" cy="300" r="35" fill="#1a1a22" stroke={activeNode === 2 ? "#e4b2b3" : "#3a3a45"} strokeWidth="1.5" style={{ transition: 'stroke 0.5s ease' }} />
+                {/* Console Icon */}
                 <rect x="55" y="285" width="50" height="30" rx="3" fill="none" stroke="#e4b2b3" strokeWidth="1" />
-                <line x1="62" y1="295" x2="98" y2="295" stroke={activeNode === 2 ? "#f0c4c5" : "#e4b2b3"} strokeWidth="1" strokeDasharray="3,2" style={{ transition: 'stroke 0.3s ease' }}>
-                  {activeNode === 2 && <animate attributeName="x2" values="62;98;62" dur="2s" repeatCount="indefinite" />}
-                </line>
+                <line x1="62" y1="295" x2="98" y2="295" stroke="#e4b2b3" strokeWidth="1" strokeDasharray="3,2" />
                 <line x1="62" y1="302" x2="85" y2="302" stroke="#e4b2b3" strokeWidth="1" strokeDasharray="3,2" />
-                <line x1="62" y1="309" x2="92" y2="309" stroke={activeNode === 2 ? "#f0c4c5" : "#e4b2b3"} strokeWidth="1" strokeDasharray="3,2" style={{ transition: 'stroke 0.3s ease' }} />
-                {/* Dot indicator */}
-                <circle cx="80" cy="250" r="4" fill="#e4b2b3" filter={activeNode === 2 ? "url(#dotGlow)" : "none"} />
+                <line x1="62" y1="309" x2="92" y2="309" stroke="#e4b2b3" strokeWidth="1" strokeDasharray="3,2" />
                 {/* Label */}
-                <text x="80" y="365" textAnchor="middle" fill={activeNode === 2 ? "#e4b2b3" : "#5a5a65"} fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="1" style={{ transition: 'fill 0.3s ease' }}>AUTO SCALE</text>
-                {/* Icon */}
-                <g transform="translate(30, 265)" opacity={activeNode === 2 ? "1" : "0.5"} style={{ transition: 'opacity 0.3s ease' }}>
-                  <circle cx="0" cy="0" r="8" fill="none" stroke="#4a4a55" strokeWidth="1" />
-                  <line x1="-4" y1="0" x2="4" y2="0" stroke="#4a4a55" strokeWidth="1" />
-                  <line x1="0" y1="-4" x2="0" y2="4" stroke="#4a4a55" strokeWidth="1" />
-                </g>
+                <text x="80" y="365" textAnchor="middle" fill={activeNode === 2 ? "#e4b2b3" : "#5a5a65"} fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="1" style={{ transition: 'fill 0.5s ease' }}>AUTO SCALE</text>
               </g>
 
-              {/* Decorative elements - Enhanced */}
-              <circle cx="50" cy="100" r="2" fill="#e4b2b3" fillOpacity="0.5" className="animate-twinkle" />
-              <circle cx="350" cy="150" r="2" fill="#e4b2b3" fillOpacity="0.4" className="animate-twinkle-delay" />
-              <circle cx="350" cy="380" r="1.5" fill="#e4b2b3" fillOpacity="0.5" className="animate-twinkle-delay-2" />
-              <circle cx="50" cy="380" r="2" fill="#e4b2b3" fillOpacity="0.4" className="animate-twinkle" />
+              {/* Decorative elements - Static */}
+              <circle cx="50" cy="100" r="2" fill="#e4b2b3" fillOpacity="0.4" />
+              <circle cx="350" cy="150" r="2" fill="#e4b2b3" fillOpacity="0.3" />
+              <circle cx="350" cy="380" r="1.5" fill="#e4b2b3" fillOpacity="0.4" />
+              <circle cx="50" cy="380" r="2" fill="#e4b2b3" fillOpacity="0.3" />
               
-              {/* Small arrows on paths - Enhanced with glow */}
-              <polygon points="280,150 285,145 285,155" fill="#e4b2b3" fillOpacity={activeNode === 0 ? "0.8" : "0.4"} filter={activeNode === 0 ? "url(#dotGlow)" : "none"} style={{ transition: 'fill-opacity 0.3s ease' }} />
-              <polygon points="230,355 235,360 225,360" fill="#e4b2b3" fillOpacity={activeNode === 1 ? "0.8" : "0.4"} filter={activeNode === 1 ? "url(#dotGlow)" : "none"} style={{ transition: 'fill-opacity 0.3s ease' }} />
-              <polygon points="105,200 100,195 100,205" fill="#e4b2b3" fillOpacity={activeNode === 2 ? "0.8" : "0.4"} filter={activeNode === 2 ? "url(#dotGlow)" : "none"} style={{ transition: 'fill-opacity 0.3s ease' }} />
+              {/* Small arrows on paths */}
+              <polygon points="280,150 285,145 285,155" fill="#e4b2b3" fillOpacity={activeNode === 0 ? "0.8" : "0.3"} style={{ transition: 'fill-opacity 0.5s ease' }} />
+              <polygon points="230,355 235,360 225,360" fill="#e4b2b3" fillOpacity={activeNode === 1 ? "0.8" : "0.3"} style={{ transition: 'fill-opacity 0.5s ease' }} />
+              <polygon points="105,200 100,195 100,205" fill="#e4b2b3" fillOpacity={activeNode === 2 ? "0.8" : "0.3"} style={{ transition: 'fill-opacity 0.5s ease' }} />
 
               {/* Corner brackets in SVG */}
               <path d="M 20 40 L 20 20 L 40 20" fill="none" stroke="#e4b2b3" strokeWidth="1" strokeOpacity="0.3" />
