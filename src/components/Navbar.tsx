@@ -1,20 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { useContact } from '../context/ContactContext';
 
 const Navbar = () => {
-  const [platformOpen, setPlatformOpen] = useState(false);
-  const [solutionsOpen, setSolutionsOpen] = useState(false);
-  const [resourcesOpen, setResourcesOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobilePlatformOpen, setMobilePlatformOpen] = useState(false);
-  const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
-  const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const { openContact } = useContact();
 
-  // Refs for dropdown timeout management
-  const platformTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const solutionsTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const resourcesTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Ref for dropdown timeout management
+  const productsTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Handle scroll effect
   useEffect(() => {
@@ -26,55 +23,70 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Cleanup timeouts on unmount
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setMobileProductsOpen(false);
+  }, [location.pathname]);
+
+  // Cleanup timeout on unmount
   useEffect(() => {
     return () => {
-      if (platformTimeoutRef.current) clearTimeout(platformTimeoutRef.current);
-      if (solutionsTimeoutRef.current) clearTimeout(solutionsTimeoutRef.current);
-      if (resourcesTimeoutRef.current) clearTimeout(resourcesTimeoutRef.current);
+      if (productsTimeoutRef.current) clearTimeout(productsTimeoutRef.current);
     };
   }, []);
 
-  // Dropdown handlers with delay for better UX
-  const handlePlatformEnter = () => {
-    if (platformTimeoutRef.current) clearTimeout(platformTimeoutRef.current);
-    setPlatformOpen(true);
+  // Dropdown handlers with delay
+  const handleProductsEnter = () => {
+    if (productsTimeoutRef.current) clearTimeout(productsTimeoutRef.current);
+    setProductsOpen(true);
   };
 
-  const handlePlatformLeave = () => {
-    platformTimeoutRef.current = setTimeout(() => {
-      setPlatformOpen(false);
+  const handleProductsLeave = () => {
+    productsTimeoutRef.current = setTimeout(() => {
+      setProductsOpen(false);
     }, 150);
   };
 
-  const handleSolutionsEnter = () => {
-    if (solutionsTimeoutRef.current) clearTimeout(solutionsTimeoutRef.current);
-    setSolutionsOpen(true);
-  };
-
-  const handleSolutionsLeave = () => {
-    solutionsTimeoutRef.current = setTimeout(() => {
-      setSolutionsOpen(false);
-    }, 150);
-  };
-
-  const handleResourcesEnter = () => {
-    if (resourcesTimeoutRef.current) clearTimeout(resourcesTimeoutRef.current);
-    setResourcesOpen(true);
-  };
-
-  const handleResourcesLeave = () => {
-    resourcesTimeoutRef.current = setTimeout(() => {
-      setResourcesOpen(false);
-    }, 150);
-  };
+  // Logo component to avoid duplication
+  const Logo = ({ className = "" }: { className?: string }) => (
+    <svg 
+      className={`w-7 h-7 animate-spin-slow ${className}`}
+      viewBox="0 0 100 100" 
+      fill="none"
+    >
+      <circle cx="50" cy="50" r="8" fill="#e4b2b3" />
+      <circle cx="50" cy="50" r="5" fill="#1a1a22" />
+      <circle cx="50" cy="50" r="2" fill="#e4b2b3" />
+      {[...Array(16)].map((_, i) => {
+        const angle = (i * 22.5) * (Math.PI / 180);
+        const innerRadius = 12;
+        const outerRadius = i % 2 === 0 ? 42 : 32;
+        const x1 = 50 + innerRadius * Math.cos(angle);
+        const y1 = 50 + innerRadius * Math.sin(angle);
+        const x2 = 50 + outerRadius * Math.cos(angle);
+        const y2 = 50 + outerRadius * Math.sin(angle);
+        return (
+          <line
+            key={i}
+            x1={x1}
+            y1={y1}
+            x2={x2}
+            y2={y2}
+            stroke="#e4b2b3"
+            strokeWidth={i % 2 === 0 ? "4" : "3"}
+            strokeLinecap="round"
+          />
+        );
+      })}
+    </svg>
+  );
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       scrolled ? 'px-4 md:px-6 lg:px-8 pt-3' : 'px-0 pt-0'
     }`}>
-      {/* Floating Navbar Container */}
-      <nav className={`mx-auto transition-all duration-500 ${
+      <nav className={`mx-auto transition-all duration-500 relative ${
         scrolled 
           ? 'max-w-5xl bg-[#1a1a22]/95 backdrop-blur-md border border-[#2a2a35] rounded-lg shadow-lg shadow-black/20' 
           : 'max-w-full bg-[#1a1a22] border-b border-[#2a2a35]'
@@ -82,10 +94,10 @@ const Navbar = () => {
         {/* Corner decorations - only show when scrolled */}
         {scrolled && (
           <>
-            <span className="absolute -top-px -left-px w-3 h-3 border-t border-l border-[#3a3a45] rounded-tl-lg"></span>
-            <span className="absolute -top-px -right-px w-3 h-3 border-t border-r border-[#3a3a45] rounded-tr-lg"></span>
-            <span className="absolute -bottom-px -left-px w-3 h-3 border-b border-l border-[#3a3a45] rounded-bl-lg"></span>
-            <span className="absolute -bottom-px -right-px w-3 h-3 border-b border-r border-[#3a3a45] rounded-br-lg"></span>
+            <span className="absolute -top-px -left-px w-3 h-3 border-t border-l border-[#e4b2b3]/30 rounded-tl-lg"></span>
+            <span className="absolute -top-px -right-px w-3 h-3 border-t border-r border-[#e4b2b3]/30 rounded-tr-lg"></span>
+            <span className="absolute -bottom-px -left-px w-3 h-3 border-b border-l border-[#e4b2b3]/30 rounded-bl-lg"></span>
+            <span className="absolute -bottom-px -right-px w-3 h-3 border-b border-r border-[#e4b2b3]/30 rounded-br-lg"></span>
           </>
         )}
         
@@ -93,252 +105,152 @@ const Navbar = () => {
         <div className={`flex items-center justify-between relative transition-all duration-500 ${
           scrolled ? 'px-4 md:px-6 py-3' : 'max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-4'
         }`}>
-          {/* Left side - Logo on mobile, Navigation on desktop */}
-          <div className="flex items-center gap-6">
-            {/* Logo - visible on mobile */}
-            <Link to="/" className="flex md:hidden items-center gap-2 font-bold text-xl tracking-wider">
-              <svg 
-                className="w-7 h-7 animate-spin-slow" 
-                viewBox="0 0 100 100" 
-                fill="none"
-              >
-                <circle cx="50" cy="50" r="8" fill="#e4b2b3" />
-                <circle cx="50" cy="50" r="5" fill="#1a1a22" />
-                <circle cx="50" cy="50" r="2" fill="#e4b2b3" />
-                {[...Array(16)].map((_, i) => {
-                  const angle = (i * 22.5) * (Math.PI / 180);
-                  const innerRadius = 12;
-                  const outerRadius = i % 2 === 0 ? 42 : 32;
-                  const x1 = 50 + innerRadius * Math.cos(angle);
-                  const y1 = 50 + innerRadius * Math.sin(angle);
-                  const x2 = 50 + outerRadius * Math.cos(angle);
-                  const y2 = 50 + outerRadius * Math.sin(angle);
-                  return (
-                    <line
-                      key={i}
-                      x1={x1}
-                      y1={y1}
-                      x2={x2}
-                      y2={y2}
-                      stroke="#e4b2b3"
-                      strokeWidth={i % 2 === 0 ? "4" : "3"}
-                      strokeLinecap="round"
-                    />
-                  );
-                })}
-              </svg>
-              <span className="text-xl text-[#e4b2b3]">ZYOTRA</span>
-            </Link>
+          
+          {/* Left - Logo */}
+          <Link to="/" className="flex items-center gap-2 font-bold text-xl tracking-wider">
+            <Logo />
+            <span className="text-xl text-[#e4b2b3] hover:text-[#f0c4c5] transition">ZYOTRA</span>
+          </Link>
 
-            {/* Desktop Navigation - Left side */}
-            <div className="hidden md:flex items-center gap-5 lg:gap-6">
-              {/* Platform Dropdown */}
-              <div 
-                className="relative"
-                onMouseEnter={handlePlatformEnter}
-                onMouseLeave={handlePlatformLeave}
-              >
-                <button className="flex items-center gap-1 text-gray-300 hover:text-white transition text-sm py-2">
-                  Platform
-                  <svg className={`w-3 h-3 transition-transform duration-200 ${platformOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                {/* Dropdown with invisible bridge */}
-                <div 
-                  className={`absolute top-full left-0 pt-2 transition-all duration-200 ${
-                    platformOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
-                  }`}
-                >
-                  <div className="w-56 bg-[#22222a] border border-[#3a3a3a] rounded-lg shadow-xl z-50 p-3">
-                    <div className="space-y-1">
-                      <Link 
-                        to="/platform/autoscaling" 
-                        className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm"
-                        onClick={() => setPlatformOpen(false)}
-                      >
-                        Auto Scaling
-                      </Link>
-                      <Link 
-                        to="/platform/loadbalancing" 
-                        className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm"
-                        onClick={() => setPlatformOpen(false)}
-                      >
-                        Load Balancing
-                      </Link>
-                      <Link 
-                        to="/platform/monitoring" 
-                        className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm"
-                        onClick={() => setPlatformOpen(false)}
-                      >
-                        Monitoring
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Solutions Dropdown */}
-              <div 
-                className="relative"
-                onMouseEnter={handleSolutionsEnter}
-                onMouseLeave={handleSolutionsLeave}
-              >
-                <button className="flex items-center gap-1 text-gray-300 hover:text-white transition text-sm py-2">
-                  Solutions
-                  <svg className={`w-3 h-3 transition-transform duration-200 ${solutionsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                {/* Dropdown with invisible bridge */}
-                <div 
-                  className={`absolute top-full left-0 pt-2 transition-all duration-200 ${
-                    solutionsOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
-                  }`}
-                >
-                  <div className="w-56 bg-[#22222a] border border-[#3a3a3a] rounded-lg shadow-xl z-50 p-3">
-                    <div className="space-y-1">
-                      <Link 
-                        to="/solutions/startups" 
-                        className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm"
-                        onClick={() => setSolutionsOpen(false)}
-                      >
-                        For Startups
-                      </Link>
-                      <Link 
-                        to="/solutions/enterprise" 
-                        className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm"
-                        onClick={() => setSolutionsOpen(false)}
-                      >
-                        For Enterprise
-                      </Link>
-                      <Link 
-                        to="/solutions/developers" 
-                        className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm"
-                        onClick={() => setSolutionsOpen(false)}
-                      >
-                        For Developers
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Enterprise */}
-              <Link to="/enterprise" className="text-gray-300 hover:text-white transition text-sm">
-                Enterprise
-              </Link>
-            </div>
-          </div>
-
-          {/* Center - Logo (Desktop only) */}
-          <div className="hidden md:flex items-center justify-center">
-            <Link to="/" className="flex items-center gap-2 font-bold text-xl tracking-wider">
-              <svg 
-                className="w-7 h-7 animate-spin-slow" 
-                viewBox="0 0 100 100" 
-                fill="none"
-              >
-                <circle cx="50" cy="50" r="8" fill="#e4b2b3" />
-                <circle cx="50" cy="50" r="5" fill="#1a1a22" />
-                <circle cx="50" cy="50" r="2" fill="#e4b2b3" />
-                {[...Array(16)].map((_, i) => {
-                  const angle = (i * 22.5) * (Math.PI / 180);
-                  const innerRadius = 12;
-                  const outerRadius = i % 2 === 0 ? 42 : 32;
-                  const x1 = 50 + innerRadius * Math.cos(angle);
-                  const y1 = 50 + innerRadius * Math.sin(angle);
-                  const x2 = 50 + outerRadius * Math.cos(angle);
-                  const y2 = 50 + outerRadius * Math.sin(angle);
-                  return (
-                    <line
-                      key={i}
-                      x1={x1}
-                      y1={y1}
-                      x2={x2}
-                      y2={y2}
-                      stroke="#e4b2b3"
-                      strokeWidth={i % 2 === 0 ? "4" : "3"}
-                      strokeLinecap="round"
-                    />
-                  );
-                })}
-              </svg>
-              <span className="text-xl text-[#e4b2b3] hover:text-[#e5a3a5] transition">ZYOTRA</span>
-            </Link>
-          </div>
-
-          {/* Right side - Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-5 lg:gap-6">
-            {/* Resources Dropdown */}
+          {/* Center - Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8">
+            {/* Products Dropdown */}
             <div 
               className="relative"
-              onMouseEnter={handleResourcesEnter}
-              onMouseLeave={handleResourcesLeave}
+              onMouseEnter={handleProductsEnter}
+              onMouseLeave={handleProductsLeave}
             >
-              <button className="flex items-center gap-1 text-gray-300 hover:text-white transition text-sm py-2">
-                Resources
-                <svg className={`w-3 h-3 transition-transform duration-200 ${resourcesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <button className="flex items-center gap-1.5 text-gray-300 hover:text-white transition text-sm py-2">
+                Products
+                <svg className={`w-3 h-3 transition-transform duration-200 ${productsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              {/* Dropdown with invisible bridge */}
+              
+              {/* Dropdown Menu */}
               <div 
-                className={`absolute top-full right-0 pt-2 transition-all duration-200 ${
-                  resourcesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+                className={`absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-200 ${
+                  productsOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
                 }`}
               >
-                <div className="w-56 bg-[#22222a] border border-[#3a3a3a] rounded-lg shadow-xl z-50 p-3">
-                  <div className="space-y-1">
+                <div className="w-72 bg-[#1e1e26] border border-[#2a2a35] rounded-lg shadow-2xl shadow-black/40 overflow-hidden">
+                  {/* Dropdown Header */}
+                  <div className="px-4 py-3 border-b border-[#2a2a35]">
+                    <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Platform</span>
+                  </div>
+                  
+                  <div className="p-2">
                     <Link 
-                      to="/docs" 
-                      className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm"
-                      onClick={() => setResourcesOpen(false)}
+                      to="/platform/vps"
+                      className="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:text-white hover:bg-[#2a2a35] transition group"
+                      onClick={() => setProductsOpen(false)}
                     >
-                      Documentation
+                      <span className="w-8 h-8 rounded-md bg-[#e4b2b3]/10 flex items-center justify-center group-hover:bg-[#e4b2b3]/20 transition">
+                        <svg className="w-4 h-4 text-[#e4b2b3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                        </svg>
+                      </span>
+                      <div>
+                        <div className="text-sm font-medium">VPS Instances</div>
+                        <div className="text-xs text-gray-500">Deploy servers in seconds</div>
+                      </div>
                     </Link>
+                    
                     <Link 
-                      to="/blog" 
-                      className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm"
-                      onClick={() => setResourcesOpen(false)}
+                      to="/platform/autoscaling"
+                      className="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:text-white hover:bg-[#2a2a35] transition group"
+                      onClick={() => setProductsOpen(false)}
                     >
-                      Blog
+                      <span className="w-8 h-8 rounded-md bg-[#e4b2b3]/10 flex items-center justify-center group-hover:bg-[#e4b2b3]/20 transition">
+                        <svg className="w-4 h-4 text-[#e4b2b3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                        </svg>
+                      </span>
+                      <div>
+                        <div className="text-sm font-medium">Auto Scaling</div>
+                        <div className="text-xs text-gray-500">Scale resources automatically</div>
+                      </div>
                     </Link>
+                    
                     <Link 
-                      to="/api" 
-                      className="block text-gray-300 hover:text-white hover:bg-[#2a2a35] px-3 py-2 rounded transition text-sm"
-                      onClick={() => setResourcesOpen(false)}
+                      to="/platform/loadbalancing"
+                      className="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:text-white hover:bg-[#2a2a35] transition group"
+                      onClick={() => setProductsOpen(false)}
                     >
-                      API Reference
+                      <span className="w-8 h-8 rounded-md bg-[#e4b2b3]/10 flex items-center justify-center group-hover:bg-[#e4b2b3]/20 transition">
+                        <svg className="w-4 h-4 text-[#e4b2b3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                      </span>
+                      <div>
+                        <div className="text-sm font-medium">Load Balancing</div>
+                        <div className="text-xs text-gray-500">Distribute traffic efficiently</div>
+                      </div>
+                    </Link>
+                    
+                    <Link 
+                      to="/platform/monitoring"
+                      className="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:text-white hover:bg-[#2a2a35] transition group"
+                      onClick={() => setProductsOpen(false)}
+                    >
+                      <span className="w-8 h-8 rounded-md bg-[#e4b2b3]/10 flex items-center justify-center group-hover:bg-[#e4b2b3]/20 transition">
+                        <svg className="w-4 h-4 text-[#e4b2b3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                      </span>
+                      <div>
+                        <div className="text-sm font-medium">Monitoring</div>
+                        <div className="text-xs text-gray-500">Real-time metrics & alerts</div>
+                      </div>
                     </Link>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Pricing */}
-            <a href="#" className="text-gray-300 hover:text-white transition text-sm">
-              Pricing
-            </a>
+            {/* Documentation */}
+            <Link 
+              to="/docs" 
+              className={`text-sm transition ${location.pathname === '/docs' ? 'text-[#e4b2b3]' : 'text-gray-300 hover:text-white'}`}
+            >
+              Docs
+            </Link>
 
-            {/* Log In */}
-            <a href="https://zyotraportal.ramkrishna.cloud" className="text-gray-300 hover:text-white transition text-sm">
-              Log In
-            </a>
+            {/* Enterprise */}
+            <Link 
+              to="/enterprise" 
+              className={`text-sm transition ${location.pathname === '/enterprise' ? 'text-[#e4b2b3]' : 'text-gray-300 hover:text-white'}`}
+            >
+              Enterprise
+            </Link>
 
-            {/* Get started Button */}
-            <div className="relative p-1">
-              <span className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#e4b2b3]/60 rounded-tl-sm"></span>
-              <span className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#e4b2b3]/60 rounded-tr-sm"></span>
-              <span className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#e4b2b3]/60 rounded-bl-sm"></span>
-              <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#e4b2b3]/60 rounded-br-sm"></span>
-              <a 
-                href="https://zyotraportal.ramkrishna.cloud/register" 
-                className="inline-flex items-center bg-transparent hover:bg-[#e4b2b3]/10 text-[#e4b2b3] px-4 py-1.5 transition-all duration-300 border border-[#e4b2b3]/40 hover:border-[#e4b2b3]/60 rounded-sm"
-              >
-                <span className="font-medium text-sm">Get started</span>
-              </a>
-            </div>
+            {/* Contact Sales */}
+            <button 
+              onClick={openContact}
+              className="text-gray-300 hover:text-white transition text-sm"
+            >
+              Contact
+            </button>
+          </div>
+
+          {/* Right - Auth Actions */}
+          <div className="hidden md:flex items-center gap-4">
+            <a 
+              href="https://zyotraportal.ramkrishna.cloud" 
+              className="text-gray-300 hover:text-white transition text-sm"
+            >
+              Log in
+            </a>
+            
+            <a 
+              href="https://zyotraportal.ramkrishna.cloud/register" 
+              className="inline-flex items-center gap-2 bg-[#e4b2b3] hover:bg-[#d4a2a3] text-[#1a1a22] px-4 py-2 rounded-md transition-all duration-300 text-sm font-medium"
+            >
+              Get Started
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
           </div>
 
           {/* Mobile - Hamburger Button */}
@@ -353,90 +265,62 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Menu Drawer */}
-        <div className={`md:hidden border-t border-[#2a2a35] transition-all duration-300 overflow-hidden ${mobileMenuOpen ? 'max-h-[70vh] opacity-100' : 'max-h-0 opacity-0'}`}>
-          <div className="px-4 py-4 space-y-2 max-h-[60vh] overflow-y-auto">
-            {/* Platform Accordion */}
+        {/* Mobile Menu */}
+        <div className={`md:hidden border-t border-[#2a2a35] transition-all duration-300 overflow-hidden ${mobileMenuOpen ? 'max-h-[80vh] opacity-100' : 'max-h-0 opacity-0'}`}>
+          <div className="px-4 py-4 space-y-1">
+            
+            {/* Products Accordion */}
             <div>
               <button 
                 className="w-full flex items-center justify-between py-3 text-white text-base"
-                onClick={() => setMobilePlatformOpen(!mobilePlatformOpen)}
+                onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
               >
-                Platform
-                <svg className={`w-4 h-4 transition-transform ${mobilePlatformOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                Products
+                <svg className={`w-4 h-4 transition-transform duration-200 ${mobileProductsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              <div className={`overflow-hidden transition-all duration-300 ${mobilePlatformOpen ? 'max-h-40' : 'max-h-0'}`}>
-                <div className="pl-4 pb-2 space-y-2">
-                  <Link to="/platform/autoscaling" className="block text-gray-400 hover:text-white py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>Auto Scaling</Link>
-                  <Link to="/platform/loadbalancing" className="block text-gray-400 hover:text-white py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>Load Balancing</Link>
-                  <Link to="/platform/monitoring" className="block text-gray-400 hover:text-white py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>Monitoring</Link>
+              <div className={`overflow-hidden transition-all duration-300 ${mobileProductsOpen ? 'max-h-60' : 'max-h-0'}`}>
+                <div className="pl-4 pb-3 space-y-1">
+                  <Link to="/platform/vps" className="block text-gray-400 hover:text-white py-2 text-sm">VPS Instances</Link>
+                  <Link to="/platform/autoscaling" className="block text-gray-400 hover:text-white py-2 text-sm">Auto Scaling</Link>
+                  <Link to="/platform/loadbalancing" className="block text-gray-400 hover:text-white py-2 text-sm">Load Balancing</Link>
+                  <Link to="/platform/monitoring" className="block text-gray-400 hover:text-white py-2 text-sm">Monitoring</Link>
                 </div>
               </div>
             </div>
 
-            {/* Solutions Accordion */}
-            <div className="border-t border-[#2a2a35]">
-              <button 
-                className="w-full flex items-center justify-between py-3 text-white text-base"
-                onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
-              >
-                Solutions
-                <svg className={`w-4 h-4 transition-transform ${mobileSolutionsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div className={`overflow-hidden transition-all duration-300 ${mobileSolutionsOpen ? 'max-h-32' : 'max-h-0'}`}>
-                <div className="pl-4 pb-2 space-y-2">
-                  <Link to="/solutions/startups" className="block text-gray-400 hover:text-white py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>For Startups</Link>
-                  <Link to="/solutions/enterprise" className="block text-gray-400 hover:text-white py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>For Enterprise</Link>
-                  <Link to="/solutions/developers" className="block text-gray-400 hover:text-white py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>For Developers</Link>
-                </div>
-              </div>
-            </div>
+            {/* Docs */}
+            <Link to="/docs" className="block py-3 text-white text-base border-t border-[#2a2a35]">
+              Docs
+            </Link>
 
             {/* Enterprise */}
-            <Link to="/enterprise" className="block py-3 text-white text-base border-t border-[#2a2a35]" onClick={() => setMobileMenuOpen(false)}>
+            <Link to="/enterprise" className="block py-3 text-white text-base border-t border-[#2a2a35]">
               Enterprise
             </Link>
 
-            {/* Resources Accordion */}
-            <div className="border-t border-[#2a2a35]">
-              <button 
-                className="w-full flex items-center justify-between py-3 text-white text-base"
-                onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)}
+            {/* Contact */}
+            <button 
+              onClick={openContact}
+              className="block w-full text-left py-3 text-white text-base border-t border-[#2a2a35]"
+            >
+              Contact Sales
+            </button>
+
+            {/* Auth Actions */}
+            <div className="pt-4 border-t border-[#2a2a35] space-y-3">
+              <a 
+                href="https://zyotraportal.ramkrishna.cloud" 
+                className="block w-full text-center text-gray-300 hover:text-white py-2.5 text-base border border-[#2a2a35] rounded-md"
               >
-                Resources
-                <svg className={`w-4 h-4 transition-transform ${mobileResourcesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div className={`overflow-hidden transition-all duration-300 ${mobileResourcesOpen ? 'max-h-32' : 'max-h-0'}`}>
-                <div className="pl-4 pb-2 space-y-2">
-                  <Link to="/docs" className="block text-gray-400 hover:text-white py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>Documentation</Link>
-                  <Link to="/blog" className="block text-gray-400 hover:text-white py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
-                  <Link to="/api" className="block text-gray-400 hover:text-white py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>API Reference</Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Pricing */}
-            <a href="#" className="block py-3 text-white text-base border-t border-[#2a2a35]">
-              Pricing
-            </a>
-            {/* Log In */}
-            <a href="https://zyotraportal.ramkrishna.cloud/login" className="block py-3 text-white text-base border-t border-[#2a2a35]">
-              Log In
-            </a>
-
-            {/* Get Started Button */}
-            <div className="pt-4 border-t border-[#2a2a35]">
+                Log in
+              </a>
               <a 
                 href="https://zyotraportal.ramkrishna.cloud/register" 
-                className="block w-full text-center bg-transparent text-[#e4b2b3] px-4 py-3 border border-[#e4b2b3]/40 rounded font-medium"
+                className="block w-full text-center bg-[#e4b2b3] hover:bg-[#d4a2a3] text-[#1a1a22] py-2.5 rounded-md font-medium"
               >
-                Get started
+                Get Started Free
               </a>
             </div>
           </div>
