@@ -157,18 +157,18 @@ const Navbar = () => {
                     </Link>
                     
                     <Link 
-                      to="/platform/autoscaling"
+                      to="/platform/database"
                       className="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:text-white hover:bg-[#2a2a35] transition group"
                       onClick={() => setProductsOpen(false)}
                     >
                       <span className="w-8 h-8 rounded-md bg-[#e4b2b3]/10 flex items-center justify-center group-hover:bg-[#e4b2b3]/20 transition">
                         <svg className="w-4 h-4 text-[#e4b2b3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
                         </svg>
                       </span>
                       <div>
-                        <div className="text-sm font-medium">Auto Scaling</div>
-                        <div className="text-xs text-gray-500">Scale resources automatically</div>
+                        <div className="text-sm font-medium">Database Tools</div>
+                        <div className="text-xs text-gray-500">View tables & run queries</div>
                       </div>
                     </Link>
                     
@@ -283,7 +283,7 @@ const Navbar = () => {
               <div className={`overflow-hidden transition-all duration-300 ${mobileProductsOpen ? 'max-h-60' : 'max-h-0'}`}>
                 <div className="pl-4 pb-3 space-y-1">
                   <Link to="/platform/vps" className="block text-gray-400 hover:text-white py-2 text-sm">VPS Instances</Link>
-                  <Link to="/platform/autoscaling" className="block text-gray-400 hover:text-white py-2 text-sm">Auto Scaling</Link>
+                  <Link to="/platform/database" className="block text-gray-400 hover:text-white py-2 text-sm">Database Tools</Link>
                   <Link to="/platform/loadbalancing" className="block text-gray-400 hover:text-white py-2 text-sm">Load Balancing</Link>
                   <Link to="/platform/monitoring" className="block text-gray-400 hover:text-white py-2 text-sm">Monitoring</Link>
                 </div>

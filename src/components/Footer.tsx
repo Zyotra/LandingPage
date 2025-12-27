@@ -49,7 +49,7 @@ const Footer = () => {
               <span className="text-xl font-bold text-[#e4b2b3] tracking-wider">ZYOTRA</span>
             </Link>
             <p className="text-gray-500 text-sm mt-4 max-w-[200px] leading-relaxed">
-              Deploy servers in seconds. Scale with confidence.
+              Deploy servers in seconds. Automate everything.
             </p>
             {/* Social Links */}
             <div className="flex items-center gap-4 mt-6">
@@ -94,13 +94,13 @@ const Footer = () => {
             <h4 className="text-white text-xs font-semibold uppercase tracking-wider mb-4">Platform</h4>
             <ul className="space-y-3">
               <li>
-                <Link to="/platform/autoscaling" className="text-gray-400 hover:text-[#e4b2b3] text-sm transition-colors">
-                  Auto Scaling
+                <Link to="/platform/vps" className="text-gray-400 hover:text-[#e4b2b3] text-sm transition-colors">
+                  VPS Instances
                 </Link>
               </li>
               <li>
-                <Link to="/platform/loadbalancing" className="text-gray-400 hover:text-[#e4b2b3] text-sm transition-colors">
-                  Load Balancing
+                <Link to="/platform/database" className="text-gray-400 hover:text-[#e4b2b3] text-sm transition-colors">
+                  Database Tools
                 </Link>
               </li>
               <li>

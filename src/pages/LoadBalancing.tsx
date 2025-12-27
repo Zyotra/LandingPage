@@ -40,7 +40,7 @@ const LoadBalancing = () => {
         </div>
 
         <div className="bg-[#1e1e24] rounded-2xl p-8 md:p-12 border border-[#2a2a35] text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to scale globally?</h2>
+          <h2 className="text-3xl font-bold mb-6">Ready to deploy globally?</h2>
           <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
             Our load balancers are deployed in 25+ regions worldwide. Get started with a free trial today.
           </p>

@@ -6,7 +6,7 @@ const SolutionsStartups = () => {
         <div className="text-center mb-20">
           <span className="text-[#e4b2b3] font-medium tracking-wider text-sm uppercase mb-4 block">For Startups</span>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Build fast. Scale faster.
+            Build fast. Deploy faster.
           </h1>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-10">
             Get the infrastructure you need to launch your MVP and grow to millions of users. 

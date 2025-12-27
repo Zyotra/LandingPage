@@ -40,11 +40,11 @@ const EnterpriseCTASection = () => {
   }, [isVisible]);
 
   const features = [
-    { text: 'Unlimited users', description: 'Scale your team without limits', icon: 'users' },
+    { text: 'Unlimited users', description: 'Grow your team without limits', icon: 'users' },
     { text: 'Unlimited projects', description: 'Create as many projects as you need', icon: 'folder' },
-    { text: 'Usage reports', description: 'Detailed insights into your deployment', icon: 'chart' },
+    { text: 'Database UI', description: 'View tables, run queries visually', icon: 'chart' },
     { text: 'Dedicated support', description: '24/7 priority access to our experts', icon: 'support' },
-    { text: 'Custom environments', description: 'Tailored infrastructure for your needs', icon: 'settings' },
+    { text: 'Custom domains', description: 'Deploy with your own domain instantly', icon: 'settings' },
     { text: 'SLA Guarantee', description: '99.99% uptime commitment', icon: 'shield' },
   ];
 
@@ -247,7 +247,7 @@ const EnterpriseCTASection = () => {
                 {/* Satellite Nodes - Simplified */}
                 {[
                   { angle: -15, icon: '▶' },
-                  { angle: 45, icon: '◆' },
+                  { angle: 45, icon: '⬡' },
                   { angle: 105, icon: '◉' },
                   { angle: 165, icon: '◈' },
                   { angle: 225, icon: '◫' },

@@ -11,7 +11,7 @@ const HeroSection = () => {
   // Rotating text for subtitle
   const rotatingTexts = [
     "Launch instances instantly",
-    "Scale with confidence",
+    "Manage databases visually",
     "Deploy in seconds",
     "Automate everything"
   ];
@@ -342,7 +342,7 @@ const HeroSection = () => {
               {/* Path labels */}
               <text x="340" y="180" fill="#4a4a55" fontSize="9" fontFamily="Inter, sans-serif" transform="rotate(70, 340, 180)" letterSpacing="1">PROVISION SERVERS</text>
               <text x="200" y="370" textAnchor="middle" fill="#4a4a55" fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="1">OPTIMIZE RESOURCES</text>
-              <text x="55" y="180" fill="#4a4a55" fontSize="9" fontFamily="Inter, sans-serif" transform="rotate(-70, 55, 180)" letterSpacing="1">SCALE INSTANCES</text>
+              <text x="55" y="180" fill="#4a4a55" fontSize="9" fontFamily="Inter, sans-serif" transform="rotate(-70, 55, 180)" letterSpacing="1">MANAGE SERVERS</text>
 
               {/* CSS-animated particles along path 1 */}
               <circle r="4" fill="#e4b2b3" opacity={activeNode === 0 ? "0.8" : "0.3"} style={{ transition: 'opacity 0.5s' }}>
@@ -408,7 +408,7 @@ const HeroSection = () => {
                 <text x="320" y="365" textAnchor="middle" fill={activeNode === 1 ? "#e4b2b3" : "#5a5a65"} fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="1" style={{ transition: 'fill 0.5s ease' }}>MONITOR HEALTH</text>
               </g>
 
-              {/* Node 3 - Scale (Bottom Left) - Simplified */}
+              {/* Node 3 - Manage (Bottom Left) - Simplified */}
               <g className="cursor-pointer" style={{ transition: 'transform 0.5s ease' }}>
                 {/* Pulse ring when active */}
                 <circle cx="80" cy="300" r="50" fill="none" stroke="#e4b2b3" strokeWidth="1" strokeOpacity={activeNode === 2 ? "0.4" : "0.2"} style={{ transition: 'stroke-opacity 0.5s' }}>
@@ -422,7 +422,7 @@ const HeroSection = () => {
                 <line x1="62" y1="302" x2="85" y2="302" stroke="#e4b2b3" strokeWidth="1" strokeDasharray="3,2" />
                 <line x1="62" y1="309" x2="92" y2="309" stroke="#e4b2b3" strokeWidth="1" strokeDasharray="3,2" />
                 {/* Label */}
-                <text x="80" y="365" textAnchor="middle" fill={activeNode === 2 ? "#e4b2b3" : "#5a5a65"} fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="1" style={{ transition: 'fill 0.5s ease' }}>AUTO SCALE</text>
+                <text x="80" y="365" textAnchor="middle" fill={activeNode === 2 ? "#e4b2b3" : "#5a5a65"} fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="1" style={{ transition: 'fill 0.5s ease' }}>MANAGE</text>
               </g>
 
               {/* Decorative elements - Static */}
