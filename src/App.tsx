@@ -8,7 +8,6 @@ import Blog from './pages/Blog'
 import ApiReference from './pages/ApiReference'
 import VpsInstances from './pages/VpsInstances'
 import DatabaseTools from './pages/DatabaseTools'
-import LoadBalancing from './pages/LoadBalancing'
 import Monitoring from './pages/Monitoring'
 import SolutionsStartups from './pages/SolutionsStartups'
 import SolutionsEnterprise from './pages/SolutionsEnterprise'
@@ -39,7 +38,6 @@ function App() {
             {/* Platform Routes */}
             <Route path="/platform/vps" element={<VpsInstances />} />
             <Route path="/platform/database" element={<DatabaseTools />} />
-            <Route path="/platform/loadbalancing" element={<LoadBalancing />} />
             <Route path="/platform/monitoring" element={<Monitoring />} />
 
             {/* Solutions Routes */}

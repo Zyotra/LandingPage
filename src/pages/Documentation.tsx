@@ -97,9 +97,6 @@ const Documentation = () => {
                 <p className="text-[10px] uppercase text-gray-500 font-semibold tracking-widest px-2">Resources</p>
               </div>
               <div className="p-2 pt-0 pb-3">
-                <Link to="/api" className="block px-3 py-2 rounded-md text-[13px] font-medium text-gray-400 hover:text-white hover:bg-[#2a2a35] transition-all whitespace-nowrap">
-                  API Reference
-                </Link>
                 <Link to="/blog" className="block px-3 py-2 rounded-md text-[13px] font-medium text-gray-400 hover:text-white hover:bg-[#2a2a35] transition-all whitespace-nowrap">
                   Blog
                 </Link>

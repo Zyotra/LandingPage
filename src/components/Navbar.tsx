@@ -52,34 +52,34 @@ const Navbar = () => {
   const Logo = ({ className = "" }: { className?: string }) => (
     <svg 
       className={`w-7 h-7 animate-spin-slow ${className}`}
-      viewBox="0 0 100 100" 
-      fill="none"
-    >
-      <circle cx="50" cy="50" r="8" fill="#e4b2b3" />
-      <circle cx="50" cy="50" r="5" fill="#1a1a22" />
-      <circle cx="50" cy="50" r="2" fill="#e4b2b3" />
-      {[...Array(16)].map((_, i) => {
-        const angle = (i * 22.5) * (Math.PI / 180);
-        const innerRadius = 12;
-        const outerRadius = i % 2 === 0 ? 42 : 32;
-        const x1 = 50 + innerRadius * Math.cos(angle);
-        const y1 = 50 + innerRadius * Math.sin(angle);
-        const x2 = 50 + outerRadius * Math.cos(angle);
-        const y2 = 50 + outerRadius * Math.sin(angle);
-        return (
-          <line
-            key={i}
-            x1={x1}
-            y1={y1}
-            x2={x2}
-            y2={y2}
-            stroke="#e4b2b3"
-            strokeWidth={i % 2 === 0 ? "4" : "3"}
-            strokeLinecap="round"
-          />
-        );
-      })}
-    </svg>
+                viewBox="0 0 100 100" 
+                fill="none"
+              >
+                <circle cx="50" cy="50" r="8" fill="#e4b2b3" />
+                <circle cx="50" cy="50" r="5" fill="#1a1a22" />
+                <circle cx="50" cy="50" r="2" fill="#e4b2b3" />
+                {[...Array(16)].map((_, i) => {
+                  const angle = (i * 22.5) * (Math.PI / 180);
+                  const innerRadius = 12;
+                  const outerRadius = i % 2 === 0 ? 42 : 32;
+                  const x1 = 50 + innerRadius * Math.cos(angle);
+                  const y1 = 50 + innerRadius * Math.sin(angle);
+                  const x2 = 50 + outerRadius * Math.cos(angle);
+                  const y2 = 50 + outerRadius * Math.sin(angle);
+                  return (
+                    <line
+                      key={i}
+                      x1={x1}
+                      y1={y1}
+                      x2={x2}
+                      y2={y2}
+                      stroke="#e4b2b3"
+                      strokeWidth={i % 2 === 0 ? "4" : "3"}
+                      strokeLinecap="round"
+                    />
+                  );
+                })}
+              </svg>
   );
 
   return (
@@ -107,10 +107,10 @@ const Navbar = () => {
         }`}>
           
           {/* Left - Logo */}
-          <Link to="/" className="flex items-center gap-2 font-bold text-xl tracking-wider">
+            <Link to="/" className="flex items-center gap-2 font-bold text-xl tracking-wider">
             <Logo />
             <span className="text-xl text-[#e4b2b3] hover:text-[#f0c4c5] transition">ZYOTRA</span>
-          </Link>
+            </Link>
 
           {/* Center - Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -173,22 +173,6 @@ const Navbar = () => {
                     </Link>
                     
                     <Link 
-                      to="/platform/loadbalancing"
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:text-white hover:bg-[#2a2a35] transition group"
-                      onClick={() => setProductsOpen(false)}
-                    >
-                      <span className="w-8 h-8 rounded-md bg-[#e4b2b3]/10 flex items-center justify-center group-hover:bg-[#e4b2b3]/20 transition">
-                        <svg className="w-4 h-4 text-[#e4b2b3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                      </span>
-                      <div>
-                        <div className="text-sm font-medium">Load Balancing</div>
-                        <div className="text-xs text-gray-500">Distribute traffic efficiently</div>
-                      </div>
-                    </Link>
-                    
-                    <Link 
                       to="/platform/monitoring"
                       className="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:text-white hover:bg-[#2a2a35] transition group"
                       onClick={() => setProductsOpen(false)}
@@ -242,15 +226,15 @@ const Navbar = () => {
               Log in
             </a>
             
-            <a 
-              href="https://zyotraportal.ramkrishna.cloud/register" 
+              <a 
+                href="https://zyotraportal.ramkrishna.cloud/register" 
               className="inline-flex items-center gap-2 bg-[#f59fa0] hover:bg-[#fc8f91] text-[#1a1a22] px-4 py-2 rounded-md transition-all duration-300 text-sm font-medium"
-            >
+              >
               Get Started
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </a>
+              </a>
           </div>
 
           {/* Mobile - Hamburger Button */}
@@ -284,7 +268,6 @@ const Navbar = () => {
                 <div className="pl-4 pb-3 space-y-1">
                   <Link to="/platform/vps" className="block text-gray-400 hover:text-white py-2 text-sm">VPS Instances</Link>
                   <Link to="/platform/database" className="block text-gray-400 hover:text-white py-2 text-sm">Database Tools</Link>
-                  <Link to="/platform/loadbalancing" className="block text-gray-400 hover:text-white py-2 text-sm">Load Balancing</Link>
                   <Link to="/platform/monitoring" className="block text-gray-400 hover:text-white py-2 text-sm">Monitoring</Link>
                 </div>
               </div>
@@ -301,7 +284,7 @@ const Navbar = () => {
             </Link>
 
             {/* Contact */}
-            <button 
+              <button 
               onClick={openContact}
               className="block w-full text-left py-3 text-white text-base border-t border-[#2a2a35]"
             >
