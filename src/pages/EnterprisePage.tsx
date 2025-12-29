@@ -32,13 +32,13 @@ const EnterprisePage = () => {
         {/* Stats Bar */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-24">
           {[
-            { value: '99.999%', label: 'Uptime SLA', sublabel: 'Enterprise-grade reliability' },
-            { value: '<30s', label: 'Deploy Time', sublabel: 'From code to production' },
-            { value: '10x', label: 'Faster', sublabel: 'Than traditional DevOps' },
-            { value: '24/7', label: 'Support', sublabel: 'Dedicated enterprise team' },
+            { value: '⚡', label: 'Lightning Fast', sublabel: 'Deploy in seconds, not hours' },
+            { value: '🎯', label: 'Zero Friction', sublabel: 'No DevOps knowledge required' },
+            { value: '🔒', label: 'Enterprise Ready', sublabel: 'Built for scale and reliability' },
+            { value: '💡', label: 'Always Evolving', sublabel: 'Continuous improvements' },
           ].map((stat, i) => (
             <div key={i} className="text-center p-6 rounded-xl bg-[#1e1e26] border border-[#2a2a35]">
-              <div className="text-3xl md:text-4xl font-bold text-[#e4b2b3] mb-2">{stat.value}</div>
+              <div className="text-4xl md:text-5xl mb-2">{stat.value}</div>
               <div className="text-white font-medium mb-1">{stat.label}</div>
               <div className="text-gray-500 text-sm">{stat.sublabel}</div>
             </div>
@@ -62,14 +62,14 @@ const EnterprisePage = () => {
               </h2>
               <p className="text-xl text-gray-400 mb-8 leading-relaxed">
                 Zyotra dramatically lowers the barrier to entry by removing the need for expensive, 
-                dedicated DevOps hires early on. Deploy full-stack applications in minutes, not months.
+                dedicated DevOps hires early on. Deploy full-stack applications instantly, focus on what matters.
               </p>
               <div className="space-y-4">
                 {[
                   'Deploy Frontend, Backend, Database, and Redis in one click',
                   'No DevOps expertise required — focus on building, not configuring',
                   'Extend your runway by months with zero infrastructure overhead',
-                  'Ship MVPs in days instead of weeks',
+                  'Ship MVPs faster than ever before',
                 ].map((benefit, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <div className="w-6 h-6 rounded-full bg-[#e4b2b3]/20 flex items-center justify-center shrink-0 mt-0.5">
@@ -92,25 +92,25 @@ const EnterprisePage = () => {
                   </div>
                   <div className="space-y-3">
                     {[
-                      { label: 'Frontend', time: '12s', status: 'done' },
-                      { label: 'Backend API', time: '18s', status: 'done' },
-                      { label: 'PostgreSQL', time: '8s', status: 'done' },
-                      { label: 'Redis Cache', time: '5s', status: 'done' },
+                      { label: 'Frontend', status: 'done', icon: '✨' },
+                      { label: 'Backend API', status: 'done', icon: '⚡' },
+                      { label: 'PostgreSQL', status: 'done', icon: '🗄️' },
+                      { label: 'Redis Cache', status: 'done', icon: '🔥' },
                     ].map((service, i) => (
                       <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-[#1a1a22] border border-[#2a2a35]">
                         <div className="flex items-center gap-3">
                           <div className={`w-2 h-2 rounded-full ${service.status === 'done' ? 'bg-green-400' : 'bg-gray-500'}`}></div>
                           <span className="text-white font-medium">{service.label}</span>
                         </div>
-                        <span className="text-gray-500 text-sm font-mono">{service.time}</span>
+                        <span className="text-xl">{service.icon}</span>
                       </div>
                     ))}
                   </div>
                 </div>
                 <div className="pt-6 border-t border-[#2a2a35]">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-gray-400 text-sm">Total Time</span>
-                    <span className="text-[#e4b2b3] font-bold text-xl">43 seconds</span>
+                    <span className="text-gray-400 text-sm">Status</span>
+                    <span className="text-[#e4b2b3] font-bold text-xl">✨ Ready</span>
                   </div>
                   <p className="text-gray-600 text-xs">Full-stack application deployed and ready</p>
                 </div>
@@ -131,12 +131,12 @@ const EnterprisePage = () => {
               </div>
               <p className="text-gray-400 leading-relaxed mb-4">
                 Startups burn through runway wrestling with Docker configs, Kubernetes manifests, 
-                and infrastructure provisioning. A single DevOps hire costs $120K+ annually, 
+                and infrastructure provisioning. Expensive DevOps hires drain resources, 
                 and deployment delays kill momentum.
               </p>
               <ul className="space-y-2 text-gray-500 text-sm">
                 <li>• Weeks spent on infrastructure setup</li>
-                <li>• $120K+ annual DevOps salary</li>
+                <li>• Expensive DevOps expertise required</li>
                 <li>• Deployment failures derail launches</li>
                 <li>• Configuration complexity slows iteration</li>
               </ul>
@@ -152,12 +152,12 @@ const EnterprisePage = () => {
                 <h3 className="text-xl font-bold text-white">The Solution</h3>
               </div>
               <p className="text-gray-400 leading-relaxed mb-4">
-                Zyotra eliminates infrastructure friction entirely. Deploy your entire stack in under a minute. 
+                Zyotra eliminates infrastructure friction entirely. Deploy your entire stack instantly. 
                 No DevOps knowledge required. Your team focuses 100% on product-market fit, not YAML files.
               </p>
               <ul className="space-y-2 text-gray-500 text-sm">
-                <li>• Deploy in 43 seconds, not 43 days</li>
-                <li>• Zero DevOps overhead — save $120K+ annually</li>
+                <li>• Deploy in seconds, not days</li>
+                <li>• Zero DevOps overhead — focus on building</li>
                 <li>• Visual database management — no SQL expertise needed</li>
                 <li>• One-click deployments from GitHub</li>
               </ul>
@@ -190,7 +190,7 @@ const EnterprisePage = () => {
                         { team: 'Data Team', env: 'Analytics', status: 'Active', time: '1h ago' },
                       ].map((deployment, i) => (
                         <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-[#1a1a22] border border-[#2a2a35]">
-                          <div>
+                <div>
                             <div className="text-white font-medium text-sm">{deployment.team}</div>
                             <div className="text-gray-500 text-xs">{deployment.env}</div>
                 </div>
@@ -209,7 +209,7 @@ const EnterprisePage = () => {
                   <div className="pt-6 border-t border-[#2a2a35]">
                     <div className="flex items-center justify-between">
                       <span className="text-gray-400 text-sm">Self-Service Deployments</span>
-                      <span className="text-[#e4b2b3] font-bold">47 this week</span>
+                      <span className="text-[#e4b2b3] font-bold">✨ Active</span>
                     </div>
                   </div>
                 </div>
@@ -221,14 +221,14 @@ const EnterprisePage = () => {
               </h2>
               <p className="text-xl text-gray-400 mb-8 leading-relaxed">
                 Zyotra functions as your Internal Developer Platform (IDP), enabling self-service 
-                for engineering teams. No more waiting days for infrastructure provisioning.
+                for engineering teams. No more waiting for infrastructure provisioning.
               </p>
               <div className="space-y-4">
                 {[
                   'Self-service deployments — developers deploy without tickets',
                   'Consistent architecture across all teams automatically',
                   'Free senior DevOps engineers for complex SRE work',
-                  'Spin up test environments in seconds, not days',
+                  'Spin up test environments instantly',
                 ].map((benefit, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <div className="w-6 h-6 rounded-full bg-[#e4b2b3]/20 flex items-center justify-center shrink-0 mt-0.5">
@@ -255,14 +255,14 @@ const EnterprisePage = () => {
                 <h3 className="text-xl font-bold text-white">The Problem</h3>
               </div>
               <p className="text-gray-400 leading-relaxed mb-4">
-                Large organizations suffer from "deployment bottlenecks" where developers wait days 
+                Large organizations suffer from "deployment bottlenecks" where developers wait 
                 for infrastructure provisioning. Senior DevOps engineers waste time on routine deployments 
                 instead of complex SRE tasks.
               </p>
               <ul className="space-y-2 text-gray-500 text-sm">
-                <li>• 3-5 day wait times for new environments</li>
+                <li>• Long wait times for new environments</li>
                 <li>• Inconsistent architecture across teams</li>
-                <li>• $200K+ senior engineers doing routine work</li>
+                <li>• Senior engineers doing routine work</li>
                 <li>• Manual processes create security gaps</li>
               </ul>
         </div>
@@ -282,9 +282,9 @@ const EnterprisePage = () => {
                 provisioning tickets.
               </p>
               <ul className="space-y-2 text-gray-500 text-sm">
-                <li>• Deploy environments in under 30 seconds</li>
+                <li>• Deploy environments instantly</li>
                 <li>• Standardized architecture enforced automatically</li>
-                <li>• Free up $200K+ engineers for strategic work</li>
+                <li>• Free up engineers for strategic work</li>
                 <li>• Security and compliance built-in by default</li>
               </ul>
             </div>
@@ -300,9 +300,9 @@ const EnterprisePage = () => {
             {[
               {
                 title: 'Rapid Prototyping',
-                desc: 'Spin up proof-of-concepts in minutes. Test ideas without infrastructure overhead.',
+                desc: 'Spin up proof-of-concepts instantly. Test ideas without infrastructure overhead.',
                 icon: '⚡',
-                metric: '10x faster',
+                metric: 'Lightning fast',
               },
               {
                 title: 'Feature Branch Deployments',
@@ -332,7 +332,7 @@ const EnterprisePage = () => {
                 title: 'Cost Optimization',
                 desc: 'Right-size resources automatically. Pay only for what you use.',
                 icon: '💰',
-                metric: '40% savings',
+                metric: 'Smart savings',
               },
             ].map((useCase, i) => (
               <div key={i} className="p-6 rounded-xl bg-[#1e1e26] border border-[#2a2a35] hover:border-[#e4b2b3]/30 transition-colors">
@@ -357,13 +357,13 @@ const EnterprisePage = () => {
             </h2>
             <div className="grid md:grid-cols-4 gap-8">
               {[
-                { value: '10x', label: 'Faster deployments', desc: 'Minutes vs. days' },
-                { value: '$120K+', label: 'Annual savings', desc: 'No DevOps hire needed' },
-                { value: '99.9%', label: 'Uptime SLA', desc: 'Enterprise reliability' },
-                { value: '24/7', label: 'Support', desc: 'Dedicated team' },
+                { value: '⚡', label: 'Faster deployments', desc: 'Minutes vs. days' },
+                { value: '💰', label: 'Cost efficient', desc: 'No DevOps hire needed' },
+                { value: '🔒', label: 'Enterprise ready', desc: 'Built for reliability' },
+                { value: '🚀', label: 'Always improving', desc: 'Continuous innovation' },
               ].map((stat, i) => (
                 <div key={i} className="text-center">
-                  <div className="text-4xl md:text-5xl font-bold text-[#e4b2b3] mb-2">{stat.value}</div>
+                  <div className="text-5xl md:text-6xl mb-2">{stat.value}</div>
                   <div className="text-white font-medium mb-1">{stat.label}</div>
                   <div className="text-gray-500 text-sm">{stat.desc}</div>
                 </div>
@@ -390,7 +390,7 @@ const EnterprisePage = () => {
             Ready to transform how your team ships?
           </h2>
           <p className="text-gray-400 mb-10 max-w-2xl mx-auto text-lg">
-            Join teams that deploy 10x faster and focus on building, not configuring. 
+            Join teams that deploy faster and focus on building, not configuring. 
             Our enterprise team is ready to help you get started.
           </p>
           <div className="flex flex-col items-center  sm:flex-row gap-4 justify-center">

@@ -235,18 +235,18 @@ const HeroSection = () => {
             {/* Stats row */}
             <div className={`flex items-center justify-center lg:justify-start gap-8 mt-8 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               <div className="text-center lg:text-left">
-                <div className="text-2xl font-bold text-white">99.9%</div>
-                <div className="text-xs text-gray-500">Uptime SLA</div>
+                <div className="text-2xl font-bold text-white">⚡</div>
+                <div className="text-xs text-gray-500">Lightning Fast</div>
               </div>
               <div className="w-px h-8 bg-[#3a3a45]"></div>
               <div className="text-center lg:text-left">
-                <div className="text-2xl font-bold text-white">&lt;30s</div>
-                <div className="text-xs text-gray-500">Deploy Time</div>
+                <div className="text-2xl font-bold text-white">🎯</div>
+                <div className="text-xs text-gray-500">Zero Config</div>
               </div>
               <div className="w-px h-8 bg-[#3a3a45]"></div>
               <div className="text-center lg:text-left">
-                <div className="text-2xl font-bold text-white">24/7</div>
-                <div className="text-xs text-gray-500">Support</div>
+                <div className="text-2xl font-bold text-white">🚀</div>
+                <div className="text-xs text-gray-500">Always Ready</div>
               </div>
             </div>
           </div>

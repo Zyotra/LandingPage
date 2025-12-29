@@ -174,7 +174,7 @@ const VpsInstances = () => {
                 title: 'Automated Deployments',
                 desc: 'Deploy from GitHub in seconds. Full-stack applications, databases, and services - all automated.',
                 icon: '🚀',
-                metric: '<30s deploy'
+                metric: 'Instant deploy'
               },
               {
                 title: 'Visual Database Management',
@@ -253,7 +253,7 @@ const VpsInstances = () => {
               </div>
               <p className="text-gray-400 leading-relaxed mb-4">
                 You have a VPS, but deploying applications is a nightmare. SSH into servers, write deployment scripts, 
-                configure databases manually, set up monitoring, manage backups. Hours turn into days. Days turn into weeks.
+                configure databases manually, set up monitoring, manage backups. What should be simple becomes complex.
               </p>
               <ul className="space-y-2 text-gray-500 text-sm">
                 <li>• Manual SSH connections and commands</li>

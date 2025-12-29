@@ -45,7 +45,7 @@ const EnterpriseCTASection = () => {
     { text: 'Database UI', description: 'View tables, run queries visually', icon: 'chart' },
     { text: 'Dedicated support', description: '24/7 priority access to our experts', icon: 'support' },
     { text: 'Custom domains', description: 'Deploy with your own domain instantly', icon: 'settings' },
-    { text: 'SLA Guarantee', description: '99.99% uptime commitment', icon: 'shield' },
+    { text: 'SLA Guarantee', description: 'Enterprise-grade reliability', icon: 'shield' },
   ];
 
   return (
