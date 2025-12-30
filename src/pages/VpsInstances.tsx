@@ -279,7 +279,7 @@ const VpsInstances = () => {
                 Automatic monitoring. One-click backups. Your VPS becomes a fully automated deployment platform.
               </p>
               <ul className="space-y-2 text-gray-500 text-sm">
-                <li>• Connect VPS in 30 seconds</li>
+                <li>• Connect VPS in moments</li>
                 <li>• Deploy from GitHub with one click</li>
                 <li>• Visual database interface - no SQL needed</li>
                 <li>• Built-in monitoring dashboard</li>
@@ -311,7 +311,7 @@ const VpsInstances = () => {
                 title: 'Startups',
                 desc: 'Extend your runway. Deploy full-stack applications without hiring expensive DevOps engineers.',
                 icon: '🚀',
-                benefits: ['Save $120K+ annually', 'Ship faster', 'Focus on product']
+                benefits: ['Reduce infrastructure costs', 'Ship faster', 'Focus on product']
               },
               {
                 title: 'Enterprises',
@@ -346,7 +346,7 @@ const VpsInstances = () => {
             Ready to Transform Your VPS?
           </h2>
           <p className="text-gray-400 mb-10 max-w-2xl mx-auto text-lg">
-            Connect your VPS in 30 seconds. Start deploying in minutes. No vendor lock-in. 
+            Connect your VPS instantly. Start deploying immediately. No vendor lock-in. 
             Complete control. Full automation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

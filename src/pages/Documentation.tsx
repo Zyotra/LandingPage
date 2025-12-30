@@ -113,7 +113,7 @@ const Documentation = () => {
                 <section className="bg-[#1e1e26] rounded-xl border border-[#2a2a35] p-6 md:p-8">
                   <div className="mb-6">
                     <h2 className="text-2xl font-bold text-white mb-2">Quick Start</h2>
-                    <p className="text-gray-500 text-sm">Get your first deployment running in under 5 minutes</p>
+                      <p className="text-gray-500 text-sm">Get your first deployment running instantly</p>
                   </div>
                   
                   <p className="text-gray-400 leading-relaxed mb-8">

@@ -200,7 +200,7 @@ const blogPosts: BlogPost[] = [
       <p>Built for developers, by developers:</p>
       <ul>
         <li><strong>Intuitive UI</strong>: Clean, modern interface that's easy to navigate</li>
-        <li><strong>Fast Deployments</strong>: Deploy in seconds, not minutes</li>
+        <li><strong>Fast Deployments</strong>: Deploy instantly, focus on building</li>
         <li><strong>No Configuration Files</strong>: Zero YAML, zero Dockerfiles required</li>
         <li><strong>Visual Tools</strong>: Database management without command line</li>
         <li><strong>Comprehensive Logs</strong>: Detailed logs for debugging</li>
@@ -219,12 +219,12 @@ const blogPosts: BlogPost[] = [
         <li><strong>Monitor Everything</strong>: Track performance and health in real-time</li>
       </ol>
       
-      <p>All of this happens in minutes, not days. What traditionally takes a DevOps engineer weeks to set up, Zyotra does in under an hour.</p>
+      <p>All of this happens instantly. What traditionally takes a DevOps engineer weeks to set up, Zyotra automates completely.</p>
       
       <h2>Who Benefits from Zyotra?</h2>
       
       <h3>Startups</h3>
-      <p>For startups, Zyotra is a survival tool. It eliminates the need for expensive DevOps hires early on, allowing founders to focus on product-market fit instead of infrastructure. Deploy your MVP in days, not months.</p>
+      <p>For startups, Zyotra is a survival tool. It eliminates the need for expensive DevOps hires early on, allowing founders to focus on product-market fit instead of infrastructure. Deploy your MVP faster than ever.</p>
       
       <h3>Enterprises</h3>
       <p>For enterprises, Zyotra functions as an Internal Developer Platform (IDP). It eliminates deployment bottlenecks, enables self-service for engineering teams, and frees up senior DevOps engineers to focus on complex SRE tasks.</p>
@@ -233,7 +233,7 @@ const blogPosts: BlogPost[] = [
       <p>For developers, Zyotra removes all infrastructure friction. No more wrestling with configuration files, Docker setups, or deployment scripts. Just code, commit, and deploy.</p>
       
       <h2>Getting Started</h2>
-      <p>Ready to experience the future of deployment? <a href="https://zyotraportal.ramkrishna.cloud/register">Sign up for free</a> and deploy your first application in under 5 minutes.</p>
+      <p>Ready to experience the future of deployment? <a href="https://zyotraportal.ramkrishna.cloud/register">Sign up for free</a> and deploy your first application instantly.</p>
       
       <p>Have questions? Check out our <a href="/docs">documentation</a> or reach out to our team. We're here to help you ship faster.</p>
     `,
@@ -259,7 +259,7 @@ const blogPosts: BlogPost[] = [
       
       <h2>Key Features</h2>
       <ul>
-        <li><strong>One-Click Deployments</strong>: Deploy from GitHub in seconds, not hours</li>
+        <li><strong>One-Click Deployments</strong>: Deploy from GitHub instantly</li>
         <li><strong>Visual Database Management</strong>: Browse PostgreSQL tables, run queries, manage backups</li>
         <li><strong>Real-time Monitoring</strong>: Track CPU, memory, and disk usage live</li>
         <li><strong>Automatic Domain Setup</strong>: Configure custom domains with SSL certificates</li>
@@ -536,7 +536,7 @@ const Blog = () => {
                 placeholder="Enter your email" 
                 className="flex-1 px-4 py-3 rounded-lg bg-[#1a1a22] border border-[#2a2a35] text-white placeholder:text-gray-600 focus:border-[#e4b2b3]/50 focus:outline-none"
               />
-              <button className="px-6 py-3 rounded-lg bg-[#e4b2b3] text-[#1a1a22] font-medium hover:bg-[#d4a2a3] transition-colors">
+              <button className="px-6 py-3 rounded-lg bg-[#e4b2b3] text-white font-medium hover:bg-[#d4a2a3] transition-colors">
                 Subscribe
               </button>
             </div>

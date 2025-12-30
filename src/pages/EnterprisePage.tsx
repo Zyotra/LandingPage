@@ -17,7 +17,7 @@ const EnterprisePage = () => {
             </h1>
           <p className="text-xl text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed">
             The platform that transforms how startups survive and enterprises innovate. 
-            Deploy full-stack applications in minutes, not weeks.
+            Deploy full-stack applications instantly, focus on what matters.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
@@ -32,7 +32,7 @@ const EnterprisePage = () => {
         {/* Stats Bar */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-24">
           {[
-            { value: '⚡', label: 'Lightning Fast', sublabel: 'Deploy in seconds, not hours' },
+            { value: '⚡', label: 'Lightning Fast', sublabel: 'Deploy instantly, not hours' },
             { value: '🎯', label: 'Zero Friction', sublabel: 'No DevOps knowledge required' },
             { value: '🔒', label: 'Enterprise Ready', sublabel: 'Built for scale and reliability' },
             { value: '💡', label: 'Always Evolving', sublabel: 'Continuous improvements' },
@@ -68,7 +68,7 @@ const EnterprisePage = () => {
                 {[
                   'Deploy Frontend, Backend, Database, and Redis in one click',
                   'No DevOps expertise required — focus on building, not configuring',
-                  'Extend your runway by months with zero infrastructure overhead',
+                  'Extend your runway significantly with zero infrastructure overhead',
                   'Ship MVPs faster than ever before',
                 ].map((benefit, i) => (
                   <div key={i} className="flex items-start gap-3">

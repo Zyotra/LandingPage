@@ -51,16 +51,16 @@ const SolutionsEnterprise = () => {
         <div className="bg-[#1e1e24] border border-[#2a2a35] rounded-2xl p-8 md:p-12">
           <div className="grid md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-[#2a2a35]">
             <div className="p-4">
-              <div className="text-4xl font-bold text-white mb-2">99.99%</div>
-              <div className="text-gray-400">Uptime SLA</div>
+              <div className="text-4xl font-bold text-white mb-2">🔒</div>
+              <div className="text-gray-400">Enterprise Security</div>
             </div>
             <div className="p-4">
-              <div className="text-4xl font-bold text-white mb-2">24/7</div>
-              <div className="text-gray-400">Dedicated Support</div>
+              <div className="text-4xl font-bold text-white mb-2">⚡</div>
+              <div className="text-gray-400">Lightning Fast</div>
             </div>
             <div className="p-4">
-              <div className="text-4xl font-bold text-white mb-2">Global</div>
-              <div className="text-gray-400">Data Centers</div>
+              <div className="text-4xl font-bold text-white mb-2">🌍</div>
+              <div className="text-gray-400">Global Reach</div>
             </div>
           </div>
         </div>

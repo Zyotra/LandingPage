@@ -12,7 +12,7 @@ const HeroSection = () => {
   const rotatingTexts = [
     "Launch instances instantly",
     "Manage databases visually",
-    "Deploy in seconds",
+    "Deploy with one click",
     "Automate everything"
   ];
 
