@@ -28,7 +28,7 @@ const VpsInstances = () => {
             </a>
             <button 
               onClick={openContact}
-              className="border border-[#3a3a45] text-white px-8 py-3 rounded-md font-medium hover:bg-[#2a2a35] transition"
+              className="border border-[#3a3a45] bg-[#2a2a35] text-white px-8 py-3 rounded-md font-medium hover:bg-[#222228] transition"
             >
               Learn More
             </button>
@@ -358,7 +358,7 @@ const VpsInstances = () => {
             </a>
             <button 
               onClick={openContact}
-              className="px-10 py-4 rounded-md font-bold border border-[#3a3a45] hover:bg-[#2a2a35] transition"
+              className="px-10 py-4 bg-[#2a2a35] rounded-md font-bold border border-[#3a3a45] hover:bg-[#222228] transition"
             >
               Schedule a Demo
             </button>

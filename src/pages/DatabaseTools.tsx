@@ -131,7 +131,7 @@ const DatabaseTools = () => {
         <div className="mt-20 text-center">
           <h2 className="text-2xl font-bold mb-8">Supported Databases</h2>
           <div className="flex flex-wrap justify-center gap-6">
-            {['MySQL', 'PostgreSQL', 'MongoDB', 'SQLite', 'MariaDB'].map((db) => (
+            {['MySQL', 'PostgreSQL'].map((db) => (
               <div key={db} className="px-6 py-3 rounded-lg bg-[#22222a] border border-[#2a2a35] text-gray-300">
                 {db}
               </div>

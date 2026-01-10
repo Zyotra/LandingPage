@@ -396,7 +396,7 @@ const EnterprisePage = () => {
           <div className="flex flex-col items-center  sm:flex-row gap-4 justify-center">
             <button 
               onClick={openContact}
-              className="bg-white border border-[#e4b2b3] border-r-2 text-white px-10 py-4 rounded-md font-bold hover:bg-gray-100 transition"
+              className="bg-[#e4b2b3] border border-[#e4b2b3] border-r-2 text-[#1a1a22] px-10 py-4 rounded-md font-bold hover:bg-[#dba0a1] transition"
             >
               Schedule a Demo
           </button>
