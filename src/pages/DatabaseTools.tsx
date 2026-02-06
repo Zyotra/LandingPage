@@ -25,7 +25,7 @@ const DatabaseTools = () => {
               ))}
             </ul>
             <a 
-              href="https://zyotraportal.ramkrishna.cloud/register"
+              href="https://portal.zyotra.com/register"
               className="inline-block bg-[#e4b2b3] text-[#1a1a22] px-8 py-3 rounded-md font-bold hover:bg-[#dba0a1] transition"
             >
               Get Started

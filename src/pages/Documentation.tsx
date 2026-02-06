@@ -41,11 +41,10 @@ const Documentation = () => {
                   <button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
-                    className={`w-full text-left px-3 py-2 rounded-md text-[13px] font-medium transition-all whitespace-nowrap ${
-                      activeSection === section.id
+                    className={`w-full text-left px-3 py-2 rounded-md text-[13px] font-medium transition-all whitespace-nowrap ${activeSection === section.id
                         ? 'bg-[#e4b2b3]/10 text-[#e4b2b3]'
                         : 'text-gray-400 hover:text-white hover:bg-[#2a2a35]'
-                    }`}
+                      }`}
                   >
                     {section.label}
                   </button>
@@ -61,11 +60,10 @@ const Documentation = () => {
                   <button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
-                    className={`w-full text-left px-3 py-2 rounded-md text-[13px] font-medium transition-all whitespace-nowrap ${
-                      activeSection === section.id
+                    className={`w-full text-left px-3 py-2 rounded-md text-[13px] font-medium transition-all whitespace-nowrap ${activeSection === section.id
                         ? 'bg-[#e4b2b3]/10 text-[#e4b2b3]'
                         : 'text-gray-400 hover:text-white hover:bg-[#2a2a35]'
-                    }`}
+                      }`}
                   >
                     {section.label}
                   </button>
@@ -81,11 +79,10 @@ const Documentation = () => {
                   <button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
-                    className={`w-full text-left px-3 py-2 rounded-md text-[13px] font-medium transition-all whitespace-nowrap ${
-                      activeSection === section.id
+                    className={`w-full text-left px-3 py-2 rounded-md text-[13px] font-medium transition-all whitespace-nowrap ${activeSection === section.id
                         ? 'bg-[#e4b2b3]/10 text-[#e4b2b3]'
                         : 'text-gray-400 hover:text-white hover:bg-[#2a2a35]'
-                    }`}
+                      }`}
                   >
                     {section.label}
                   </button>
@@ -106,47 +103,47 @@ const Documentation = () => {
 
           {/* Main Content */}
           <main className="flex-1 min-w-0">
-            
+
             {/* Getting Started Section */}
             {activeSection === 'getting-started' && (
               <div className="space-y-8">
                 <section className="bg-[#1e1e26] rounded-xl border border-[#2a2a35] p-6 md:p-8">
                   <div className="mb-6">
                     <h2 className="text-2xl font-bold text-white mb-2">Quick Start</h2>
-                      <p className="text-gray-500 text-sm">Get your first deployment running instantly</p>
+                    <p className="text-gray-500 text-sm">Get your first deployment running instantly</p>
                   </div>
-                  
+
                   <p className="text-gray-400 leading-relaxed mb-8">
-                    Zyotra is a powerful platform for deploying and managing your applications on Ubuntu servers. 
-                    With our intuitive dashboard, you can deploy projects from GitHub, manage PostgreSQL databases 
+                    Zyotra is a powerful platform for deploying and managing your applications on Ubuntu servers.
+                    With our intuitive dashboard, you can deploy projects from GitHub, manage PostgreSQL databases
                     with a visual interface, run SQL queries, and automate your entire infrastructure.
-              </p>
+                  </p>
 
                   {/* Quick Start Steps */}
                   <div className="space-y-4 mb-8">
                     <h3 className="text-lg font-semibold text-white mb-4">Quick Start Guide</h3>
                     {[
-                      { 
-                        step: 1, 
-                        title: 'Create an Account', 
-                        desc: 'Sign up at zyotraportal.ramkrishna.cloud to access the dashboard',
+                      {
+                        step: 1,
+                        title: 'Create an Account',
+                        desc: 'Sign up at portal.zyotra.com to access the dashboard',
                         code: null
                       },
-                      { 
-                        step: 2, 
-                        title: 'Add Your VPS Machine', 
+                      {
+                        step: 2,
+                        title: 'Add Your VPS Machine',
                         desc: 'Connect your Ubuntu server using SSH credentials (IP, username, password/key)',
                         code: null
                       },
-                      { 
-                        step: 3, 
-                        title: 'Create a Database', 
+                      {
+                        step: 3,
+                        title: 'Create a Database',
                         desc: 'Deploy PostgreSQL with one click and get connection details instantly',
                         code: 'postgresql://admin:admin@localhost/test68'
                       },
-                      { 
-                        step: 4, 
-                        title: 'Deploy Your Project', 
+                      {
+                        step: 4,
+                        title: 'Deploy Your Project',
                         desc: 'Connect your GitHub repository and deploy with automatic builds',
                         code: null
                       },
@@ -154,7 +151,7 @@ const Documentation = () => {
                       <div key={item.step} className="flex gap-4 p-4 rounded-lg bg-[#1a1a22] border border-[#2a2a35]">
                         <span className="w-8 h-8 rounded-full bg-[#e4b2b3]/20 text-[#e4b2b3] flex items-center justify-center text-sm font-bold shrink-0">
                           {item.step}
-              </span>
+                        </span>
                         <div className="flex-1">
                           <h4 className="text-white font-medium mb-1">{item.title}</h4>
                           <p className="text-gray-500 text-sm mb-2">{item.desc}</p>
@@ -197,8 +194,8 @@ const Documentation = () => {
                   </div>
 
                   <p className="text-gray-400 leading-relaxed mb-8">
-                    Zyotra provides a complete database management interface. Create PostgreSQL databases, 
-                    view connection details, manage backups, and access your data through a visual table browser 
+                    Zyotra provides a complete database management interface. Create PostgreSQL databases,
+                    view connection details, manage backups, and access your data through a visual table browser
                     or SQL query runner.
                   </p>
 
@@ -208,7 +205,7 @@ const Documentation = () => {
                     <div className="p-4 border-b border-[#2a2a35] flex items-center gap-4">
                       <div className="w-12 h-12 rounded-lg bg-[#336791]/20 flex items-center justify-center">
                         <svg className="w-7 h-7 text-[#336791]" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
                         </svg>
                       </div>
                       <div className="flex-1">
@@ -358,7 +355,7 @@ const Documentation = () => {
                   </div>
 
                   <p className="text-gray-400 leading-relaxed mb-8">
-                    The Query Runner provides a powerful SQL editor to execute queries directly on your database. 
+                    The Query Runner provides a powerful SQL editor to execute queries directly on your database.
                     View results instantly, track execution time, and export data as needed.
                   </p>
 
@@ -467,7 +464,7 @@ const Documentation = () => {
                   </div>
 
                   <p className="text-gray-400 leading-relaxed mb-8">
-                    The Table Browser lets you explore your database structure visually. Browse all public tables, 
+                    The Table Browser lets you explore your database structure visually. Browse all public tables,
                     view table data, and see the first 100 rows instantly without writing SQL.
                   </p>
 
@@ -542,7 +539,7 @@ const Documentation = () => {
                   </div>
 
                   <p className="text-gray-400 leading-relaxed mb-8">
-                    To deploy from private GitHub repositories, you need to authenticate your VPS machine with GitHub. 
+                    To deploy from private GitHub repositories, you need to authenticate your VPS machine with GitHub.
                     This allows Zyotra to clone and deploy your private code securely.
                   </p>
 
@@ -551,7 +548,7 @@ const Documentation = () => {
                     <div className="p-6 border-b border-[#2a2a35]">
                       <div className="flex items-center gap-3 mb-4">
                         <svg className="w-8 h-8 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                         </svg>
                         <h3 className="text-xl font-bold text-white">GitHub Authentication</h3>
                       </div>
@@ -562,7 +559,7 @@ const Documentation = () => {
                       <button className="w-full flex items-center justify-between p-3 rounded-lg bg-[#22222a] border border-[#2a2a35] text-white hover:border-purple-500/50 transition-colors">
                         <div className="flex items-center gap-2">
                           <svg className="w-5 h-5 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                           </svg>
                           <span className="text-sm">How to generate Personal Access Token</span>
                         </div>
@@ -573,18 +570,18 @@ const Documentation = () => {
 
                       <div>
                         <label className="block text-gray-400 text-sm mb-2">GitHub Username</label>
-                        <input 
-                          type="text" 
-                          placeholder="Enter GitHub username" 
+                        <input
+                          type="text"
+                          placeholder="Enter GitHub username"
                           className="w-full p-3 rounded-lg bg-[#22222a] border border-[#2a2a35] text-white placeholder:text-gray-600 text-sm focus:border-[#e4b2b3]/50 focus:outline-none"
                         />
                       </div>
 
                       <div>
                         <label className="block text-gray-400 text-sm mb-2">Personal Access Token <span className="text-red-400">*</span></label>
-                        <input 
-                          type="password" 
-                          placeholder="Enter personal access token (not password)" 
+                        <input
+                          type="password"
+                          placeholder="Enter personal access token (not password)"
                           className="w-full p-3 rounded-lg bg-[#22222a] border border-[#2a2a35] text-white placeholder:text-gray-600 text-sm focus:border-[#e4b2b3]/50 focus:outline-none"
                         />
                         <p className="text-gray-600 text-xs mt-2">Only personal access tokens are accepted. Passwords will not work.</p>
@@ -637,7 +634,7 @@ const Documentation = () => {
                   </div>
 
                   <p className="text-gray-400 leading-relaxed mb-8">
-                    Deploy web applications, APIs, and services directly from your GitHub repositories. 
+                    Deploy web applications, APIs, and services directly from your GitHub repositories.
                     Zyotra handles the build process and deployment automatically.
                   </p>
 
@@ -652,13 +649,13 @@ const Documentation = () => {
                         <span className="text-2xl mb-3 block">{service.icon}</span>
                         <h4 className="text-white font-medium mb-1">{service.title}</h4>
                         <p className="text-gray-500 text-sm">{service.desc}</p>
-            </div>
-          ))}
+                      </div>
+                    ))}
                   </div>
 
                   <div className="p-4 rounded-lg bg-yellow-500/10 border border-yellow-500/30">
                     <p className="text-yellow-400 text-sm">
-                      <strong>⚠️ Important:</strong> For private repositories, ensure your VPS is authenticated with GitHub first. 
+                      <strong>⚠️ Important:</strong> For private repositories, ensure your VPS is authenticated with GitHub first.
                       Go to VPS Machines → Action Buttons → Authenticate GitHub.
                     </p>
                   </div>
@@ -719,13 +716,13 @@ const Documentation = () => {
         {/* CTA Section */}
         <div className="mt-16 text-center">
           <div className="inline-flex flex-col sm:flex-row items-center gap-4">
-            <a 
-              href="https://zyotraportal.ramkrishna.cloud/register"
+            <a
+              href="https://portal.zyotra.com/register"
               className="px-6 py-3 rounded-lg bg-[#e4b2b3] text-[#1a1a22] font-medium hover:bg-[#d4a2a3] transition-colors"
             >
               Get Started for Free
             </a>
-            <Link 
+            <Link
               to="/blog"
               className="px-6 py-3 rounded-lg border border-[#2a2a35] text-gray-400 hover:text-white hover:border-[#e4b2b3]/50 transition-colors"
             >

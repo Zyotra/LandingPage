@@ -10,18 +10,18 @@ const EnterprisePage = () => {
         <div className="text-center mb-24 pt-12">
           <div className="inline-block px-4 py-2 mb-6 border border-[#e4b2b3]/30 rounded-full bg-[#e4b2b3]/10 text-[#e4b2b3] text-sm font-medium tracking-wide">
             ENTERPRISE PLATFORM
-            </div>
+          </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Ship faster.<br/>
+            Ship faster.<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e4b2b3] to-[#f0c4c5]">Scale smarter.</span>
-            </h1>
+          </h1>
           <p className="text-xl text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed">
-            The platform that transforms how startups survive and enterprises innovate. 
+            The platform that transforms how startups survive and enterprises innovate.
             Deploy full-stack applications instantly, focus on what matters.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="https://zyotraportal.ramkrishna.cloud/register"
+            <a
+              href="https://portal.zyotra.com/register"
               className="px-8 py-4 rounded-md font-bold text-lg border border-[#3a3a45] hover:bg-[#2a2a35] transition"
             >
               Get Started
@@ -61,7 +61,7 @@ const EnterprisePage = () => {
                 Your <span className="text-[#e4b2b3]">survival tool</span> for product-market fit
               </h2>
               <p className="text-xl text-gray-400 mb-8 leading-relaxed">
-                Zyotra dramatically lowers the barrier to entry by removing the need for expensive, 
+                Zyotra dramatically lowers the barrier to entry by removing the need for expensive,
                 dedicated DevOps hires early on. Deploy full-stack applications instantly, focus on what matters.
               </p>
               <div className="space-y-4">
@@ -130,8 +130,8 @@ const EnterprisePage = () => {
                 <h3 className="text-xl font-bold text-white">The Problem</h3>
               </div>
               <p className="text-gray-400 leading-relaxed mb-4">
-                Startups burn through runway wrestling with Docker configs, Kubernetes manifests, 
-                and infrastructure provisioning. Expensive DevOps hires drain resources, 
+                Startups burn through runway wrestling with Docker configs, Kubernetes manifests,
+                and infrastructure provisioning. Expensive DevOps hires drain resources,
                 and deployment delays kill momentum.
               </p>
               <ul className="space-y-2 text-gray-500 text-sm">
@@ -152,7 +152,7 @@ const EnterprisePage = () => {
                 <h3 className="text-xl font-bold text-white">The Solution</h3>
               </div>
               <p className="text-gray-400 leading-relaxed mb-4">
-                Zyotra eliminates infrastructure friction entirely. Deploy your entire stack instantly. 
+                Zyotra eliminates infrastructure friction entirely. Deploy your entire stack instantly.
                 No DevOps knowledge required. Your team focuses 100% on product-market fit, not YAML files.
               </p>
               <ul className="space-y-2 text-gray-500 text-sm">
@@ -190,14 +190,13 @@ const EnterprisePage = () => {
                         { team: 'Data Team', env: 'Analytics', status: 'Active', time: '1h ago' },
                       ].map((deployment, i) => (
                         <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-[#1a1a22] border border-[#2a2a35]">
-                <div>
+                          <div>
                             <div className="text-white font-medium text-sm">{deployment.team}</div>
                             <div className="text-gray-500 text-xs">{deployment.env}</div>
-                </div>
-                <div className="text-right">
-                            <span className={`px-2 py-1 rounded text-xs font-medium ${
-                              deployment.status === 'Active' ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-400'
-                            }`}>
+                          </div>
+                          <div className="text-right">
+                            <span className={`px-2 py-1 rounded text-xs font-medium ${deployment.status === 'Active' ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-400'
+                              }`}>
                               {deployment.status}
                             </span>
                             <div className="text-gray-600 text-xs mt-1">{deployment.time}</div>
@@ -220,7 +219,7 @@ const EnterprisePage = () => {
                 Eliminate <span className="text-[#e4b2b3]">deployment bottlenecks</span> forever
               </h2>
               <p className="text-xl text-gray-400 mb-8 leading-relaxed">
-                Zyotra functions as your Internal Developer Platform (IDP), enabling self-service 
+                Zyotra functions as your Internal Developer Platform (IDP), enabling self-service
                 for engineering teams. No more waiting for infrastructure provisioning.
               </p>
               <div className="space-y-4">
@@ -255,8 +254,8 @@ const EnterprisePage = () => {
                 <h3 className="text-xl font-bold text-white">The Problem</h3>
               </div>
               <p className="text-gray-400 leading-relaxed mb-4">
-                Large organizations suffer from "deployment bottlenecks" where developers wait 
-                for infrastructure provisioning. Senior DevOps engineers waste time on routine deployments 
+                Large organizations suffer from "deployment bottlenecks" where developers wait
+                for infrastructure provisioning. Senior DevOps engineers waste time on routine deployments
                 instead of complex SRE tasks.
               </p>
               <ul className="space-y-2 text-gray-500 text-sm">
@@ -265,7 +264,7 @@ const EnterprisePage = () => {
                 <li>• Senior engineers doing routine work</li>
                 <li>• Manual processes create security gaps</li>
               </ul>
-        </div>
+            </div>
 
             <div className="p-8 rounded-xl bg-gradient-to-br from-green-500/10 to-transparent border border-green-500/20">
               <div className="flex items-center gap-3 mb-4">
@@ -277,8 +276,8 @@ const EnterprisePage = () => {
                 <h3 className="text-xl font-bold text-white">The Solution</h3>
               </div>
               <p className="text-gray-400 leading-relaxed mb-4">
-                Zyotra standardizes deployments across your entire organization. Developers get 
-                self-service access. Your DevOps team focuses on reliability engineering, not 
+                Zyotra standardizes deployments across your entire organization. Developers get
+                self-service access. Your DevOps team focuses on reliability engineering, not
                 provisioning tickets.
               </p>
               <ul className="space-y-2 text-gray-500 text-sm">
@@ -390,16 +389,16 @@ const EnterprisePage = () => {
             Ready to transform how your team ships?
           </h2>
           <p className="text-gray-400 mb-10 max-w-2xl mx-auto text-lg">
-            Join teams that deploy faster and focus on building, not configuring. 
+            Join teams that deploy faster and focus on building, not configuring.
             Our enterprise team is ready to help you get started.
           </p>
           <div className="flex flex-col items-center  sm:flex-row gap-4 justify-center">
-            <button 
+            <button
               onClick={openContact}
               className="bg-[#e4b2b3] border border-[#e4b2b3] border-r-2 text-[#1a1a22] px-10 py-4 rounded-md font-bold hover:bg-[#dba0a1] transition"
             >
               Schedule a Demo
-          </button>
+            </button>
           </div>
         </div>
       </div>

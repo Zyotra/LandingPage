@@ -40,7 +40,7 @@ const HeroSection = () => {
 
   return (
     <section ref={sectionRef} className="w-full bg-[#1a1a22] pt-10 sm:pt-12 md:pt-16 lg:pt-20 pb-6 sm:pb-8 md:pb-10 lg:pb-12 relative overflow-hidden">
-      
+
       {/* CSS Animations - Optimized for GPU */}
       <style>{`
         @keyframes twinkle {
@@ -98,28 +98,28 @@ const HeroSection = () => {
         <div className="absolute left-[50%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#2a2a35] to-transparent opacity-50"></div>
         <div className="absolute left-[75%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#2a2a35] to-transparent hidden sm:block opacity-50"></div>
         <div className="absolute left-[95%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#2a2a35] to-transparent opacity-50"></div>
-        
+
         {/* Static horizontal lines */}
         <div className="absolute top-[15%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2a2a35] to-transparent"></div>
         <div className="absolute top-[45%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2a2a35] to-transparent"></div>
         <div className="absolute top-[75%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2a2a35] to-transparent"></div>
         <div className="absolute top-[95%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2a2a35] to-transparent"></div>
-        
+
         {/* Animated scan line - CSS only */}
-        <div 
+        <div
           className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#e4b2b3]/30 to-transparent"
           style={{ animation: 'scan-line 10s linear infinite' }}
         ></div>
 
         {/* Ambient glow - Static with CSS animation */}
-        <div 
+        <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[80px] pointer-events-none"
           style={{
             background: 'radial-gradient(ellipse at center, rgba(228,178,179,0.1) 0%, transparent 70%)',
             animation: 'glow-breathe 6s ease-in-out infinite'
           }}
         ></div>
-        
+
         {/* Decorative stars - Animated with CSS only */}
         <div className="absolute top-[20%] right-[42%] text-[#e4b2b3] text-xl hidden lg:block animate-twinkle">✦</div>
         <div className="absolute top-[50%] right-[38%] text-[#e4b2b3]/60 text-sm hidden lg:block animate-twinkle-delay">✦</div>
@@ -141,12 +141,12 @@ const HeroSection = () => {
           {/* Left Content */}
           <div className="relative text-center lg:text-left order-2 lg:order-1">
             {/* Main heading with staggered animation */}
-            <h1 
+            <h1
               className={`text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[4.5rem] leading-[1.1] mb-4 md:mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ fontFamily: "Playfair Display", fontWeight: 400 }}
             >
               <span className="inline-block overflow-hidden">
-                <span 
+                <span
                   className="inline-block bg-gradient-to-r from-[#e4b2b3] via-[#f0c4c5] to-[#e4b2b3] bg-clip-text text-transparent animate-gradient-x"
                   style={{ transitionDelay: '200ms' }}
                 >
@@ -154,7 +154,7 @@ const HeroSection = () => {
                 </span>
               </span>
               <br />
-              <span 
+              <span
                 className={`inline-block transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               >
                 <span className="bg-gradient-to-r from-[#e4b2b3] via-[#f0c4c5] to-[#e4b2b3] bg-clip-text text-transparent animate-gradient-x" style={{ animationDelay: '0.5s' }}>
@@ -162,33 +162,32 @@ const HeroSection = () => {
                 </span>
               </span>
             </h1>
-            
+
             {/* Animated rotating text */}
             <div className={`relative h-[80px] sm:h-[100px] mb-6 sm:mb-8 md:mb-10 overflow-hidden transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-              <p 
-                className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed max-w-lg mx-auto lg:mx-0" 
+              <p
+                className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed max-w-lg mx-auto lg:mx-0"
                 style={{ fontFamily: "Playfair Display" }}
               >
-              Zyotra is an automated platform for deploying VPS.
+                Zyotra is an automated platform for deploying VPS.
               </p>
               <div className="relative h-8 mt-2 overflow-hidden">
                 {rotatingTexts.map((text, index) => (
                   <span
                     key={index}
-                    className={`absolute left-0 lg:left-0 right-0 lg:right-auto text-[#e4b2b3] text-sm sm:text-base md:text-lg font-medium transition-all duration-500 ${
-                      textIndex === index 
-                        ? 'opacity-100 translate-y-0' 
+                    className={`absolute left-0 lg:left-0 right-0 lg:right-auto text-[#e4b2b3] text-sm sm:text-base md:text-lg font-medium transition-all duration-500 ${textIndex === index
+                        ? 'opacity-100 translate-y-0'
                         : index === (textIndex - 1 + rotatingTexts.length) % rotatingTexts.length
                           ? 'opacity-0 -translate-y-8'
                           : 'opacity-0 translate-y-8'
-                    }`}
+                      }`}
                   >
                     {text} <span className="inline-block w-0.5 h-4 bg-[#e4b2b3] animate-pulse ml-1"></span>
                   </span>
                 ))}
               </div>
             </div>
-            
+
             {/* CTA Buttons with enhanced animations */}
             <div className={`flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 md:gap-8 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               {/* Get started button */}
@@ -198,14 +197,14 @@ const HeroSection = () => {
                 <span className="absolute top-0 right-0 w-2.5 sm:w-3 h-2.5 sm:h-3 border-t border-r border-[#e4b2b3] transition-all duration-300 group-hover:w-4 group-hover:h-4"></span>
                 <span className="absolute bottom-0 left-0 w-2.5 sm:w-3 h-2.5 sm:h-3 border-b border-l border-[#e4b2b3] transition-all duration-300 group-hover:w-4 group-hover:h-4"></span>
                 <span className="absolute bottom-0 right-0 w-2.5 sm:w-3 h-2.5 sm:h-3 border-b border-r border-[#e4b2b3] transition-all duration-300 group-hover:w-4 group-hover:h-4"></span>
-                
-                <a 
-                  href="https://zyotraportal.ramkrishna.cloud/register" 
+
+                <a
+                  href="https://portal.zyotra.com/register"
                   className="relative inline-flex items-center justify-center w-full sm:w-auto gap-2 sm:gap-3 md:gap-4 bg-[#2a2a32] hover:bg-[#32323a] text-[#e4b2b3] px-4 sm:px-4 md:px-6 py-2.5 sm:py-3 md:py-4 transition-all duration-300 border border-[#3a3a45] hover:border-[#e4b2b3]/50 hover:shadow-lg hover:shadow-[#e4b2b3]/10 overflow-hidden"
                 >
                   {/* Ripple effect */}
                   <span className="absolute inset-0 bg-gradient-to-r from-[#e4b2b3]/0 via-[#e4b2b3]/10 to-[#e4b2b3]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-gradient-x"></span>
-                  
+
                   <span className="relative w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-8 flex items-center justify-center border border-[#e4b2b3]/50 rounded-full transition-all duration-300 group-hover:border-[#e4b2b3] group-hover:bg-[#e4b2b3]/10 group-hover:rotate-45">
                     <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 17L17 7M17 7H7M17 7V17" />
@@ -214,14 +213,14 @@ const HeroSection = () => {
                   <span className="relative font-medium text-base sm:text-lg md:text-xl group-hover:text-white transition-colors">Get started</span>
                 </a>
               </div>
-              
+
               {/* Request a demo button */}
               <div className="relative p-1.5 sm:p-2 w-full sm:w-auto group">
                 <span className="absolute top-0 left-0 w-2.5 sm:w-3 h-2.5 sm:h-3 border-t border-l border-[#e4b2b3] transition-all duration-300 group-hover:w-4 group-hover:h-4"></span>
                 <span className="absolute top-0 right-0 w-2.5 sm:w-3 h-2.5 sm:h-3 border-t border-r border-[#e4b2b3] transition-all duration-300 group-hover:w-4 group-hover:h-4"></span>
                 <span className="absolute bottom-0 left-0 w-2.5 sm:w-3 h-2.5 sm:h-3 border-b border-l border-[#e4b2b3] transition-all duration-300 group-hover:w-4 group-hover:h-4"></span>
                 <span className="absolute bottom-0 right-0 w-2.5 sm:w-3 h-2.5 sm:h-3 border-b border-r border-[#e4b2b3] transition-all duration-300 group-hover:w-4 group-hover:h-4"></span>
-                
+
                 <button
                   onClick={openContact}
                   className="relative inline-flex items-center justify-center w-full sm:w-auto text-[#e4b2b3] font-medium text-base sm:text-lg md:text-xl px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 transition-all duration-300 border border-dashed border-[#e4b2b3]/60 hover:border-[#e4b2b3] hover:text-white hover:bg-[#e4b2b3]/10 hover:shadow-lg hover:shadow-[#e4b2b3]/10 overflow-hidden"
@@ -250,7 +249,7 @@ const HeroSection = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Right Content - Optimized Animated Workflow Diagram */}
           <div className={`relative h-[280px] xs:h-[320px] sm:h-[380px] md:h-[450px] lg:h-[500px] order-1 lg:order-2 transition-all duration-1000 delay-300 gpu-accelerated ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
             {/* SVG Animation Container */}
@@ -262,13 +261,13 @@ const HeroSection = () => {
                   <stop offset="50%" stopColor="#f0c4c5" />
                   <stop offset="100%" stopColor="#e4b2b3" />
                 </linearGradient>
-                
+
                 {/* Minimal glow filter - reduced blur for performance */}
                 <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                  <feGaussianBlur stdDeviation="2" result="coloredBlur" />
                   <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
+                    <feMergeNode in="coloredBlur" />
+                    <feMergeNode in="SourceGraphic" />
                   </feMerge>
                 </filter>
 
@@ -276,7 +275,7 @@ const HeroSection = () => {
                 <circle id="particle1" r="4" fill="#e4b2b3">
                   <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" />
                 </circle>
-                
+
                 {/* Animated particle on path 2 */}
                 <circle id="particle2" r="3" fill="#f0c4c5">
                   <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" />
@@ -288,34 +287,34 @@ const HeroSection = () => {
               <circle cx="200" cy="200" r="140" fill="none" stroke="#2a2a35" strokeWidth="1" strokeDasharray="4,6" strokeOpacity="0.2" />
 
               {/* Curved paths with CSS animation */}
-              <path 
+              <path
                 id="path1"
-                d="M 240 110 Q 330 160, 310 260" 
-                fill="none" 
-                stroke="#e4b2b3" 
-                strokeWidth="1" 
+                d="M 240 110 Q 330 160, 310 260"
+                fill="none"
+                stroke="#e4b2b3"
+                strokeWidth="1"
                 strokeDasharray="4,4"
                 strokeOpacity={activeNode === 0 ? "0.6" : "0.2"}
                 className="animate-dash-flow"
                 style={{ transition: 'stroke-opacity 0.5s ease' }}
               />
-              <path 
+              <path
                 id="path2"
-                d="M 290 330 Q 200 380, 110 330" 
-                fill="none" 
-                stroke="#e4b2b3" 
-                strokeWidth="1" 
+                d="M 290 330 Q 200 380, 110 330"
+                fill="none"
+                stroke="#e4b2b3"
+                strokeWidth="1"
                 strokeDasharray="4,4"
                 strokeOpacity={activeNode === 1 ? "0.6" : "0.2"}
                 className="animate-dash-flow"
                 style={{ transition: 'stroke-opacity 0.5s ease' }}
               />
-              <path 
+              <path
                 id="path3"
-                d="M 90 260 Q 70 160, 160 110" 
-                fill="none" 
-                stroke="#e4b2b3" 
-                strokeWidth="1" 
+                d="M 90 260 Q 70 160, 160 110"
+                fill="none"
+                stroke="#e4b2b3"
+                strokeWidth="1"
                 strokeDasharray="4,4"
                 strokeOpacity={activeNode === 2 ? "0.6" : "0.2"}
                 className="animate-dash-flow"
@@ -329,10 +328,10 @@ const HeroSection = () => {
               </g>
 
               {/* Center ring - CSS animated */}
-              <circle 
-                cx="200" cy="200" r="50" 
-                fill="none" 
-                stroke="url(#combinedGradient)" 
+              <circle
+                cx="200" cy="200" r="50"
+                fill="none"
+                stroke="url(#combinedGradient)"
                 strokeWidth="1"
                 strokeDasharray="8,4"
                 strokeOpacity="0.4"
@@ -396,12 +395,12 @@ const HeroSection = () => {
                 {/* Core circle */}
                 <circle cx="320" cy="300" r="25" fill="#1a1a22" stroke={activeNode === 1 ? "#e4b2b3" : "#3a3a45"} strokeWidth="1.5" style={{ transition: 'stroke 0.5s ease' }} />
                 {/* Checkmark Icon */}
-                <path 
-                  d="M 308 300 L 316 308 L 332 292" 
-                  fill="none" 
-                  stroke="#e4b2b3" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
+                <path
+                  d="M 308 300 L 316 308 L 332 292"
+                  fill="none"
+                  stroke="#e4b2b3"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   strokeLinejoin="round"
                 />
                 {/* Label */}
@@ -430,7 +429,7 @@ const HeroSection = () => {
               <circle cx="350" cy="150" r="2" fill="#e4b2b3" fillOpacity="0.3" />
               <circle cx="350" cy="380" r="1.5" fill="#e4b2b3" fillOpacity="0.4" />
               <circle cx="50" cy="380" r="2" fill="#e4b2b3" fillOpacity="0.3" />
-              
+
               {/* Small arrows on paths */}
               <polygon points="280,150 285,145 285,155" fill="#e4b2b3" fillOpacity={activeNode === 0 ? "0.8" : "0.3"} style={{ transition: 'fill-opacity 0.5s ease' }} />
               <polygon points="230,355 235,360 225,360" fill="#e4b2b3" fillOpacity={activeNode === 1 ? "0.8" : "0.3"} style={{ transition: 'fill-opacity 0.5s ease' }} />

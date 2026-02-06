@@ -12,21 +12,21 @@ const VpsInstances = () => {
             BRING YOUR OWN INFRASTRUCTURE
           </div>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Connect Your VPS.<br/>
+            Connect Your VPS.<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e4b2b3] to-[#f0c4c5]">Automate Everything.</span>
           </h1>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
-            Use any VPS from any provider. Connect it to Zyotra and transform it into a fully automated 
+            Use any VPS from any provider. Connect it to Zyotra and transform it into a fully automated
             deployment platform. No vendor lock-in. Complete control. Zero configuration.
           </p>
           <div className="flex justify-center gap-4">
-            <a 
-              href="https://zyotraportal.ramkrishna.cloud/register"
+            <a
+              href="https://portal.zyotra.com/register"
               className="bg-[#e4b2b3] text-[#1a1a22] px-8 py-3 rounded-md font-bold hover:bg-[#dba0a1] transition"
             >
               Connect Your VPS
             </a>
-            <button 
+            <button
               onClick={openContact}
               className="border border-[#3a3a45] bg-[#2a2a35] text-white px-8 py-3 rounded-md font-medium hover:bg-[#222228] transition"
             >
@@ -87,8 +87,8 @@ const VpsInstances = () => {
                     <div className="absolute right-0 top-1/2 -translate-y-1/2 w-0 h-0 border-l-[8px] border-l-[#2a2a35] border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent"></div>
                   </div>
                 )}
-            </div>
-          ))}
+              </div>
+            ))}
           </div>
         </section>
 
@@ -100,7 +100,7 @@ const VpsInstances = () => {
                 Transform Your VPS into a <span className="text-[#e4b2b3]">Powerhouse</span>
               </h2>
               <p className="text-xl text-gray-400 mb-8 leading-relaxed">
-                Your VPS, your control. Zyotra doesn't lock you into any provider. Connect any Ubuntu server 
+                Your VPS, your control. Zyotra doesn't lock you into any provider. Connect any Ubuntu server
                 and instantly get enterprise-grade deployment automation, database management, and monitoring.
               </p>
               <div className="space-y-4">
@@ -252,7 +252,7 @@ const VpsInstances = () => {
                 <h3 className="text-xl font-bold text-white">The Old Way</h3>
               </div>
               <p className="text-gray-400 leading-relaxed mb-4">
-                You have a VPS, but deploying applications is a nightmare. SSH into servers, write deployment scripts, 
+                You have a VPS, but deploying applications is a nightmare. SSH into servers, write deployment scripts,
                 configure databases manually, set up monitoring, manage backups. What should be simple becomes complex.
               </p>
               <ul className="space-y-2 text-gray-500 text-sm">
@@ -275,7 +275,7 @@ const VpsInstances = () => {
                 <h3 className="text-xl font-bold text-white">The Zyotra Way</h3>
               </div>
               <p className="text-gray-400 leading-relaxed mb-4">
-                Connect your VPS once. Deploy everything with clicks, not commands. Visual database management. 
+                Connect your VPS once. Deploy everything with clicks, not commands. Visual database management.
                 Automatic monitoring. One-click backups. Your VPS becomes a fully automated deployment platform.
               </p>
               <ul className="space-y-2 text-gray-500 text-sm">
@@ -346,17 +346,17 @@ const VpsInstances = () => {
             Ready to Transform Your VPS?
           </h2>
           <p className="text-gray-400 mb-10 max-w-2xl mx-auto text-lg">
-            Connect your VPS instantly. Start deploying immediately. No vendor lock-in. 
+            Connect your VPS instantly. Start deploying immediately. No vendor lock-in.
             Complete control. Full automation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="https://zyotraportal.ramkrishna.cloud/register"
+            <a
+              href="https://portal.zyotra.com/register"
               className="bg-[#e4b2b3] text-[#1a1a22] px-10 py-4 rounded-md font-bold hover:bg-[#dba0a1] transition"
             >
               Connect Your VPS Now
             </a>
-            <button 
+            <button
               onClick={openContact}
               className="px-10 py-4 bg-[#2a2a35] rounded-md font-bold border border-[#3a3a45] hover:bg-[#222228] transition"
             >

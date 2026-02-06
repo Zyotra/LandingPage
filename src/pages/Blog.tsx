@@ -233,7 +233,7 @@ const blogPosts: BlogPost[] = [
       <p>For developers, Zyotra removes all infrastructure friction. No more wrestling with configuration files, Docker setups, or deployment scripts. Just code, commit, and deploy.</p>
       
       <h2>Getting Started</h2>
-      <p>Ready to experience the future of deployment? <a href="https://zyotraportal.ramkrishna.cloud/register">Sign up for free</a> and deploy your first application instantly.</p>
+      <p>Ready to experience the future of deployment? <a href="https://portal.zyotra.com/register">Sign up for free</a> and deploy your first application instantly.</p>
       
       <p>Have questions? Check out our <a href="/docs">documentation</a> or reach out to our team. We're here to help you ship faster.</p>
     `,
@@ -331,9 +331,9 @@ const Blog = () => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
 
   const categories = ['All', 'Announcement', 'Tutorial', 'Engineering'];
-  
-  const filteredPosts = activeCategory === 'All' 
-    ? blogPosts 
+
+  const filteredPosts = activeCategory === 'All'
+    ? blogPosts
     : blogPosts.filter(post => post.category === activeCategory);
 
   const featuredPost = blogPosts.find(post => post.featured);
@@ -343,7 +343,7 @@ const Blog = () => {
       <div className="min-h-screen bg-[#1a1a22] pt-24 pb-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           {/* Back Button */}
-          <button 
+          <button
             onClick={() => setSelectedPost(null)}
             className="flex items-center gap-2 text-gray-400 hover:text-white mb-8 transition-colors"
           >
@@ -372,7 +372,7 @@ const Blog = () => {
             </div>
 
             {/* Article Content */}
-            <div 
+            <div
               className="prose prose-invert prose-lg max-w-none
                 prose-headings:text-white prose-headings:font-bold
                 prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4
@@ -442,11 +442,10 @@ const Blog = () => {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                activeCategory === category
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeCategory === category
                   ? 'bg-[#e4b2b3] text-[#1a1a22]'
                   : 'text-gray-400 hover:text-white hover:bg-[#2a2a35]'
-              }`}
+                }`}
             >
               {category}
             </button>
@@ -501,20 +500,20 @@ const Blog = () => {
               <article className="h-full rounded-xl bg-[#1e1e26] border border-[#2a2a35] overflow-hidden hover:border-[#e4b2b3]/30 transition-all">
                 {/* Gradient Top */}
                 <div className="h-2 bg-gradient-to-r from-[#e4b2b3]/50 to-[#e4b2b3]/10"></div>
-                
+
                 <div className="p-6">
                   <span className="px-3 py-1 rounded-full bg-[#2a2a35] text-gray-400 text-xs font-medium">
                     {post.category}
                   </span>
-                  
+
                   <h3 className="text-lg font-bold text-white mt-4 mb-3 group-hover:text-[#e4b2b3] transition-colors line-clamp-2">
                     {post.title}
                   </h3>
-                  
+
                   <p className="text-gray-500 text-sm mb-4 line-clamp-3">
                     {post.excerpt}
                   </p>
-                  
+
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-400">{post.author}</span>
                     <span className="text-gray-500">{post.readTime}</span>
@@ -531,9 +530,9 @@ const Blog = () => {
             <h3 className="text-2xl font-bold text-white mb-3">Stay Updated</h3>
             <p className="text-gray-400 mb-6">Get the latest tutorials and product updates delivered to your inbox.</p>
             <div className="flex gap-3">
-              <input 
-                type="email" 
-                placeholder="Enter your email" 
+              <input
+                type="email"
+                placeholder="Enter your email"
                 className="flex-1 px-4 py-3 rounded-lg bg-[#1a1a22] border border-[#2a2a35] text-white placeholder:text-gray-600 focus:border-[#e4b2b3]/50 focus:outline-none"
               />
               <button className="px-6 py-3 rounded-lg bg-[#e4b2b3] text-white font-medium hover:bg-[#d4a2a3] transition-colors">
@@ -545,7 +544,7 @@ const Blog = () => {
 
         {/* Bottom CTA */}
         <div className="mt-16 text-center">
-          <Link 
+          <Link
             to="/docs"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[#2a2a35] text-gray-400 hover:text-white hover:border-[#e4b2b3]/50 transition-colors"
           >
